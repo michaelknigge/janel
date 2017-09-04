@@ -3,8 +3,9 @@
  * Please see the JanelLicense.txt file for the complete license.
  */
 
+#define NOMINMAX
 #include "Janel.h"
-#include <stdio.h>
+//#include <stdio.h>
 #include <io.h>
 #include "LocalUtilities.h"
 #include "Debug.h"
@@ -14,7 +15,7 @@
 #include <sstream>
 #include <string>
 #include <stdexcept>
-
+#include <cassert>
 
 using namespace std;
 
@@ -135,3 +136,18 @@ double LocalUtilities::convertStringToPercent(const tstring& s)
 	return x;
  }
 
+::std::string LocalUtilities::convertWideStringToUTF8(const tstring& s)
+{
+	const TCHAR* inBuff = s.c_str();
+	size_t inLength = s.length();
+	assert(inLength < ((size_t) std::numeric_limits<int>::max()));
+	size_t outSize = WideCharToMultiByte(CP_UTF8, 0, inBuff, inLength, NULL, 0, NULL, NULL);
+	char* buff = new char[outSize + 1];
+	assert(outSize < ((size_t) std::numeric_limits<int>::max()));
+	size_t actualSize = WideCharToMultiByte(CP_UTF8, 0, inBuff, inLength, buff, outSize, NULL, NULL);
+	buff[actualSize] = 0;
+	assert(actualSize == outSize);
+	::std::string output(buff);
+	delete [] buff;
+	return output;
+}

@@ -13,6 +13,7 @@
 #include "Debug.h"
 #include "ErrHandler.h"
 #include "JVMChooser.h"
+#include <algorithm>
 
 using namespace std;
 
@@ -32,12 +33,13 @@ tstring& PropertiesFile::getPropertiesFileName()
 {
 	try
 	{
-		int indexOfExtension = m_pProperties->getFullPathAndNameOfExe().find_last_of( _T('.') );
+		size_t indexOfExtension = m_pProperties->getFullPathAndNameOfExe().find_last_of( _T('.') );
 		tstring extensionOfExecutable = _T("");
 		
 		if( indexOfExtension > 0 )
 		{
-			extensionOfExecutable = _tcsupr( (TCHAR*)m_pProperties->getFullPathAndNameOfExe().substr( indexOfExtension ).c_str() );
+			extensionOfExecutable = tstring(m_pProperties->getFullPathAndNameOfExe().substr( indexOfExtension ));
+			::std::transform(extensionOfExecutable .begin(), extensionOfExecutable.end(), extensionOfExecutable.begin(), ::towupper);
 		}
 		
 		if( extensionOfExecutable.compare( _T(".EXE") ) == 0 )
@@ -70,11 +72,12 @@ void PropertiesFile::loadPropertiesFromFile()
 	try
 	{
 		vector<PropertyFileEntry*> propsFromFile;
-		tifstream propsFile( getPropertiesFileName().c_str() );
+        tstring& name = getPropertiesFileName();
+		tifstream propsFile( name.c_str() );
 
 		if( !propsFile )
 		{
-			throw tstring(_T("Could not open file ") + (getPropertiesFileName()));
+			throw tstring(_T("Could not open file ") + name);
 		}
 
 		// load propsFromFile leaving out comments and blank lines
@@ -180,10 +183,10 @@ bool PropertiesFile::isLineTerminatorEscaped(const tstring& strProperty)
 	bool terminatorEscaped = false;
 
 	static const basic_string <char>::size_type npos = -1;
-	int lineContinationCharIndex = strProperty.find_last_of(PropertiesFile::LINE_CONTINUATION_CARET);
+	size_t lineContinationCharIndex = strProperty.find_last_of(PropertiesFile::LINE_CONTINUATION_CARET);
 	if(lineContinationCharIndex != npos)
 	{
-		int lastCharacterIndex = strProperty.length() - 1;
+		size_t lastCharacterIndex = strProperty.length() - 1;
 		if(lineContinationCharIndex == lastCharacterIndex)
 		{
 			terminatorEscaped  = true;

@@ -5,20 +5,22 @@
 
 #ifndef _JANEL_JANEL_H_INCLUDED_
 #define _JANEL_JANEL_H_INCLUDED_
-
-#include "TCHAR.h"
+#include <sstream>
+#include <TCHAR.h>
 
 #ifdef _UNICODE
 #define tstring std::wstring
 #define tifstream std::wifstream
 #define tofstream std::wofstream
 #define tistringstream std::wistringstream
+#define tstringstream ::std::wstringstream
 #define tcout std::wcout
 #else
 #define tstring std::string
 #define tifstream std::ifstream
 #define tofstream std::ofstream
 #define tistringstream std::istringstream
+#define tstringstream ::std::stringstream
 #endif
 
 #include "Properties.h"

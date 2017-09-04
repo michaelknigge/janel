@@ -1,7 +1,8 @@
 Release Notes
 
-Version 4.0.4
-* Thanks to Michael Knigge for the improved error message when attempting to execute a Janel Windows service executable as a console application.
+Version 4.1.0
+* Much thanks to John Stroy for fixes found from static analysis.
+* Being built with Visual Studio Community 2015.
 
 
 

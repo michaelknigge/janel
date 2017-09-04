@@ -58,9 +58,10 @@ tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regular
 	{
 		TCHAR copyVersion[100];
 		const TCHAR sep[] = _T("._");
-		TCHAR *token;
+		TCHAR* context = NULL;
+		TCHAR* token;
 		_tcscpy_s(copyVersion, regularVersion.c_str());
-		token = _tcstok(copyVersion, sep);
+		token = _tcstok_s(copyVersion, sep, &context);
 		TCHAR prepdToken[50];
 		
 		// version number Type goes 1 through 4: 1=major, 2=minor, 3=micro, 4=build
@@ -68,7 +69,7 @@ tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regular
 		{
 			_stprintf_s(prepdToken,_T("%03s."),token);
 			pComparableVersion->append(prepdToken);
-			token = _tcstok(NULL, sep);
+			token = _tcstok_s(NULL, sep, &context);
 			if( token == NULL && versionNumberType < 4 )
 			{
 				token = _T("0");

@@ -9,6 +9,7 @@
 #include "JVMInfo.h"
 #include <string>
 #include <vector>
+#include <Windows.h>
 #include "PropertyFileEntry.h"
 
 class Properties  
@@ -42,13 +43,13 @@ private:
 	int m_numberOfInitialCommandLineArgs; // number of commandline arguments NOT passed with janel.main.argument
 
 	bool m_memoryCheckLimits; // Add check for largest available memory region
-	int m_maxMemory; // Kilobytes used as the maximum heap size (-Xmx)
-	int m_maxMemoryUpperLimit; // Upper limit in kb for the maximum heap size
-	int m_maxMemoryLowerLimit; // Lower limit in kb for the maximum heap size
+	SIZE_T m_maxMemory; // Kilobytes used as the maximum heap size (-Xmx)
+	SIZE_T m_maxMemoryUpperLimit; // Upper limit in kb for the maximum heap size
+	SIZE_T m_maxMemoryLowerLimit; // Lower limit in kb for the maximum heap size
 
-	int m_initMemory; // Kilobytes used as the initial heap size (-Xms)
-	int m_initMemoryUpperLimit; // Upper limit in kb for the initial heap size
-	int m_initMemoryLowerLimit; // Lower limit in kb for the initial heap size
+	SIZE_T m_initMemory; // Kilobytes used as the initial heap size (-Xms)
+	SIZE_T m_initMemoryUpperLimit; // Upper limit in kb for the initial heap size
+	SIZE_T m_initMemoryLowerLimit; // Lower limit in kb for the initial heap size
 
 	tstring m_splash; // Relative path to splash screen image
 
@@ -143,7 +144,7 @@ public:
 	bool isLibrarypathSystemProperty(const tstring& property);
 
 	void setSystemPropertyProcessId(const tstring& property);
-    
+	
 	void setSplash(const tstring& property);
 	tstring& getSplash();
 

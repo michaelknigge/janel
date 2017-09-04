@@ -23,6 +23,7 @@ public:
 	void launchService();
 	void callExit();
 	Properties* getProperties();
+	void teardownJavaVMInitArgs( JavaVMInitArgs& jvmInitArgs );
 };
 
 #endif // ifndef _JANEL_JVMLAUNCHER_H_INCLUDED_

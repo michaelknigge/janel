@@ -13,7 +13,8 @@
 #include <io.h>
 #include "JVMInfo.h"
 #include <algorithm>
-#include "Windows.h"
+#include <Windows.h>
+#include <iostream>
 
 using namespace std;
 
@@ -105,17 +106,19 @@ void Properties::evaluateMemorySettings()
 	m_maxMemory = min(min(max(m_maxMemory, m_maxMemoryLowerLimit), m_maxMemoryUpperLimit), estimatedLimit);
 	if (m_maxMemory > 0)
 	{
-		TCHAR maxMemoryProperty[100];
-		_stprintf_s( maxMemoryProperty, _T("-Xmx%dk"), m_maxMemory);
-		addJavaSystemProperty(maxMemoryProperty);
+		tstringstream maxMemoryProp;
+		maxMemoryProp << _T("-Xmx") << m_maxMemory << _T("k");
+		
+		addJavaSystemProperty(maxMemoryProp.str());
 	}
 
 	m_initMemory = min(min(max(m_initMemory, m_initMemoryLowerLimit), m_initMemoryUpperLimit), m_maxMemory);
 	if (m_initMemory > 0)
 	{
-		TCHAR initMemoryProperty[100];
-		_stprintf_s( initMemoryProperty, _T("-Xms%dk"), m_initMemory);
-		addJavaSystemProperty(initMemoryProperty);
+		tstringstream initMemoryProp;
+		initMemoryProp << _T("-Xms") << m_initMemory << _T("k");
+		
+		addJavaSystemProperty(initMemoryProp.str());
 	}
 }
 
@@ -504,14 +507,14 @@ double Properties::getAvailablePhysicalMemoryKilobytes()
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     GlobalMemoryStatusEx(&statex);
-    physicalMemoryKb = statex.ullAvailPhys / BYTES_TO_KILOBYTES;
+    physicalMemoryKb = statex.ullAvailPhys >> 10;
 #else
     DEBUG_SHOW(_T("using GlobalMemoryStatus"));
     // Everything else, but only recognizes up to 4GB of memory!
     // See MS docs on GlobalMemoryStatus for more limitations.
     MEMORYSTATUS stat;
     GlobalMemoryStatus(&stat);
-    physicalMemoryKb = stat.dwAvailPhys / BYTES_TO_KILOBYTES;
+    physicalMemoryKb = stat.dwAvailPhys >> 10;
 #endif
 
     return(physicalMemoryKb);
@@ -608,13 +611,13 @@ double Properties::getTotalPhysicalMemoryKilobytes()
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     GlobalMemoryStatusEx(&statex);
-    physicalMemoryKb = statex.ullTotalPhys / BYTES_TO_KILOBYTES;
+    physicalMemoryKb = (double) (statex.ullTotalPhys >> 10);
 #else
     // Everything else, but only recognizes up to 4GB of memory!
     // See MS docs on GlobalMemoryStatus for more limitations.
     MEMORYSTATUS stat;
     GlobalMemoryStatus(&stat);
-    physicalMemoryKb = stat.dwTotalPhys / BYTES_TO_KILOBYTES;
+    physicalMemoryKb = stat.dwTotalPhys >> 10;
 #endif
 
     return(physicalMemoryKb);
@@ -663,7 +666,7 @@ void Properties::addJarsToClasspath(tstring& jarsDir, bool recursive)
 	try
 	{
 		_tfinddata_t *pfileDataFound = new _tfinddata_t;
-		long hFileFound;
+		intptr_t hFileFound;
 		tstring fileSpec;
 		bool isFirst = true;
 
@@ -820,7 +823,7 @@ tstring& Properties::getDebugFile()
 void Properties::addToLibraryPath(tstring& libraryPathDir, bool recursive)
 {
 	_tfinddata_t *pfileDataFound = new _tfinddata_t;
-	long hFileFound;
+	intptr_t hFileFound;
 	tstring fileSpec;
 	bool isFirst = true;
 
@@ -933,27 +936,25 @@ tstring& Properties::toString()
 	pPropsString->append( _T(",m_callerDir=") );
 	pPropsString->append( m_callerDir );
 
-	for(unsigned int i=0; i < m_javaSystemProperties.size(); i++)
+	for(size_t i=0; i < m_javaSystemProperties.size(); i++)
 	{
-		int length = m_javaSystemProperties[i].length();
-		TCHAR *outputStr = new TCHAR[length + 50]; 		
+		size_t length = m_javaSystemProperties[i].length();
 
-		_stprintf(outputStr, _T(",m_javaSystemProperties[%u]=%s"),i,m_javaSystemProperties[i].c_str());
-		DEBUG_SHOW(outputStr);
-		pPropsString->append( outputStr );
+		tstringstream outputStr;
+		outputStr << _T(",m_javaSystemProperties[") << i << _T("]=") << m_javaSystemProperties[i];
 
-		delete[] outputStr;
+		DEBUG_SHOW(outputStr.str());
+		pPropsString->append( outputStr.str() );
 	}
 
-	for(unsigned int i=0; i < m_commandLineArguments.size(); i++)
+	for(size_t i=0; i < m_commandLineArguments.size(); i++)
 	{
-		int length = m_commandLineArguments[i].length();
-		TCHAR *outputStr = new TCHAR[length + 50];
+		size_t length = m_commandLineArguments[i].length();
+		tstringstream outputStr;
 
-		_stprintf(outputStr, _T(",m_commandLineArguments[%u]=%s"),i,m_commandLineArguments[i].c_str());
-		pPropsString->append( outputStr );
+		outputStr << _T(",m_commandLineArguments[") << i << _T("]=") << m_commandLineArguments[i];
 
-		delete[] outputStr;
+		pPropsString->append( outputStr.str() );
 	}
 
 	return *pPropsString;

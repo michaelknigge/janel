@@ -3,13 +3,17 @@
  * Please see the JanelLicense.txt file for the complete license.
  */
 
+#define NOMINMAX
+#include <Windows.h>
+#include <ATLConv.h>
 #include "Janel.h"
 #include "JVMLauncher.h"
 #include "Debug.h"
 #include "ErrHandler.h"
 #include "JVMChooser.h"
-#include "Windows.h"
-#include "ATLConv.h"
+#include <cassert>
+#include <limits>
+#include "LocalUtilities.h"
 
 using namespace std;
 
@@ -34,6 +38,17 @@ JVMLauncher::~JVMLauncher()
 Properties* JVMLauncher::getProperties()
 {
 	return m_pProperties;
+}
+
+void JVMLauncher::teardownJavaVMInitArgs( JavaVMInitArgs& jvmInitArgs )
+{
+#ifdef _UNICODE
+	jsize count = jvmInitArgs.nOptions;
+	for (jsize index = 0; index < count; index++) {
+		delete [] jvmInitArgs.options[index].optionString;
+	}
+#endif
+
 }
 
 // Ctrl handler trap is to give service semantics
@@ -71,8 +86,14 @@ void JVMLauncher::callExit()
 		// I can't figure out how to get java.lang.System, exit method, so I require that main
 		// class have an "initiateExit" static method that we can call which will in turn call exit.
 #ifdef _UNICODE
-		USES_CONVERSION;
-		javaClass = pJniEnvironment->FindClass( W2A(m_pProperties->getMainClass().c_str()) );
+
+		tstring mainClassString = m_pProperties->getMainClass();
+		std::string output = LocalUtilities::convertWideStringToUTF8(mainClassString);
+		size_t outSize = output.size();
+		char* buff = new char[outSize + 1];
+		buff[outSize] = 0;
+		javaClass = pJniEnvironment->FindClass( buff );
+		delete [] buff;
 #else
 		javaClass = pJniEnvironment->FindClass( m_pProperties->getMainClass().c_str() );
 #endif
@@ -307,6 +328,9 @@ void JVMLauncher::launch()
 		setupJavaVMInitArgs(jvmInitArgs);
 
 		result = CreateJavaVM(&pJvm,(void**)&pJniEnvironment,&jvmInitArgs);
+
+		teardownJavaVMInitArgs(jvmInitArgs);
+
 		if (result < 0)
 		{
 			throw tstring(_T("Cannot create Java VM."));
@@ -319,11 +343,15 @@ void JVMLauncher::launch()
 		m_pVM = pJvm;		
 		
 		// find main class
+        tstring& mainClass = m_pProperties->getMainClass();
+        
 #ifdef _UNICODE
-		javaClass = pJniEnvironment->FindClass( W2A(m_pProperties->getMainClass().c_str()) );
+        ::std::string utf8MainClass = LocalUtilities::convertWideStringToUTF8(mainClass);
 #else
-		javaClass = pJniEnvironment->FindClass( m_pProperties->getMainClass().c_str() );
+        ::std::string utf8MainClass = m_pProperties->getMainClass();
 #endif
+        javaClass = pJniEnvironment->FindClass( utf8MainClass.c_str() );
+        
 		if(pJniEnvironment->ExceptionOccurred() != 0)
 		{
 			pJniEnvironment->ExceptionDescribe();
@@ -348,7 +376,9 @@ void JVMLauncher::launch()
 		// set command-line arguments to pass to main method
 		vector<tstring>& argsVector = m_pProperties->getCommandLineArguments();
 
-		argsJObjArray = (jobjectArray)pJniEnvironment->NewObjectArray( argsVector.size(),
+		size_t vecSize = argsVector.size();
+		assert(vecSize < ((size_t) std::numeric_limits<jsize>::max()));
+		argsJObjArray = (jobjectArray)pJniEnvironment->NewObjectArray( (jsize) vecSize,
 							pJniEnvironment->FindClass("java/lang/String"),
 							pJniEnvironment->NewStringUTF(""));
 		if (argsJObjArray == 0)
@@ -361,8 +391,11 @@ void JVMLauncher::launch()
 			DEBUG_STMT( TCHAR debugstr[5000]; );
 			DEBUG_STMT( _stprintf(debugstr, _T("command line arg[%u]=%s"), i, argsVector.at(i).c_str()); );
 			DEBUG_SHOW( debugstr );
+
+			size_t argSize = argsVector.at(i).length();
+			assert(argSize < ((size_t) std::numeric_limits<jsize>::max()));
 			pJniEnvironment->SetObjectArrayElement(argsJObjArray, i, 
-				pJniEnvironment->NewString((const jchar*)argsVector.at(i).c_str(), argsVector.at(i).length()));
+				pJniEnvironment->NewString((const jchar*)argsVector.at(i).c_str(), (jsize) argSize));
 		}
 		if(pJniEnvironment->ExceptionOccurred() != 0)
 		{
@@ -417,14 +450,14 @@ void JVMLauncher::setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs)
 		memset(&jvmInitArgs, 0, sizeof(jvmInitArgs));
 		jvmInitArgs.version  = JNI_VERSION_1_2;
 
-		int numberOfSystemProperties = m_pProperties->getJavaSystemProperties().size();
+		size_t numberOfSystemProperties = m_pProperties->getJavaSystemProperties().size();
 		
 		// if -Djava.class.path and janel.classpath.jars.dir / janel.classpath.jars.dir.recursive are set
 		// if -Djava.library.path and janel.library.path.dir / janel.library.path.dir.recursive are set
 		// deal with it here
 		bool isJavaClasspathSysPropIncluded = false;
 		bool isJavaLibrarypathSysPropIncluded = false;
-		for( int j=0; j < numberOfSystemProperties; j++ )
+		for( size_t j=0; j < numberOfSystemProperties; j++ )
 		{
 			tstring& javaSysProp(m_pProperties->getJavaSystemProperties().at(j));
 			if( m_pProperties->isClasspathSystemProperty(javaSysProp) == true )
@@ -456,20 +489,31 @@ void JVMLauncher::setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs)
 		}
 
 		JavaVMOption* pJvmOptions = new JavaVMOption[numberOfSystemProperties];
-		for( int j=0; j < numberOfSystemProperties; j++ )
+		for( size_t j=0; j < numberOfSystemProperties; j++ )
 		{
 			tstring& javaSysProp(m_pProperties->getJavaSystemProperties().at(j));
 			
 #ifdef _UNICODE
-			USES_CONVERSION;
-			pJvmOptions[j].optionString = strdup(W2A(javaSysProp.c_str()));
+			const TCHAR* inBuff = javaSysProp.c_str();
+			
+			std::string output = LocalUtilities::convertWideStringToUTF8(javaSysProp);
+			size_t outStrLen = output.size();
+            size_t buffLength = outStrLen + 1;
+			char* buff = new char[buffLength];
+			buff[outStrLen] = 0;
+
+            ::strncpy_s(buff, buffLength, output.c_str(), outStrLen);
+			
+			pJvmOptions[j].optionString = buff;
 #else
 			pJvmOptions[j].optionString = (char*)javaSysProp.c_str();
 #endif
+            pJvmOptions[j].extraInfo = nullptr;
 			DEBUG_SHOW( tstring(_T("setupJavaVMInitArgs javaSysProp=")) + javaSysProp );
 		}
 
-		jvmInitArgs.nOptions = numberOfSystemProperties;
+		assert(numberOfSystemProperties < ((size_t) std::numeric_limits<jsize>::max()));
+		jvmInitArgs.nOptions = (jsize) numberOfSystemProperties;
 		jvmInitArgs.options  = pJvmOptions;
 		jvmInitArgs.ignoreUnrecognized = JNI_FALSE;
 	}

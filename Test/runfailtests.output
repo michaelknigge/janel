@@ -1,22 +1,14 @@
 Buildfile: C:\CodeInProgress\Janel\Test\AntTestFail.xml
 
 init:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelConsole64.exe to C:\CodeInProgress\Janel\Test\TestLaunchFail\TestConsoleFail.exe
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelWindows64.exe to C:\CodeInProgress\Janel\Test\TestLaunchFail\TestWindowsFail.exe
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelConsole32.exe to C:\CodeInProgress\Janel\Test\TestLaunchFail\TestConsoleFail32.exe
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelWindows32.exe to C:\CodeInProgress\Janel\Test\TestLaunchFail\TestWindowsFail32.exe
 
 TestLaunchFail001:
      [echo] Testing a nonexistent file for the class that has the main method.
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.NoClassDefFoundError: testpackage/DoesNotExist
-     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
-     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/DoesNotExist
+     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/DoesNotExistCaused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
+     [exec] 
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.security.AccessController.doPrivileged(Native Method)
@@ -45,7 +37,6 @@ TestLaunchFail002:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.NoClassDefFoundError: testpackage/TestLaunchFail
-     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFail
      [exec] Caused by: java.lang.ClassNotFoundException: testpackage.TestLaunchFail
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
@@ -53,6 +44,7 @@ TestLaunchFail002:
      [exec] 	at java.net.URLClassLoader.findClass(Unknown Source)
      [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
      [exec] 	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFail
      [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
      [exec] Exception in thread "main" 
      [exec] Result: 1
@@ -113,8 +105,8 @@ TestLaunchFail007:
      [echo] Testing a bad nonstandard option.
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [exec] Unrecognized option: -Xnotcorrect
-     [exec] Error in Java launcher. Cannot create Java VM.
+     [exec] Unrecognized option: -XnotcorrectError in Java launcher. Cannot create Java VM.
+     [exec] 
      [exec] Result: 1
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
@@ -126,19 +118,21 @@ TestLaunchFail008:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] Invalid maximum heap size: -Xmx25000MError in Java launcher. Cannot create Java VM.
+     [exec] The specified size exceeds the maximum representable size.
      [exec] 
      [exec] Result: 1
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] Invalid maximum heap size: -Xmx25000M
+     [exec] The specified size exceeds the maximum representable size.
      [exec] Result: 1
 
 TestLaunchFail009:
      [echo] Testing an uncaught runtime exception.
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [exec] java.lang.RuntimeException: TestLaunchFail009 runtime error.
-     [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009
+     [exec] Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009java.lang.RuntimeException: TestLaunchFail009 runtime error.
+     [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)
      [exec] 
      [exec] Exception in thread "main" 
      [exec] Result: 1
@@ -179,5 +173,5 @@ TestLaunchFail012:
      [exec] Error level is correctly returning a 1 
 
 BUILD SUCCESSFUL
-Total time: 1 minute 8 seconds
+Total time: 26 seconds
 Press any key to continue . . . 

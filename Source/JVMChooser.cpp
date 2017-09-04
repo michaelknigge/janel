@@ -107,8 +107,11 @@ void JVMChooser::breakoutBinJvmDirs(vector<JVMInfo>* pVecJvmInfo)
 	{
 		vector<JVMInfo>* pAdditionsVecJvmInfo = new vector<JVMInfo>;
 		// loop through all the JVMs, if there is a server JVM add to additions
-		for( int i=(pVecJvmInfo->size()-1); i >= 0 ; i-- )
+		size_t top = pVecJvmInfo->size();
+
+		for( size_t j = 0; j < top; j++ )
 		{
+			size_t i = top - j - 1;
 			DEBUG_SHOW( _T("Top of first loop through JVMInfos") );
 			JVMInfo& jvmInfo = pVecJvmInfo->at(i);
 			
@@ -198,8 +201,11 @@ void JVMChooser::removeUnacceptableJVMs(vector<JVMInfo>* pVecJvmInfo)
 {
 	try
 	{
-		for( int i=(pVecJvmInfo->size()-1); i >= 0 ; i-- )
+		size_t top = pVecJvmInfo->size();
+
+		for( size_t j = 0; j < top ; j++ )
 		{
+			size_t i = top - j - 1;
 			JVMInfo& jvmInfo = pVecJvmInfo->at(i);
 			
 			if( !jvmInfo.isAcceptable() )

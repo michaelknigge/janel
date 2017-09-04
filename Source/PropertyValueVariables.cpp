@@ -8,6 +8,7 @@
 #include "LocalUtilities.h"
 #include "Debug.h"
 #include "ErrHandler.h"
+#include <cassert>
 
 using namespace std;
 
@@ -43,7 +44,12 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		{
 		    tstring tempString = strJustVariable.substr(4);
 			tstring& strEnvVariable = tempString;
-			TCHAR* envVariableValue = _tgetenv( strEnvVariable.c_str() );
+            size_t outputSize = 0;
+            _tgetenv_s( &outputSize, NULL, 0, strEnvVariable.c_str() );
+            TCHAR* envVariableValue = new TCHAR[outputSize];
+            size_t vOutputSize = 0;
+            _tgetenv_s( &vOutputSize, envVariableValue, outputSize, strEnvVariable.c_str() );
+            assert(vOutputSize == outputSize);
 			if ( envVariableValue != NULL )
 			{
 				pValueFromVariable = new tstring(envVariableValue);
@@ -112,13 +118,13 @@ bool PropertyValueVariables::containsPropertyVariables(const tstring& strPropert
 {
 	try
 	{
-		int indexStartOfVariable = strProperty.find_first_of( _T("${") );
+		size_t indexStartOfVariable = strProperty.find_first_of( _T("${") );
 		if( indexStartOfVariable == -1 )
 		{
 			return false;
 		}
 
-		int indexEndOfVariable = strProperty.find_first_of( _T("}"), indexStartOfVariable );
+		size_t indexEndOfVariable = strProperty.find_first_of( _T("}"), indexStartOfVariable );
 		if( indexEndOfVariable == -1 )
 		{
 			return false;
@@ -137,7 +143,7 @@ bool PropertyValueVariables::containsLatePropertyVariables(const tstring& strPro
 	bool latePropertyVariableExist = false;
 	try
 	{
-		int indexStartOfVariable = 0;
+		size_t indexStartOfVariable = 0;
 		for( ;; )
 		{
 			indexStartOfVariable = strProperty.find_first_of( _T("${"), indexStartOfVariable);
@@ -146,7 +152,7 @@ bool PropertyValueVariables::containsLatePropertyVariables(const tstring& strPro
 				return latePropertyVariableExist;
 			}
 
-			int indexEndOfVariable = strProperty.find_first_of( _T("}"), indexStartOfVariable );
+			size_t indexEndOfVariable = strProperty.find_first_of( _T("}"), indexStartOfVariable );
 			if( indexEndOfVariable == -1 )
 			{
 				return latePropertyVariableExist;
