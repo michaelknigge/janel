@@ -1,9 +1,7 @@
 Release Notes
 
-Version 4.0.0
-* Much thanks to Michael Knigge for his great work on adding the functionality to allow Janel to act as a Windows service.
-* And much thanks again to Michael Knigge for the coding on allowing Janel to run without the msvcr*.dll files.
-
+Version 4.0.1
+* Thanks to Roby Joehanes for his bug report. Now on a 64-bit PC only 32-bit Janel executables can invoke a 32-bit jvm.
 
 
 
