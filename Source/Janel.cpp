@@ -132,7 +132,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					CloseServiceHandle(manager);
 					throw tstring(_T("Error opening the service"));
 				}
-   
+
 				if (!DeleteService(service))
 				{
 					CloseServiceHandle(service);
@@ -231,16 +231,16 @@ Properties& getProperties(int argc, TCHAR* argv[])
 
 		if (callerDir[0] == 0x00)
 		{
-		   _tgetcwd(callerDir,MAX_PATH);
+			_tgetcwd(callerDir,MAX_PATH);
 		}
 
 		pProperties->setCallerDir(callerDir);
 
 		// TODO: we should consider changing the working directory not here since
 		// changing the directory has nothing to do with getting the properties...
-        // The working directory should be changed just before we enter the
-        // java world....
-        // (separartion of concerns / single responsibility principle)
+		// The working directory should be changed just before we enter the
+		// java world....
+		// (separartion of concerns / single responsibility principle)
 		_tchdir(pProperties->getSelfHomePath().c_str());
 
 		pProperties->setNumberOfInitialCommandLineArgs(argc-1);
