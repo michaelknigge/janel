@@ -135,8 +135,8 @@ TestLaunch009:
      [exec] Testing setting Java system properties.
      [exec] setting -verbose:gc
      [exec] setting -Xincgc
-     [exec] TestLaunch009 SUCCESSFUL
      [exec] Java HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
+     [exec] TestLaunch009 SUCCESSFUL
 
 TestLaunch010:
      [echo] Console:
@@ -248,13 +248,13 @@ TestLaunch017:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=7860
+     [exec] process.id=13088
      [exec] TestLaunch017 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=8560
+     [exec] process.id=8496
      [exec] TestLaunch017 SUCCESSFUL
 
 TestLaunch018:
@@ -263,16 +263,16 @@ TestLaunch018:
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3019898880
-     [exec] Runtime.totalMemory=466616320 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3364880384
+     [exec] Runtime.totalMemory=518520832 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3019898880
-     [exec] Runtime.totalMemory=466616320 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3333423104
+     [exec] Runtime.totalMemory=514850816 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
 
 TestLaunch019:
@@ -721,7 +721,7 @@ TestLaunch046:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 8404
+     [exec]         PID                : 8916
      [exec]         FLAGS              : 
      [echo] Is TestLaunch046 successful? true
      [echo] No Windows executable for Windows service.
@@ -742,7 +742,7 @@ TestLaunch047:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 11752
+     [exec]         PID                : 6724
      [exec]         FLAGS              : 
      [echo] Is TestLaunch047 successful? true
      [echo] No Windows executable for Windows service.
@@ -768,7 +768,7 @@ TestLaunch048:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 3288
+     [exec]         PID                : 7304
      [exec]         FLAGS              : 
      [exec] [SC] ControlService FAILED 109:
      [exec] 
@@ -787,5 +787,5 @@ TestLaunch048:
      [echo] TestLaunch048 SUCCESSFUL
 
 BUILD SUCCESSFUL
-Total time: 4 minutes 4 seconds
+Total time: 5 minutes 12 seconds
 Press any key to continue . . . 

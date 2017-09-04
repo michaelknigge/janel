@@ -1,7 +1,7 @@
 Release Notes
 
-Version 4.1.1
-* Thanks to John Stroy for fixing bugs found in 4.1.0.
+Version 4.1.2
+* Thanks to Humphrey Clerx for reporting and finding the fix for Janel not running on Windows XP.
 
 
 
