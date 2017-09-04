@@ -1,10 +1,14 @@
 # janel
 
 This project is a spin-off of the great [Janel](https://sourceforge.net/projects/janel/) by Timothy Kil.
-For my own projects I needed some enhancements to [Janel](https://sourceforge.net/projects/janel/) but some of my
-patches got lost on the way to Timothy. So I created this GitHub project. I'll push all my enhancements to Timothy
-so he can integrate them to the official Janel distribution (and I really hope that Timothy will integrate them
-because I'm no friend of fragmentation and I have no interest in two competing Janel distributions).
+Since version 3.4.0 of Janel I'm contributing code that enhances Janel and I always have passed my enhancements
+to Timothy. Some of my enhancements and fixes of version 4.0.4 sadly got lost on the way to the official version.
+So I decided to create this GitHub project that makes it a lot easier for me to bring by enhancements and fixes
+to the public. 
+
+I'll continue to push all my contributions to Timothy so he can integrate them to the official Janel distribution
+(and I really hope that Timothy will integrate them because I'm no friend of fragmentation and I have no interest
+in two competing Janel distributions).
 
 # Java Native Executable / Launcher
 Janel is a free, Open Source Java native executable and launcher for Windows. Launch your Java application just like other
