@@ -684,6 +684,9 @@ void Properties::setInitMemoryPercentOfTotal(const tstring& property)
 
 void Properties::addJarsToClasspath(tstring& jarsDir, bool recursive)
 {
+	if(jarsDir.size()==0)
+		return;
+
 	try
 	{
 		_tfinddata_t *pfileDataFound = new _tfinddata_t;
