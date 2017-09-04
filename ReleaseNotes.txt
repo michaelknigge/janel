@@ -1,7 +1,7 @@
 Release Notes
 
-Version 4.1.2
-* Thanks to Humphrey Clerx for reporting and finding the fix for Janel not running on Windows XP.
+Version 4.2.0
+* Thanks to Michael Knigge for his code that provides an indicator of bitness.
 
 
 

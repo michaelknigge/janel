@@ -16,6 +16,8 @@ const tstring PropertyValueVariables::FOUND_JAVA_HOME = _T("FOUND_JAVA_HOME");
 const tstring PropertyValueVariables::SELF_HOME = _T("SELF_HOME");
 const tstring PropertyValueVariables::FOUND_EXE_FOLDER = _T("FOUND_EXE_FOLDER");
 const tstring PropertyValueVariables::CALLER_DIR = _T("CALLER_DIR");
+const tstring PropertyValueVariables::EXE_BITNESS = _T("EXE_BITNESS");
+const tstring PropertyValueVariables::OS_BITNESS = _T("OS_BITNESS");
 
 PropertyValueVariables::PropertyValueVariables(Properties* pProperties)
 {
@@ -67,6 +69,14 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		else if (strJustVariable.compare( CALLER_DIR ) == 0 )
 		{
 			pValueFromVariable = &m_pProperties->getCallerDir();
+		}
+		else if (strJustVariable.compare( EXE_BITNESS ) == 0 )
+		{
+			pValueFromVariable = &m_pProperties->getExeBitness();
+		}
+		else if (strJustVariable.compare( OS_BITNESS ) == 0 )
+		{
+			pValueFromVariable = &m_pProperties->getOperatingSystemBitness();
 		}
 
 		// check for other property value variables

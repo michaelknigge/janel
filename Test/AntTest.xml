@@ -4,7 +4,7 @@
 Set the default target to whatever is the highest number TestLaunch# target. 
 Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch 
 -->
-<project name="Janel-Test" default="TestLaunch048" >
+<project name="Janel-Test" default="TestLaunch050" >
 
 	<target name="init">
 		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" overwrite="true"/>
@@ -546,7 +546,7 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		</exec>
 		<exec executable="sc" dir="TestLaunch">
 			<arg value="start"/>
-			<arg value="JanelTestService"/>
+			<arg value="JanelTestService046"/>
 		</exec>
 		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
 			<arg value="--uninstall"/>
@@ -574,7 +574,7 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		</exec>
 		<exec executable="sc" dir="TestLaunch">
 			<arg value="start"/>
-			<arg value="JanelTestService"/>
+			<arg value="JanelTestService047"/>
 		</exec>
 		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
 			<arg value="--uninstall"/>
@@ -604,12 +604,12 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		</exec>
 		<exec executable="sc" dir="TestLaunch">
 			<arg value="start"/>
-			<arg value="JanelTestService"/>
+			<arg value="JanelTestService048"/>
 		</exec>
 		<sleep seconds="5"/>
 		<exec executable="sc" dir="TestLaunch">
 			<arg value="stop"/>
-			<arg value="JanelTestService"/>
+			<arg value="JanelTestService048"/>
 		</exec>
 		<sleep seconds="5"/>
 		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
@@ -625,6 +625,28 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
        		<file file="${test048.log}"/>
     	</loadresource>
 		<echo>${FileContentsTest048}</echo>	
+	</target>
+
+	<target name="TestLaunch049" depends="TestLaunch048">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole049.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows049.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+	
+	<target name="TestLaunch050" depends="TestLaunch049">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole050.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows050.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
 	</target>
 
 </project>

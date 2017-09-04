@@ -18,6 +18,8 @@ public:
 	static const tstring SELF_HOME;
 	static const tstring FOUND_EXE_FOLDER;
 	static const tstring CALLER_DIR;
+	static const tstring EXE_BITNESS;
+	static const tstring OS_BITNESS;
 
 	PropertyValueVariables(Properties* pProperties);
 	virtual ~PropertyValueVariables();

@@ -1,107 +1,107 @@
-Buildfile: C:\CodeInProgress\Janel\Test\AntTest.xml
+Buildfile: D:\CodeInProgress\Janel\Test\AntTest.xml
 
 init:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelConsole64.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestConsole.exe
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelWindows64.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows.exe
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelConsole32.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestConsole32.exe
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelWindows32.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows32.exe
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying D:\CodeInProgress\Janel\Executables\x64\JanelConsole64.exe to D:\CodeInProgress\Janel\Test\TestLaunch\TestConsole.exe
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying D:\CodeInProgress\Janel\Executables\x64\JanelWindows64.exe to D:\CodeInProgress\Janel\Test\TestLaunch\TestWindows.exe
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying D:\CodeInProgress\Janel\Executables\Win32\JanelConsole32.exe to D:\CodeInProgress\Janel\Test\TestLaunch\TestConsole32.exe
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying D:\CodeInProgress\Janel\Executables\Win32\JanelWindows32.exe to D:\CodeInProgress\Janel\Test\TestLaunch\TestWindows32.exe
 
 TestLaunch001:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=c:\program files\java\jdk1.7.0_11\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=c:\java\jdk1.8.0_131\jre
      [exec] Testing janel.jvm.path=${env.JAVA_HOME}\jre\bin\server\jvm.dll
      [exec] Testing janel.debug.file
      [exec] TestLaunch001 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=c:\program files\java\jdk1.7.0_11\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=c:\java\jdk1.8.0_131\jre
      [exec] Testing janel.jvm.path=${env.JAVA_HOME}\jre\bin\server\jvm.dll
      [exec] Testing janel.debug.file
      [exec] TestLaunch001 SUCCESSFUL
 
 TestLaunch002:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jdk1.7.0_11\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] Testing setting janel.java.home.path
      [exec] TestLaunch002 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jdk1.7.0_11\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] Testing setting janel.java.home.path
      [exec] TestLaunch002 SUCCESSFUL
 
 TestLaunch003:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.8.0_25\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] Testing setting janel.java.bundle=require_SDK and janel.min.java.version
      [exec] TestLaunch003 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.8.0_25\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] Testing setting janel.java.bundle=require_SDK and janel.min.java.version
      [exec] TestLaunch003 SUCCESSFUL
 
 TestLaunch004:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\j2sdk1.4.2_19\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files (x86)\Java\j2re1.4.2_19
      [exec] Testing setting janel.bin.jvm.dir=client
      [exec] TestLaunch004 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\j2sdk1.4.2_19\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files (x86)\Java\j2re1.4.2_19
      [exec] Testing setting janel.bin.jvm.dir=client
      [exec] TestLaunch004 SUCCESSFUL
 
 TestLaunch005:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.8.0_25\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] testing janel.java.bundle=require_SDK and janel.bin.jvm.dir=require_server
      [exec] Also setting janel.min.java.version=1.4
      [exec] TestLaunch005 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.8.0_25\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] testing janel.java.bundle=require_SDK and janel.bin.jvm.dir=require_server
      [exec] Also setting janel.min.java.version=1.4
      [exec] TestLaunch005 SUCCESSFUL
 
 TestLaunch006:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing no extra custom properties set.
      [exec] TestLaunch006 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing no extra custom properties set.
      [exec] TestLaunch006 SUCCESSFUL
 
 TestLaunch007:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing GUI getting a resource from the jar
      [exec] TestLaunch007 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing GUI getting a resource from the jar
      [exec] TestLaunch007 SUCCESSFUL
 
 TestLaunch008:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.8.0_25\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] Testing GUI exe setup similar to JavadocExpress and JavadocJsharp
      [exec] setting -Djava.class.path=dist\TestLaunch.jar;${FOUND_JAVA_HOME}\lib\tools.jar
      [exec] setting -DJAVA_HOME=${FOUND_JAVA_HOME}
@@ -110,8 +110,8 @@ TestLaunch008:
      [exec] setting janel.min.java.version=1.4
      [exec] TestLaunch008 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.8.0_25\jre
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Java\jdk1.8.0_131\jre
      [exec] Testing GUI exe setup similar to JavadocExpress and JavadocJsharp
      [exec] setting -Djava.class.path=dist\TestLaunch.jar;${FOUND_JAVA_HOME}\lib\tools.jar
      [exec] setting -DJAVA_HOME=${FOUND_JAVA_HOME}
@@ -122,26 +122,26 @@ TestLaunch008:
 
 TestLaunch009:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting Java system properties.
      [exec] setting -verbose:gc
      [exec] setting -Xincgc
-     [exec] Java HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
      [exec] TestLaunch009 SUCCESSFUL
+     [exec] Java HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting Java system properties.
      [exec] setting -verbose:gc
      [exec] setting -Xincgc
-     [exec] Java HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
-     [exec] TestLaunch009 SUCCESSFUL
+     [exec] TestLaunch009 SUCCESSFULJava HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
+     [exec] 
 
 TestLaunch010:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing janel.trap.console.ctrl=yes
      [exec] Can not send Ctrl-C from within Ant to test completely
      [exec] TestLaunch010 SUCCESSFUL
@@ -149,51 +149,51 @@ TestLaunch010:
 
 TestLaunch011:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing -Dself.home.test=${SELF_HOME}, 
-     [exec] self.home.test=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] self.home.test=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing -Dfound.exe.folder.test=${FOUND_EXE_FOLDER}, 
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] TestLaunch011 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing -Dself.home.test=${SELF_HOME}, 
-     [exec] self.home.test=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] self.home.test=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing -Dfound.exe.folder.test=${FOUND_EXE_FOLDER}, 
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] TestLaunch011 SUCCESSFUL
 
 TestLaunch012:
-    [mkdir] Created dir: C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+    [mkdir] Created dir: D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting multiple janel.classpath.jars.dir
      [exec] and that janel.classpath.jars.dir is relative to Janel executable directory
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] TestLaunch012 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting multiple janel.classpath.jars.dir
      [exec] and that janel.classpath.jars.dir is relative to Janel executable directory
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] TestLaunch012 SUCCESSFUL
-   [delete] Deleting directory C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+   [delete] Deleting directory D:\CodeInProgress\Janel\Test\TestLaunch\calldir
 
 TestLaunch013:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing adding arguments to the command-line
      [exec] args[0]=First console argument
      [exec] args[1]=Second console argument
      [exec] TestLaunch013 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing adding arguments to the command-line
      [exec] args[0]=First windows argument
      [exec] args[1]=Second windows argument
@@ -201,42 +201,42 @@ TestLaunch013:
 
 TestLaunch014:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting janel.bin.jvm.dir=prefer_server
      [exec] TestLaunch014 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting janel.bin.jvm.dir=prefer_server
      [exec] TestLaunch014 SUCCESSFUL
 
 TestLaunch015:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files (x86)\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files (x86)\Java\jre7
      [exec] Testing setting janel.library.path.dir
      [exec] Result from calling nativeTestMethod()=SUCCESS
      [exec] TestLaunch015 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files (x86)\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files (x86)\Java\jre7
      [exec] Testing setting janel.library.path.dir
      [exec] Result from calling nativeTestMethod()=SUCCESS
      [exec] TestLaunch015 SUCCESSFUL
 
 TestLaunch016:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.main.argument=arg0
      [exec] and janel.main.argument=test arg1
      [exec] args[0]=arg0
      [exec] args[1]=test arg1
      [exec] TestLaunch016 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.main.argument=arg0
      [exec] and janel.main.argument=test arg1
      [exec] args[0]=arg0
@@ -245,65 +245,65 @@ TestLaunch016:
 
 TestLaunch017:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=13088
+     [exec] process.id=11840
      [exec] TestLaunch017 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=8496
+     [exec] process.id=8452
      [exec] TestLaunch017 SUCCESSFUL
 
 TestLaunch018:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3364880384
-     [exec] Runtime.totalMemory=518520832 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=5264375808
+     [exec] Runtime.totalMemory=812122112 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3333423104
-     [exec] Runtime.totalMemory=514850816 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=5264375808
+     [exec] Runtime.totalMemory=812122112 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
 
 TestLaunch019:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.memory.max.total.percent=25
      [exec] and setting janel.memory.init.total.percent=15
-     [exec] Runtime.maxMemory=1897922560
-     [exec] Runtime.totalMemory=1228406784 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=2816999424
+     [exec] Runtime.totalMemory=1822949376 (corresponds to setting initial memory)
      [exec] TestLaunch019 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting janel.memory.max.total.percent=25
      [exec] and setting janel.memory.init.total.percent=15
-     [exec] Runtime.maxMemory=1897922560
-     [exec] Runtime.totalMemory=1228406784 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=2816999424
+     [exec] Runtime.totalMemory=1822949376 (corresponds to setting initial memory)
      [exec] TestLaunch019 SUCCESSFUL
 
 TestLaunch020:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting -Duser.dir=dist and -Djava.class.path=TestLaunch.jar
      [exec] System property user.dir=dist
      [exec] System property java.class.path=TestLaunch.jar
      [exec] TestLaunch020 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing setting -Duser.dir=dist and -Djava.class.path=TestLaunch.jar
      [exec] System property user.dir=dist
      [exec] System property java.class.path=TestLaunch.jar
@@ -311,266 +311,266 @@ TestLaunch020:
 
 TestLaunch021:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing a launch of an AWT app
      [exec] TestLaunch021 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] testing a launch of an AWT app
      [exec] TestLaunch021 SUCCESSFUL
 
 TestLaunch022:
-    [mkdir] Created dir: C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+    [mkdir] Created dir: D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launching from directory TestLaunch/calldir
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] caller.dir.test=C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] caller.dir.test=D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [exec] TestLaunch022 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launching from directory TestLaunch/calldir
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] caller.dir.test=C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] caller.dir.test=D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [exec] TestLaunch022 SUCCESSFUL
-   [delete] Deleting directory C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+   [delete] Deleting directory D:\CodeInProgress\Janel\Test\TestLaunch\calldir
 
 TestLaunch023:
-    [mkdir] Created dir: C:\CodeInProgress\Janel\Test\TestLaunch\bin
+    [mkdir] Created dir: D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] Testing launching from an exe in directory TestLaunch/bin
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch\bin
-     [exec] self.home.test=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] caller.dir.test=C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [exec] self.home.test=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] caller.dir.test=D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] TestLaunch023 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] Testing launching from an exe in directory TestLaunch/bin
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch\bin
-     [exec] self.home.test=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] caller.dir.test=C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [exec] self.home.test=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] caller.dir.test=D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] TestLaunch023 SUCCESSFUL
-   [delete] Deleting directory C:\CodeInProgress\Janel\Test\TestLaunch\bin
+   [delete] Deleting directory D:\CodeInProgress\Janel\Test\TestLaunch\bin
 
 TestLaunch024:
-    [mkdir] Created dir: C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+    [mkdir] Created dir: D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launching with user.dir set to FOUND_EXE_FOLDER
      [exec] but the call directory is set to the calldir
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] caller.dir.test=C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] caller.dir.test=D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [exec] TestLaunch024 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launching with user.dir set to FOUND_EXE_FOLDER
      [exec] but the call directory is set to the calldir
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] caller.dir.test=C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] caller.dir.test=D:\CodeInProgress\Janel\Test\TestLaunch\calldir
      [exec] TestLaunch024 SUCCESSFUL
-   [delete] Deleting directory C:\CodeInProgress\Janel\Test\TestLaunch\calldir
+   [delete] Deleting directory D:\CodeInProgress\Janel\Test\TestLaunch\calldir
 
 TestLaunch025:
-    [mkdir] Created dir: C:\CodeInProgress\Janel\Test\TestLaunch\bin
+    [mkdir] Created dir: D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] Testing launch using Runtime.exec
      [exec] java.home=C:\Java\jdk1.5.0_22\jre
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] caller.dir.test=C:\Temp
-     [exec] self.home.test=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [exec] self.home.test=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] Sub-process command:
      [exec] [0] java
      [exec] [1] -cp
-     [exec] [2] C:\CodeInProgress\Janel\Test\TestLaunch\dist\TestLaunch.jar
+     [exec] [2] D:\CodeInProgress\Janel\Test\TestLaunch\dist\TestLaunch.jar
      [exec] [3] testpackage.TestLaunch026
-     [exec] Initiating subprocess in: C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] Testing launch from TestLaunch0025 using Runtime.exec
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] TestLaunch026 SUCCESSFUL
-     [exec] subprocess result: 0
+     [exec] Initiating subprocess in: D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] Registry key 'Software\JavaSoft\Java Runtime Environment\CurrentVersion'
+     [exec] has value '1.8', but '1.6' is required.
+     [exec] Error: could not find java.dll
+     [exec] Error: could not find Java SE Runtime Environment.
+     [exec] subprocess result: 2
      [exec] TestLaunch025 SUCCESSFUL
      [echo] 
      [echo] Console launch of TestWindows026:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch using Runtime.exec
      [exec] java.home=C:\Java\jdk1.5.0_22\jre
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] caller.dir.test=C:\Temp
-     [exec] self.home.test=C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] found.exe.folder.test=C:\CodeInProgress\Janel\Test\TestLaunch\bin
+     [exec] self.home.test=D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] found.exe.folder.test=D:\CodeInProgress\Janel\Test\TestLaunch\bin
      [exec] Sub-process command:
-     [exec] [0] C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows
-     [exec] Initiating subprocess in: C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] [0] D:\CodeInProgress\Janel\Test\TestLaunch\TestWindows
+     [exec] Initiating subprocess in: D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch from TestLaunch0025 using Runtime.exec
      [exec] java.home=C:\Java\jdk1.5.0_22\jre
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] TestLaunch026 SUCCESSFUL
      [exec] subprocess result: 0
      [exec] TestLaunch025 SUCCESSFUL
-   [delete] Deleting directory C:\CodeInProgress\Janel\Test\TestLaunch\bin
+   [delete] Deleting directory D:\CodeInProgress\Janel\Test\TestLaunch\bin
 
 TestLaunch027:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.jvm.path to a nonexistent file.
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] TestLaunch027 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.jvm.path to a nonexistent file.
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] TestLaunch027 SUCCESSFUL
 
 TestLaunch028:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.java.home.path to a nonexistent directory.
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] TestLaunch028 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.java.home.path to a nonexistent directory.
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] TestLaunch028 SUCCESSFUL
 
 TestLaunch029:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.main.argument to property value variables 
      [exec] and some without.
-     [exec] commandline arg [0]=arg 1 C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] commandline arg [0]=arg 1 D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] commandline arg [1]=arg 2 no property val variable
-     [exec] commandline arg [2]=arg 3 C:\Program Files\Java\jre1.8.0_25
+     [exec] commandline arg [2]=arg 3 C:\Program Files\Java\jre1.8.0_131
      [exec] commandline arg [3]=arg 4 no property val variable
      [exec] TestLaunch029 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.main.argument to property value variables 
      [exec] and some without.
-     [exec] commandline arg [0]=arg 1 C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] commandline arg [0]=arg 1 D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] commandline arg [1]=arg 2 no property val variable
-     [exec] commandline arg [2]=arg 3 C:\Program Files\Java\jre1.8.0_25
+     [exec] commandline arg [2]=arg 3 C:\Program Files\Java\jre1.8.0_131
      [exec] commandline arg [3]=arg 4 no property val variable
      [exec] TestLaunch029 SUCCESSFUL
 
 TestLaunch030:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.main.argument to property value variables 
      [exec] and some without, plus adding real commandline arguments.
      [exec] commandline arg [0]=real commandline arg 1
      [exec] commandline arg [1]=real commandline arg 2
-     [exec] commandline arg [2]=arg 1 C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] commandline arg [2]=arg 1 D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] commandline arg [3]=arg 2 no property val variable
-     [exec] commandline arg [4]=arg 3 C:\Program Files\Java\jre1.8.0_25
+     [exec] commandline arg [4]=arg 3 C:\Program Files\Java\jre1.8.0_131
      [exec] commandline arg [5]=arg 4 no property val variable
      [exec] TestLaunch030 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing setting janel.main.argument to property value variables 
      [exec] and some without, plus adding real commandline arguments.
      [exec] commandline arg [0]=real commandline arg 1
      [exec] commandline arg [1]=real commandline arg 2
-     [exec] commandline arg [2]=arg 1 C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] commandline arg [2]=arg 1 D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] commandline arg [3]=arg 2 no property val variable
-     [exec] commandline arg [4]=arg 3 C:\Program Files\Java\jre1.8.0_25
+     [exec] commandline arg [4]=arg 3 C:\Program Files\Java\jre1.8.0_131
      [exec] commandline arg [5]=arg 4 no property val variable
      [exec] TestLaunch030 SUCCESSFUL
 
 TestLaunch031:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing line continuation with a long class path set.
      [exec] System property java.class.path=..\some\other\jar;..\some\other\jar;..\some\other\jar;..\some\other\jar;..\some\other\jar;..\some\other\jar;dist\TestLaunch.jar
      [exec] TestLaunch031 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing line continuation with a long class path set.
      [exec] System property java.class.path=..\some\other\jar;..\some\other\jar;..\some\other\jar;..\some\other\jar;..\some\other\jar;..\some\other\jar;dist\TestLaunch.jar
      [exec] TestLaunch031 SUCCESSFUL
 
 TestLaunch032:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch using max Java version of 1.4.99
-     [exec] java.home=C:\Java\j2sdk1.4.2_19\jre
+     [exec] java.home=C:\Program Files (x86)\Java\j2re1.4.2_19
      [exec] TestLaunch032 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch using max Java version of 1.4.99
-     [exec] java.home=C:\Java\j2sdk1.4.2_19\jre
+     [exec] java.home=C:\Program Files (x86)\Java\j2re1.4.2_19
      [exec] TestLaunch032 SUCCESSFUL
 
 TestLaunch033:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch using max Java version of 1.5.99
      [exec] java.home=C:\Java\jdk1.5.0_22\jre
      [exec] TestLaunch033 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch using max Java version of 1.5.99
      [exec] java.home=C:\Java\jdk1.5.0_22\jre
      [exec] TestLaunch033 SUCCESSFUL
 
 TestLaunch034:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.max.total.percent=100
      [exec] janel.memory.max.upper.limit=500000
      [exec] Runtime.maxMemory=457179136
-     [exec] Runtime.totalMemory=128974848 (corresponds to setting initial memory)
+     [exec] Runtime.totalMemory=191365120 (corresponds to setting initial memory)
      [exec] TestLaunch034 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.max.total.percent=100
      [exec] janel.memory.max.upper.limit=500000
      [exec] Runtime.maxMemory=457179136
-     [exec] Runtime.totalMemory=128974848 (corresponds to setting initial memory)
+     [exec] Runtime.totalMemory=191365120 (corresponds to setting initial memory)
      [exec] TestLaunch034 SUCCESSFUL
 
 TestLaunch035:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.max.total.percent=1
      [exec] janel.memory.max.lower.limit=400000
      [exec] Runtime.maxMemory=365428736
-     [exec] Runtime.totalMemory=128974848 (corresponds to setting initial memory)
+     [exec] Runtime.totalMemory=191365120 (corresponds to setting initial memory)
      [exec] TestLaunch035 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.max.total.percent=1
      [exec] janel.memory.max.lower.limit=400000
      [exec] Runtime.maxMemory=365428736
-     [exec] Runtime.totalMemory=128974848 (corresponds to setting initial memory)
+     [exec] Runtime.totalMemory=191365120 (corresponds to setting initial memory)
      [exec] TestLaunch035 SUCCESSFUL
 
 TestLaunch036:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.init.total.percent=100
      [exec] janel.memory.init.upper.limit=600000
@@ -578,7 +578,7 @@ TestLaunch036:
      [exec] Runtime.totalMemory=589299712 (corresponds to setting initial memory)
      [exec] TestLaunch036 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.init.total.percent=100
      [exec] janel.memory.init.upper.limit=600000
@@ -588,7 +588,7 @@ TestLaunch036:
 
 TestLaunch037:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.init.total.percent=1
      [exec] janel.memory.init.lower.limit=700000
@@ -596,7 +596,7 @@ TestLaunch037:
      [exec] Runtime.totalMemory=687341568 (corresponds to setting initial memory)
      [exec] TestLaunch037 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing launch checking setting 
      [exec] janel.memory.init.total.percent=1
      [exec] janel.memory.init.lower.limit=700000
@@ -606,63 +606,63 @@ TestLaunch037:
 
 TestLaunch038:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Is the current thread a daemon = false
      [exec] TestLaunch038 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Is the current thread a daemon = false
      [exec] TestLaunch038 SUCCESSFUL
 
 TestLaunch039:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing displaying a splashscreen
      [exec] TestLaunch039 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Testing displaying a splashscreen
      [exec] TestLaunch039 SUCCESSFUL
 
 TestLaunch040:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Test launch checking setting 
      [exec] janel.memory.check.limits=true
      [exec] With both janel.memory.max.total.percent and janel.memory.init.total.percent set to 100
-     [exec] Runtime.maxMemory=8179941376
-     [exec] Runtime.totalMemory=8179941376 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=12143034368
+     [exec] Runtime.totalMemory=12143034368 (corresponds to setting initial memory)
      [exec] TestLaunch040 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Test launch checking setting 
      [exec] janel.memory.check.limits=true
      [exec] With both janel.memory.max.total.percent and janel.memory.init.total.percent set to 100
-     [exec] Runtime.maxMemory=8179941376
-     [exec] Runtime.totalMemory=8179941376 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=12143034368
+     [exec] Runtime.totalMemory=12143034368 (corresponds to setting initial memory)
      [exec] TestLaunch040 SUCCESSFUL
 
 TestLaunch041:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] JanelAgent premain method called.
      [exec] Test launch checking java agent, there should be console output about the premain class executing.
      [exec] TestLaunch041 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] JanelAgent premain method called.
      [exec] Test launch checking java agent, there should be console output about the premain class executing.
      [exec] TestLaunch041 SUCCESSFUL
 
 TestLaunch042:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Listening for transport dt_socket at address: 8000
      [exec] Testing debugging of a Janel launched application.
      [exec] Waiting for debugger to connect.
      [exec] TestLaunch042 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] Listening for transport dt_socket at address: 8000
      [exec] Testing debugging of a Janel launched application.
      [exec] Waiting for debugger to connect.
@@ -670,50 +670,50 @@ TestLaunch042:
 
 TestLaunch043:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing janel.classpath.jars.dir.recursive
      [exec] TestLaunch043 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing janel.classpath.jars.dir.recursive
      [exec] TestLaunch043 SUCCESSFUL
 
 TestLaunch044:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files (x86)\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files (x86)\Java\jre7
      [exec] Testing setting janel.library.path.dir.recursive
      [exec] Result from calling nativeTestMethod()=SUCCESS
      [exec] TestLaunch044 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files (x86)\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files (x86)\Java\jre7
      [exec] Testing setting janel.library.path.dir.recursive
      [exec] Result from calling nativeTestMethod()=SUCCESS
      [exec] TestLaunch044 SUCCESSFUL
 
 TestLaunch045:
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting janel.working.dir
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch\dist
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch\dist
      [exec] TestLaunch045 SUCCESSFUL
      [echo] Windows:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Program Files\Java\jre1.8.0_25
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] java.home=C:\Program Files\Java\jre1.8.0_131
      [exec] Testing setting janel.working.dir
-     [exec] user.dir=C:\CodeInProgress\Janel\Test\TestLaunch\dist
+     [exec] user.dir=D:\CodeInProgress\Janel\Test\TestLaunch\dist
      [exec] TestLaunch045 SUCCESSFUL
 
 TestLaunch046:
      [echo] Console:
    [delete] Deleting: C:\Test\JanelTestLog046.txt
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] 
-     [exec] SERVICE_NAME: JanelTestService 
+     [exec] SERVICE_NAME: JanelTestService046 
      [exec]         TYPE               : 110  WIN32_OWN_PROCESS  (interactive)
      [exec]         STATE              : 4  RUNNING 
      [exec]                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
@@ -721,9 +721,9 @@ TestLaunch046:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 8916
+     [exec]         PID                : 7652
      [exec]         FLAGS              : 
-     [echo] Is TestLaunch046 successful? true
+     [echo] Is TestLaunch046 successful? ${test046.log.exists}
      [echo] No Windows executable for Windows service.
      [echo] Contents of C:\Test\JanelTestLog046.txt:
      [echo] Testing Janel's service by installing the service, starting it, then uninstalling it.
@@ -732,9 +732,9 @@ TestLaunch046:
 TestLaunch047:
      [echo] Console:
    [delete] Deleting: C:\Test\JanelTestLog047.txt
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] 
-     [exec] SERVICE_NAME: JanelTestService 
+     [exec] SERVICE_NAME: JanelTestService047 
      [exec]         TYPE               : 110  WIN32_OWN_PROCESS  (interactive)
      [exec]         STATE              : 4  RUNNING 
      [exec]                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
@@ -742,9 +742,9 @@ TestLaunch047:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 6724
+     [exec]         PID                : 10004
      [exec]         FLAGS              : 
-     [echo] Is TestLaunch047 successful? true
+     [echo] Is TestLaunch047 successful? ${test047.log.exists}
      [echo] No Windows executable for Windows service.
      [echo] Contents of C:\Test\JanelTestLog047.txt:
      [echo] Testing Janel's service by installing the service, starting it, then uninstalling it.
@@ -758,9 +758,9 @@ TestLaunch048:
    [delete] Deleting: C:\Test\JanelTestLog048.txt
    [delete] Deleting: C:\Test\JanelTestLogStopped048.txt
      [echo] Console:
-     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
      [exec] 
-     [exec] SERVICE_NAME: JanelTestService 
+     [exec] SERVICE_NAME: JanelTestService048 
      [exec]         TYPE               : 110  WIN32_OWN_PROCESS  (interactive)
      [exec]         STATE              : 4  RUNNING 
      [exec]                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
@@ -768,7 +768,7 @@ TestLaunch048:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 7304
+     [exec]         PID                : 5900
      [exec]         FLAGS              : 
      [exec] [SC] ControlService FAILED 109:
      [exec] 
@@ -786,6 +786,32 @@ TestLaunch048:
      [echo] Argument 4=ArgumentTwoFromLapFile
      [echo] TestLaunch048 SUCCESSFUL
 
+TestLaunch049:
+     [echo] Console:
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] Checking screen resolution reported
+     [exec] Toolkit.getDefaultToolkit().getScreenResolution()=96
+     [exec] TestLaunch049 SUCCESSFUL
+     [echo] Windows:
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] Checking screen resolution reported
+     [exec] Toolkit.getDefaultToolkit().getScreenResolution()=96
+     [exec] TestLaunch049 SUCCESSFUL
+
+TestLaunch050:
+     [echo] Console:
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] Checking executable and os bitness
+     [exec] executable.bitness=64
+     [exec] opsys.bitness=64
+     [exec] TestLaunch050 SUCCESSFUL
+     [echo] Windows:
+     [copy] Copying 1 file to D:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] Checking executable and os bitness
+     [exec] executable.bitness=64
+     [exec] opsys.bitness=64
+     [exec] TestLaunch050 SUCCESSFUL
+
 BUILD SUCCESSFUL
-Total time: 5 minutes 12 seconds
+Total time: 1 minute 19 seconds
 Press any key to continue . . . 

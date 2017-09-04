@@ -15,6 +15,8 @@
 class Properties  
 {
 private:
+	tstring m_exeBitness; // Bitness of the running executable
+	tstring m_operatingSystemBitness; // Bitness of the running operating system
 	tstring m_fullPathAndNameOfExe; // full path and name of this executable
 	tstring m_selfHomePath; // root of this executable, with "bin\executable.exe" stripped
 	tstring m_customJavaHomePath; // set from janel.java.home.path
@@ -161,6 +163,9 @@ public:
 	void setInitMemoryUpperLimit(const tstring& property);
 	void setMaxMemoryLowerLimit(const tstring& property);
 	void setInitMemoryLowerLimit(const tstring& property);
+
+	tstring& getExeBitness();
+	tstring& getOperatingSystemBitness();
 
 	void setCallerDir(const tstring& callerDir);
 	tstring& getCallerDir();

@@ -34,6 +34,7 @@ const tstring Properties::REQUIRE_SERVER_BIN_JVM_DIR = _T("require_server");
 
 #define BYTES_TO_KILOBYTES 1024
 
+typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
 
 Properties::Properties()
 {
@@ -45,6 +46,26 @@ Properties::Properties()
 	m_initMemory = 0;
 	m_initMemoryUpperLimit = MAXINT;
 	m_initMemoryLowerLimit = 0;
+
+#if _WIN64
+	m_exeBitness = _T("64");
+	m_operatingSystemBitness = _T("64");
+#elif _WIN32
+	m_exeBitness = _T("32");
+	m_operatingSystemBitness = _T("32");
+
+	// Since the function IsWow64Process is not available on all windows versions (esp. older 32 Bit
+	// versions), we have to call it dynamically...
+	LPFN_ISWOW64PROCESS fnIsWow64Process  = (LPFN_ISWOW64PROCESS) GetProcAddress(GetModuleHandle(_T("kernel32")), "IsWow64Process");
+	if (fnIsWow64Process)
+	{
+		BOOL isWow64 = FALSE;
+		if (fnIsWow64Process(GetCurrentProcess(), &isWow64) && isWow64)
+		{
+			m_operatingSystemBitness = _T("64");
+		}
+	}
+#endif
 }
 
 Properties::~Properties()
@@ -906,6 +927,17 @@ int Properties::getNumberOfInitialCommandLineArgs()
 	return m_numberOfInitialCommandLineArgs;
 }
 
+tstring& Properties::getExeBitness()
+{
+	return m_exeBitness;
+}
+
+tstring& Properties::getOperatingSystemBitness()
+{
+	return m_operatingSystemBitness;
+}
+	
+
 tstring& Properties::toString()
 {
 	tstring* pPropsString = new tstring;
@@ -935,6 +967,10 @@ tstring& Properties::toString()
 	pPropsString->append( m_debugFile );
 	pPropsString->append( _T(",m_callerDir=") );
 	pPropsString->append( m_callerDir );
+	pPropsString->append( _T(",m_exeBitness=") );
+	pPropsString->append( m_exeBitness );
+	pPropsString->append( _T(",m_operatingSystemBitness=") );
+	pPropsString->append( m_operatingSystemBitness );
 
 	for(size_t i=0; i < m_javaSystemProperties.size(); i++)
 	{
