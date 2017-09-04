@@ -317,10 +317,27 @@ void JVMLauncher::launch()
 		DEBUG_SHOW( tstring(_T("pJvmPath()=")) + tstring(pJvmPath) );
 		hJvm = LoadLibrary(pJvmPath);
 
+		if (hJvm == NULL)
+		{
+			if (GetLastError() == ERROR_BAD_EXE_FORMAT)
+			{
+				throw tstring(_T("The DLL \"") + pBestJvmInfo->getJvmPath() + _T("\" could not be loaded. The bitness of the DLL and the running process \"") + __targv[0] + _T("\" are different"));
+			}
+			else
+			{
+				throw tstring(_T("The DLL \"") + pBestJvmInfo->getJvmPath() + _T("\" could not be loaded."));
+			}
+		}
+
 		typedef jint (JNICALL CreateJavaVM_t)( JavaVM**, void**, void* );
 		CreateJavaVM_t* CreateJavaVM;
 		CreateJavaVM = (CreateJavaVM_t*)GetProcAddress( hJvm, "JNI_CreateJavaVM" );
 		DEBUG_SHOW(_T("Just about to CreateJavaVM"));
+
+		if (CreateJavaVM == NULL)
+		{
+			throw tstring(_T("The DLL \"") + pBestJvmInfo->getJvmPath() + _T("\" misses the entry point JNI_CreateJavaVM."));
+		}
 
 		// Evaluation of memory settings considers the current state of the stack.
 		// It finds the largest free memory region and limits the size of the object
