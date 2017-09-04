@@ -6,7 +6,7 @@ to Timothy. Some of my enhancements and fixes of version 4.0.4 sadly got lost on
 So I decided to create this GitHub project that makes it a lot easier for me to bring by enhancements and fixes
 to the public. 
 
-I'll continue to push all my contributions to Timothy so he can integrate them to the official Janel distribution
+I'll continue to push all my contributions to Timothy so he can integrate them into the official Janel distribution
 (and I really hope that Timothy will integrate them because I'm no friend of fragmentation and I have no interest
 in two competing Janel distributions).
 
