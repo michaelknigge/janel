@@ -1,0 +1,59 @@
+version: 4.2.0.{build}
+image: Visual Studio 2017
+environment:
+  INCLUDE: C:\Program Files\Java\jdk1.8.0\include;C:\Program Files\Java\jdk1.8.0\include\win32
+  JAVA_HOME: C:\Program Files\Java\jdk1.8.0
+build_script:
+- cmd: >-
+    del Executables\Win32\JanelConsole32.exe
+
+    del Executables\Win32\JanelWindows32.exe
+
+
+    del Executables\x64\JanelConsole64.exe
+
+    del Executables\x64\JanelWindows64.exe
+
+
+    cd Source
+
+
+    set JAVA_HOME=C:\Program Files\Java\jdk1.8.0
+
+
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com" Janel.sln /rebuild "Release Console|Win32"
+
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com" Janel.sln /rebuild "Release Console|x64"
+
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com" Janel.sln /rebuild "Release Windows|Win32"
+
+    "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com" Janel.sln /rebuild "Release Windows|x64"
+
+
+    cd ..
+
+
+    set DISTRIBUTION=janel-%APPVEYOR_BUILD_VERSION%-%APPVEYOR_REPO_BRANCH%
+
+    mkdir %DISTRIBUTION%
+
+
+    copy Documentation\HowToRun.html %DISTRIBUTION%
+
+    copy "Source\Release Windows\Janel.exe" %DISTRIBUTION%\JanelWindows32.exe
+
+    copy "Source\Release Console\Janel.exe" %DISTRIBUTION%\JanelConsole32.exe
+
+    copy "Source\x64\Release Windows\Janel.exe" %DISTRIBUTION%\JanelWindows64.exe
+
+    copy "Source\x64\Release Console\Janel.exe" %DISTRIBUTION%\JanelConsole64.exe
+
+    copy JanelLicense.txt %DISTRIBUTION%\JanelConsole64.exe
+
+    git log > %DISTRIBUTION%\Changelog.txt
+
+
+
+    "C:\Program Files\7-Zip\7z.exe" a -r janel-%APPVEYOR_REPO_BRANCH%.7z %DISTRIBUTION%
+artifacts:
+- path: '*.7z'
