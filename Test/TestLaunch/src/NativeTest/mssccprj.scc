@@ -1,0 +1,9 @@
+SCC = This is a Source Code Control file
+
+[NativeTest.sln]
+SCC_Aux_Path = "C:\Code\VssData"
+SCC_Project_Name = "$/Jewels/Janel/Test/TestLaunch/src/NativeTest", RQBAAAAA
+
+[NativeTest.vcproj]
+SCC_Aux_Path = "C:\Code\VssData"
+SCC_Project_Name = "$/Jewels/Janel/Test/TestLaunch/src/NativeTest", RQBAAAAA

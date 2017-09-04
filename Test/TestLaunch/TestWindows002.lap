@@ -1,0 +1,19 @@
+# This is a .lap file comment
+-Djava.class.path=dist\TestLaunch.jar
+#-DJAVA_HOME=${FOUND_JAVA_HOME}
+janel.main.class=testpackage.TestLaunch002
+#janel.java.bundle=prefer_SDK
+#janel.bin.jvm.dir=prefer_client
+#janel.jvm.path=${env.JAVA_HOME}\jre\bin\server\jvm.dll
+janel.java.home.path=${env.JAVA_HOME}
+#janel.min.java.version=1.4
+#janel.max.java.version=1.5
+#-verbose:class
+#-Xincgc
+#janel.trap.console.ctrl=yes
+#-Dself.home.test=${SELF_HOME}
+#-Dfound.exe.folder.test=${FOUND_EXE_FOLDER}
+#janel.classpath.jars.dir=..\..\Test\TestLaunch\dist
+janel.debug.file=DebugTestWindows002.txt
+
+

@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+
+<!-- 
+These tests should fail.
+Set the default target to whatever is the highest number TestLaunch# target. 
+Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch 
+-->
+<project name="Janel-TestFail" default="TestLaunchFail012" >
+
+	<target name="init">
+		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunchFail/TestConsoleFail.exe" verbose="true" />
+		<copy file="../Executables/x64/JanelWindows64.exe" tofile="TestLaunchFail/TestWindowsFail.exe" verbose="true" />			
+		<copy file="../Executables/Win32/JanelConsole32.exe" tofile="TestLaunchFail/TestConsoleFail32.exe" verbose="true" />
+		<copy file="../Executables/Win32/JanelWindows32.exe" tofile="TestLaunchFail/TestWindowsFail32.exe" verbose="true" />			
+	</target>
+	
+	<target name="TestLaunchFail001" depends="init">	
+		<echo>Testing a nonexistent file for the class that has the main method.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail001.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail001.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />				
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail002" depends="TestLaunchFail001">	
+		<echo>Testing a bad classpath for the class that has the main method.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail002.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail002.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail003" depends="TestLaunchFail002">	
+		<echo>Testing a min Java version of 1.9.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail003.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail003.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail004" depends="TestLaunchFail003">	
+		<echo>Testing bad janel.jvm.path. File exists but it's not a jvm.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail004.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail004.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail005" depends="TestLaunchFail004">	
+		<echo>Testing bad janel.java.home.path. Directory exists, but no jvm in it.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail005.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail005.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail006" depends="TestLaunchFail005">	
+		<echo>Testing a max Java version of 1.3.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail006.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail006.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail007" depends="TestLaunchFail006">	
+		<echo>Testing a bad nonstandard option.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail007.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail007.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail008" depends="TestLaunchFail007">	
+		<echo>Testing a too large value for max memory -Xmx of 25000M.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail008.lap" tofile="TestLaunchFail/TestConsoleFail32.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail32.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail008.lap" tofile="TestLaunchFail/TestWindowsFail32.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail32.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail009" depends="TestLaunchFail008">	
+		<echo>Testing an uncaught runtime exception.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail009.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail009.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail010" depends="TestLaunchFail009">	
+		<echo>Testing setting the default error message.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail010.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail010.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail011" depends="TestLaunchFail010">	
+		<echo>Testing setting the default error message, and not showing the detail.</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail011.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="TestLaunchFail/TestConsoleFail.exe" dir="TestLaunchFail">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail011.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="TestLaunchFail/TestWindowsFail.exe" dir="TestLaunchFail">
+		</exec>		
+	</target>
+
+	<target name="TestLaunchFail012" depends="TestLaunchFail011">	
+		<echo>Testing returning with a System.exit(1)</echo>
+		<echo>Console:</echo>
+		<copy file="TestLaunchFail/TestConsoleFail012.lap" tofile="TestLaunchFail/TestConsoleFail.lap" overwrite="true" />		
+		<exec executable="cmd.exe" dir="TestLaunchFail">
+			<arg line="/c TestConsoleFail012.bat"/>
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunchFail/TestWindowsFail012.lap" tofile="TestLaunchFail/TestWindowsFail.lap" overwrite="true" />
+		<exec executable="cmd.exe" dir="TestLaunchFail">
+			<arg line="/c TestWindowsFail012.bat"/>
+		</exec>		
+	</target>
+		
+</project>
+

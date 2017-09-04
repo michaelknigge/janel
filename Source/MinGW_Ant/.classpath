@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="Source_notusing/test/TestLaunch/src"/>
+	<classpathentry kind="src" path="Source_notusing/test/TestLaunchFail/src"/>
+	<classpathentry kind="lib" path="lib/ant-contrib-1.0b2.jar"/>
+	<classpathentry kind="lib" path="lib/cpptasks-1.0b3.jar"/>
+	<classpathentry kind="lib" path="Source_notusing/test/TestLaunch/dist/TestLaunch.jar"/>
+	<classpathentry kind="lib" path="Source_notusing/test/TestLaunch/TestLaunch.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,88 @@
+<project name="Janel"
+         default="JanelExecutables"
+         basedir=".">
+
+	<property name="mingw.dir" location="C:\Programs\MinGW" />
+	
+    <path id="cc.classpath">
+        <pathelement location="lib/cpptasks.jar" />
+    </path>
+
+    <taskdef resource="cpptasks.tasks"
+             classpathref="cc.classpath" />
+
+    <taskdef resource="cpptasks.types"
+             classpathref="cc.classpath" />
+
+    <target name="JanelExecutables"
+            depends="JanelConsole,JanelWindows" />
+	
+    <target name="JanelConsole"
+            description="Builds the Janel Java executable (console/prompt).">
+
+    	<mkdir dir="ReleaseConsole"/>
+		<delete>
+			<fileset dir="ReleaseConsole" excludes="*.lap"/>
+		</delete>    	
+    	
+        <cc debug="false"
+            outfile="ReleaseConsole/JanelConsole.exe"
+            outtype="executable"
+            multithreaded="true"
+            exceptions="true"
+            rebuild="true"
+        	objdir="ReleaseConsole">
+
+            <compiler name="g++" />
+            <defineset define="_CONSOLE"/>
+
+            <fileset dir=".."
+                     includes="*.cpp" />
+        	
+            <sysincludepath location="${mingw.dir}/include" />
+            <sysincludepath location="${env.JAVA_HOME}/include" />
+            <sysincludepath location="${env.JAVA_HOME}/include/win32" />
+            <linker name="gcc">
+                <linkerarg location="start"
+                    value="-Wl,--kill-at" />
+                <syslibset libs="stdc++,kernel32,user32,advapi32" />
+            </linker>
+        </cc>
+    </target>
+
+    <target name="JanelWindows"
+            description="Builds the Janel Java executable (non-console).">
+
+    	<mkdir dir="ReleaseWindows"/>
+		<delete>
+			<fileset dir="ReleaseWindows" excludes="*.lap" />
+		</delete>
+    	
+        <cc debug="false"
+            outfile="ReleaseWindows/JanelWindows.exe"
+            outtype="executable"
+            multithreaded="true"
+            exceptions="true"
+            rebuild="true"
+        	objdir="ReleaseWindows">
+
+            <compiler name="g++" />
+            <defineset define="_WINDOWS"/>
+
+            <fileset dir=".."
+                     includes="*.cpp" />
+        	
+            <sysincludepath location="${mingw.dir}/include" />
+            <sysincludepath location="${env.JAVA_HOME}/include" />
+            <sysincludepath location="${env.JAVA_HOME}/include/win32" />
+            <linker name="gcc">
+                <linkerarg location="start"
+                    value="-Wl,--kill-at" />
+                <syslibset libs="stdc++,kernel32,user32,advapi32" />
+                <linkerarg location="end"
+                           value="-mwindows" />
+            </linker>
+        </cc>
+    </target>
+
+</project>

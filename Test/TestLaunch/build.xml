@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<project name="Janel-TestLaunch" default="complete" >
+
+	<target name="init">
+		<mkdir dir="classes" />
+		<mkdir dir="dist" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac srcdir="src/testpackage"
+			destdir="classes"
+			includeAntRuntime="false"
+			listfiles="true"
+			debug="true"
+			source="1.4"
+			target="1.4">
+	    </javac>
+	</target>
+
+	<target name="compile-agent" depends="init">
+		<javac srcdir="src/agent"
+			destdir="classes"
+			includeAntRuntime="false"
+			listfiles="true"
+			debug="true"
+			source="1.6"
+			target="1.6">
+	    </javac>
+	</target>
+
+	<target name="archive" depends="compile" >
+		<jar destfile="dist/TestLaunch.jar" update="no">
+			<fileset dir="classes">
+				<include name="testpackage/*.class"/>
+			</fileset>
+			<fileset dir=".">
+				<include name="images/*"/>
+			</fileset>			
+		</jar>
+	</target>
+
+	<target name="archive-agent" depends="compile-agent" >
+		<jar destfile="dist/TestAgent.jar" update="no">
+			<fileset dir="classes">
+				<include name="agent/*.class"/>
+			</fileset>
+			<manifest>
+			      <attribute name="Premain-Class"
+			            value="agent.JanelAgent"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="clean">
+		<delete dir="classes" />
+		<delete dir="dist" />
+	</target>
+
+	<target name="complete" depends="archive,archive-agent">
+	</target>
+
+	<target name="java-h" >
+		<javah classpath="classes" 
+			class="testpackage.TestLaunch015"
+			outputFile="src/NativeTest/TestLaunch015.h"/>
+	</target>
+	
+</project>
+

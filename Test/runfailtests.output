@@ -1,0 +1,177 @@
+Buildfile: AntTestFail.xml
+
+init:
+
+TestLaunchFail001:
+     [echo] Testing a nonexistent file for the class that has the main method.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] java.lang.NoClassDefFoundError: testpackage/DoesNotExist
+     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.security.AccessController.doPrivileged(Native Method)
+     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/DoesNotExist
+     [exec] 	at java.net.URLClassLoader.findClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] 	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] Exception in thread "main" 
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] java.lang.NoClassDefFoundError: testpackage/DoesNotExist
+     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.security.AccessController.doPrivileged(Native Method)
+     [exec] 	at java.net.URLClassLoader.findClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] 	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] Exception in thread "main" 
+     [exec] Result: 1
+
+TestLaunchFail002:
+     [echo] Testing a bad classpath for the class that has the main method.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] java.lang.NoClassDefFoundError: testpackage/TestLaunchFail
+     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.TestLaunchFail
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.security.AccessController.doPrivileged(Native Method)
+     [exec] 	at java.net.URLClassLoader.findClass(Unknown Source)
+     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFail
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] 	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] Exception in thread "main" 
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] java.lang.NoClassDefFoundError: testpackage/TestLaunchFail
+     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.TestLaunchFail
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
+     [exec] 	at java.security.AccessController.doPrivileged(Native Method)
+     [exec] 	at java.net.URLClassLoader.findClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] 	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+     [exec] 	at java.lang.ClassLoader.loadClass(Unknown Source)
+     [exec] Exception in thread "main" 
+     [exec] Result: 1
+
+TestLaunchFail003:
+     [echo] Testing a min Java version of 1.9.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error in Java launcher. Error while locating the most appropriate JVM.
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: 1
+
+TestLaunchFail004:
+     [echo] Testing bad janel.jvm.path. File exists but it's not a jvm.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: -1073741819
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: -1073741819
+
+TestLaunchFail005:
+     [echo] Testing bad janel.java.home.path. Directory exists, but no jvm in it.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error in Java launcher. A JVM could not be found for Java home: C:\Temp
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: 1
+
+TestLaunchFail006:
+     [echo] Testing a max Java version of 1.3.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error in Java launcher. Error while locating the most appropriate JVM.
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: 1
+
+TestLaunchFail007:
+     [echo] Testing a bad nonstandard option.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error in Java launcher. Cannot create Java VM.
+     [exec] Unrecognized option: -Xnotcorrect
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Unrecognized option: -Xnotcorrect
+     [exec] Result: 1
+
+TestLaunchFail008:
+     [echo] Testing a too large value for max memory -Xmx of 25000M.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error in Java launcher. Cannot create Java VM.
+     [exec] Invalid maximum heap size: -Xmx25000M
+     [exec] The specified size exceeds the maximum representable size.
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Invalid maximum heap size: -Xmx25000M
+     [exec] The specified size exceeds the maximum representable size.
+     [exec] Result: 1
+
+TestLaunchFail009:
+     [echo] Testing an uncaught runtime exception.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] java.lang.RuntimeException: TestLaunchFail009 runtime error.
+     [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)
+     [exec] Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009
+     [exec] Exception in thread "main" 
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] java.lang.RuntimeException: TestLaunchFail009 runtime error.
+     [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)
+     [exec] Exception in thread "main" 
+     [exec] Result: 1
+
+TestLaunchFail010:
+     [echo] Testing setting the default error message.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] This error text replaces "Error in Java launcher." Detail should be here -> Error while locating the most appropriate JVM.
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: 1
+
+TestLaunchFail011:
+     [echo] Testing setting the default error message, and not showing the detail.
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Test Generic Error Text (this should only be shown, no details)
+     [exec] Result: 1
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Result: 1
+
+TestLaunchFail012:
+     [echo] Testing returning with a System.exit(1)
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error level is correctly returning a 1 
+     [echo] Windows:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
+     [exec] Error level is correctly returning a 1 
+
+BUILD SUCCESSFUL
+Total time: 13 seconds
+Press any key to continue . . . 

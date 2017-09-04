@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<project name="PackageJanel" default="zipup" >
+
+	<property name="version" value="3.4.0" />
+
+	<target name="init">
+	</target>
+	
+	<target name="zipup" depends="init">
+		<delete file="../janel-${version}.zip"/>
+		<zip destfile="../janel-${version}.zip" whenempty="fail" update="no">
+			<zipfileset dir="." prefix="janel-${version}" casesensitive="false" >
+				<include name="**" />
+				<exclude name="**/*.ncb" />
+				<exclude name="**/*.ipch" />
+				<exclude name="**/*.sdf" />				
+				<exclude name="Source/Release Console/**" />				
+				<exclude name="Source/Release Windows/**" />				
+				<exclude name="Source/Debug Console/**" />				
+				<exclude name="Source/Debug Windows/**" />
+				<exclude name="Source/x64/**" />
+				<exclude name="Source/MinGW_Ant/lib/*" />				
+				<exclude name="Source/MinGW_Ant/Release*/**" />
+				<exclude name="Source/Janel*.user" />
+				<exclude name="Test/bin/**/*.class" />												
+				<exclude name="Test/bin/NativeTest/Release*/**" />																
+				<exclude name="Test/TestLaunchFail/*.exe" />								
+				<exclude name="Test/TestLaunch/classes/**" />
+				<exclude name="Test/TestLaunchFail/classes/**" />
+				<exclude name="Test/TestLaunch/*.exe" />
+				<exclude name="Test/TestLaunch/DebugTest*" />				
+				<exclude name="Test/TestLaunch/src/NativeTest/*.ncb" />				
+				<exclude name="Test/TestLaunch/src/NativeTest/Release/**" />	
+				<exclude name="Test/TestLaunch/*.txt" />		
+				<exclude name="Test/TestLaunchFail/*.txt" />		
+			</zipfileset>
+		</zip>
+	</target>
+
+</project>
+

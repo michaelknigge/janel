@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+
+<!-- 
+Set the default target to whatever is the highest number TestLaunch# target. 
+Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch 
+-->
+<project name="Janel-Test" default="TestLaunch045" >
+
+	<target name="init">
+		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" />
+		<copy file="../Executables/x64/JanelWindows64.exe" tofile="TestLaunch/TestWindows.exe" verbose="true" />			
+		<copy file="../Executables/Win32/JanelConsole32.exe" tofile="TestLaunch/TestConsole32.exe" verbose="true" />
+		<copy file="../Executables/Win32/JanelWindows32.exe" tofile="TestLaunch/TestWindows32.exe" verbose="true" />			
+	</target>
+	
+	<target name="TestLaunch001" depends="init">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole001.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows001.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch002" depends="TestLaunch001">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole002.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows002.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch003" depends="TestLaunch002">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole003.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows003.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch004" depends="TestLaunch003">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole004.lap" tofile="TestLaunch/TestConsole32.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole32.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows004.lap" tofile="TestLaunch/TestWindows32.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows32.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch005" depends="TestLaunch004">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole005.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows005.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch006" depends="TestLaunch005">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole006.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows006.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch007" depends="TestLaunch006">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole007.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows007.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch008" depends="TestLaunch007">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole008.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows008.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch009" depends="TestLaunch008">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole009.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows009.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch010" depends="TestLaunch009">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole010.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows will not be included in this test.</echo>
+	</target>
+
+	<target name="TestLaunch011" depends="TestLaunch010">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole011.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows011.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch012" depends="TestLaunch011">	
+		<mkdir dir="TestLaunch/calldir"/>
+	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole012.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch/calldir">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows012.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch/calldir">
+		</exec>		
+		
+		<delete dir="TestLaunch/calldir"/>		
+	</target>
+
+	<target name="TestLaunch013" depends="TestLaunch012">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole013.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="First console argument" />
+			<arg value="Second console argument" />
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows013.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+			<arg value="First windows argument" />
+			<arg value="Second windows argument" />		
+		</exec>		
+	</target>
+
+	<target name="TestLaunch014" depends="TestLaunch013">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole014.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows014.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch015" depends="TestLaunch014">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole015.lap" tofile="TestLaunch/TestConsole32.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole32.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows015.lap" tofile="TestLaunch/TestWindows32.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows32.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch016" depends="TestLaunch015">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole016.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows016.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch017" depends="TestLaunch016">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole017.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows017.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch018" depends="TestLaunch017">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole018.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows018.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch019" depends="TestLaunch018">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole019.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows019.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch020" depends="TestLaunch019">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole020.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows020.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch021" depends="TestLaunch020">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole021.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows021.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch022" depends="TestLaunch021">	
+		<mkdir dir="TestLaunch/calldir"/>
+	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole022.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch/calldir">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows022.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch/calldir">
+		</exec>		
+		
+		<delete dir="TestLaunch/calldir"/>
+	</target>
+
+	<target name="TestLaunch023" depends="TestLaunch022">	
+		<mkdir dir="TestLaunch/bin"/>
+	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole023.lap" tofile="TestLaunch/bin/TestConsole.lap" overwrite="true" />
+		<copy file="TestLaunch/TestConsole.exe" todir="TestLaunch/bin" overwrite="true" />
+		<exec executable="TestLaunch/bin/TestConsole.exe" dir="TestLaunch/bin">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows023.lap" tofile="TestLaunch/bin/TestWindows.lap" overwrite="true" />
+		<copy file="TestLaunch/TestWindows.exe" todir="TestLaunch/bin" overwrite="true" />
+		<exec executable="TestLaunch/bin/TestWindows.exe" dir="TestLaunch/bin">
+		</exec>		
+		
+		<delete dir="TestLaunch/bin"/>
+	</target>
+
+	<target name="TestLaunch024" depends="TestLaunch023">	
+		<mkdir dir="TestLaunch/calldir"/>
+	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole024.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch/calldir">
+		</exec>	
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows024.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch/calldir">
+		</exec>		
+		
+		<delete dir="TestLaunch/calldir"/>
+	</target>
+
+	<!-- Test 25 calls test 26 -->
+	<target name="TestLaunch025" depends="TestLaunch024">	
+		<mkdir dir="TestLaunch/bin"/>
+	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole025.lap" tofile="TestLaunch/bin/TestConsole.lap" overwrite="true" />
+		<copy file="TestLaunch/TestConsole.exe" tofile="TestLaunch/bin/TestConsole.exe" overwrite="true" />
+		<exec executable="TestLaunch/bin/TestConsole.exe" dir="C:/Temp">
+			<arg value="java"/>
+			<arg value="."/>
+		</exec>	
+		
+		<property name="TestWindowsLocation" location="TestLaunch/TestWindows" />
+		
+		<echo></echo>
+		<echo>Console launch of TestWindows026:</echo>
+		<copy file="TestLaunch/TestWindows026.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />		
+		<exec executable="TestLaunch/bin/TestConsole.exe" dir="C:/Temp">
+			<arg value="${TestWindowsLocation}"/>
+			<arg value="."/>
+		</exec>	
+		
+		
+		<delete dir="TestLaunch/bin"/>
+	</target>
+
+							<!-- TestLaunch026 is called from TestLaunch025 -->
+	<target name="TestLaunch027" depends="TestLaunch025">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole027.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows027.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch028" depends="TestLaunch027">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole028.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows028.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch029" depends="TestLaunch028">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole029.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows029.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch030" depends="TestLaunch029">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole030.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="real commandline arg 1"/>
+			<arg value="real commandline arg 2"/>
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows030.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+			<arg value="real commandline arg 1"/>
+			<arg value="real commandline arg 2"/>		
+		</exec>		
+	</target>
+	
+	<target name="TestLaunch031" depends="TestLaunch030">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole031.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows031.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch032" depends="TestLaunch031">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole032.lap" tofile="TestLaunch/TestConsole32.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole32.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows032.lap" tofile="TestLaunch/TestWindows32.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows32.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+	
+	<target name="TestLaunch033" depends="TestLaunch032">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole033.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows033.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+	
+	<target name="TestLaunch034" depends="TestLaunch033">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole034.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows034.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch035" depends="TestLaunch034">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole035.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows035.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch036" depends="TestLaunch035">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole036.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows036.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch037" depends="TestLaunch036">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole037.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows037.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch038" depends="TestLaunch037">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole038.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows038.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>		
+	</target>
+
+	<target name="TestLaunch039" depends="TestLaunch038">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole039.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows039.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch040" depends="TestLaunch039">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole040.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows040.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch041" depends="TestLaunch040">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole041.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows041.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch042" depends="TestLaunch041">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole042.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows042.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch043" depends="TestLaunch042">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole043.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows043.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch044" depends="TestLaunch043">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole044.lap" tofile="TestLaunch/TestConsole32.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole32.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows044.lap" tofile="TestLaunch/TestWindows32.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows32.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch045" depends="TestLaunch044">	
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole045.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>		
+		<echo>Windows:</echo>		
+		<copy file="TestLaunch/TestWindows045.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
+		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+</project>
+

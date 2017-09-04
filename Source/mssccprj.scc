@@ -1,0 +1,13 @@
+SCC = This is a Source Code Control file
+
+[Janel.mak]
+SCC_Aux_Path = "C:\Code\VssData"
+SCC_Project_Name = "$/Jewels/Janel/Source", OTAAAAAA
+
+[Janel.sln]
+SCC_Aux_Path = "C:\Code\VssData"
+SCC_Project_Name = "$/Jewels/Janel/Source", OTAAAAAA
+
+[Janel.vcproj]
+SCC_Aux_Path = "C:\Code\VssData"
+SCC_Project_Name = "$/Jewels/Janel/Source", OTAAAAAA

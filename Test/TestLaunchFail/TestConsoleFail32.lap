@@ -1,0 +1,22 @@
+# This is a .lap file comment
+-Djava.class.path=dist\TestLaunchFail.jar
+#-DJAVA_HOME=${FOUND_JAVA_HOME}
+janel.main.class=testpackage.TestLaunchFail
+#janel.java.bundle=JRE
+#janel.bin.jvm.dir=server
+#janel.jvm.path=C:\Wrong Path\jre\bin\server\jvm.dll
+#janel.java.home.path=d:\Wrong Path\j2sdk14
+#janel.min.java.version=1.6
+#janel.max.java.version=1.3
+#-verbose:class
+#-Xnotcorrect
+#janel.trap.console.ctrl=yes
+#-Dself.home.test=${SELF_HOME}
+#-Dfound.exe.folder.test=${FOUND_EXE_FOLDER}
+#janel.classpath.jars.dir=..\..\Test\TestLaunch\dist
+#janel.memory.max.available.percent=-70
+#janel.memory.init.available.percent=35
+#janel.memory.max.total.percent=50
+#janel.memory.init.total.percent=15
+-Xmx25000M
+
