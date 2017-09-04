@@ -1,8 +1,7 @@
 Release Notes
 
-Version 4.0.2
-* Thanks to Michael Knigge on the report of a useless registry query.
-
+Version 4.0.3
+* Thanks to Michael Knigge for the fix to allow commandline parameters to be passed to the Java class' main method for a Windows service.
 
 
 

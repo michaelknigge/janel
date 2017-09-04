@@ -2,7 +2,7 @@
 
 <project name="PackageJanel" default="zipup" >
 
-	<property name="version" value="4.0.2" />
+	<property name="version" value="4.0.3" />
 
 	<target name="init">
 	</target>

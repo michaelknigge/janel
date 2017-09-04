@@ -4,7 +4,7 @@
 Set the default target to whatever is the highest number TestLaunch# target. 
 Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch 
 -->
-<project name="Janel-Test" default="TestLaunch046" >
+<project name="Janel-Test" default="TestLaunch047" >
 
 	<target name="init">
 		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" />
@@ -553,7 +553,41 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		</exec>
 		<available file="${test046.log}" property="test046.log.exists"/>
 		<echo>Is TestLaunch046 successful? ${test046.log.exists}</echo>	
-		<echo>No Windows executable for Windows service.</echo>		
+		<echo>No Windows executable for Windows service.</echo>	
+		<sleep seconds="15"/>	
+		<echo>Contents of ${test046.log}:</echo>
+		<loadresource property="FileContentsTest046">
+       			<file file="${test046.log}"/>
+    		</loadresource>
+		<echo>${FileContentsTest046}</echo>
+	</target>
+
+	<target name="TestLaunch047" depends="TestLaunch046">
+		<property name="test047.log" value="C:\Test\JanelTestLog047.txt"/>
+		<echo>Console:</echo>
+		<delete file="${test047.log}"/>
+		<copy file="TestLaunch/TestConsole047.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="--install"/>
+			<arg value="ArgumentOneFromCommandLine"/>
+			<arg value="ArgumentTwoFromCommandLine"/>
+		</exec>
+		<exec executable="sc" dir="TestLaunch">
+			<arg value="start"/>
+			<arg value="JanelTestService"/>
+		</exec>
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="--uninstall"/>
+		</exec>
+		<available file="${test047.log}" property="test047.log.exists"/>
+		<echo>Is TestLaunch047 successful? ${test047.log.exists}</echo>	
+		<echo>No Windows executable for Windows service.</echo>	
+		<sleep seconds="15"/>
+		<echo>Contents of ${test047.log}:</echo>
+		<loadresource property="FileContentsTest047">
+       			<file file="${test047.log}"/>
+    		</loadresource>
+		<echo>${FileContentsTest047}</echo>	
 	</target>
 
 </project>

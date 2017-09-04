@@ -49,6 +49,15 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			if(argc >= 2 && wcscmp(argv[1], properties.getServiceOptionInstall().c_str()) == 0)
 			{
+				// Everything after the first argument will be passed as command line arguments
+				// to the Windows service...
+				tstring serviceArgs;
+				for(int ix = 2; ix < argc; ++ix)
+				{
+					serviceArgs.append(argv[ix]);
+					if(ix < (argc - 1))
+						serviceArgs.append(_T(" "));
+				}
 				DEBUG_SHOW( _T("Installing service....") );
 
 				SC_HANDLE manager;
@@ -57,6 +66,25 @@ int _tmain(int argc, _TCHAR* argv[])
 
 		 		TCHAR fullPathAndName[MAX_PATH+1];
 		 		GetModuleFileName(NULL, fullPathAndName, MAX_PATH);
+				// The path to the executable has the be enclosed in "" if the path
+				// contains spaces...
+				tstring executableAndArguments;
+				if(wcsstr(fullPathAndName, _T(" ")) == NULL)
+				{
+					executableAndArguments.append(fullPathAndName);
+				}
+				else
+				{
+					executableAndArguments.append(_T("\""));
+					executableAndArguments.append(fullPathAndName);
+					executableAndArguments.append(_T("\""));
+				}
+
+				if(serviceArgs.length() > 0)
+				{
+					executableAndArguments.append(_T(" "));
+					executableAndArguments.append(serviceArgs);
+				}
 
 				SC_HANDLE service;
 				service = CreateService(manager,
@@ -66,7 +94,7 @@ int _tmain(int argc, _TCHAR* argv[])
 							SERVICE_WIN32_OWN_PROCESS | SERVICE_INTERACTIVE_PROCESS,
 							SERVICE_AUTO_START,
 							SERVICE_ERROR_NORMAL,
-							fullPathAndName,
+							executableAndArguments.c_str(),
 							NULL,
 							NULL,
 							_T(""),
