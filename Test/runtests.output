@@ -238,13 +238,13 @@ TestLaunch017:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=9756
+     [exec] process.id=8888
      [exec] TestLaunch017 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=9444
+     [exec] process.id=8708
      [exec] TestLaunch017 SUCCESSFUL
 
 TestLaunch018:
@@ -253,16 +253,16 @@ TestLaunch018:
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3092643840
-     [exec] Runtime.totalMemory=476315648 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3359178752
+     [exec] Runtime.totalMemory=517275648 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3092643840
-     [exec] Runtime.totalMemory=476250112 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3361079296
+     [exec] Runtime.totalMemory=517472256 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
 
 TestLaunch019:
@@ -711,7 +711,7 @@ TestLaunch046:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 8744
+     [exec]         PID                : 8288
      [exec]         FLAGS              : 
      [echo] Is TestLaunch046 successful? true
      [echo] No Windows executable for Windows service.
@@ -732,7 +732,7 @@ TestLaunch047:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 8688
+     [exec]         PID                : 7296
      [exec]         FLAGS              : 
      [echo] Is TestLaunch047 successful? true
      [echo] No Windows executable for Windows service.
@@ -745,5 +745,5 @@ TestLaunch047:
      [echo] TestLaunch047 SUCCESSFUL
 
 BUILD SUCCESSFUL
-Total time: 1 minute 46 seconds
+Total time: 1 minute 53 seconds
 Press any key to continue . . . 

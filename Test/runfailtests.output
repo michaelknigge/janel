@@ -15,8 +15,8 @@ TestLaunchFail001:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.NoClassDefFoundError: testpackage/DoesNotExist
-     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/DoesNotExistCaused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
-     [exec] 
+     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
+     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/DoesNotExist
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.security.AccessController.doPrivileged(Native Method)
@@ -45,8 +45,8 @@ TestLaunchFail002:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.NoClassDefFoundError: testpackage/TestLaunchFail
-     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFailCaused by: java.lang.ClassNotFoundException: testpackage.TestLaunchFail
-     [exec] 
+     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFail
+     [exec] Caused by: java.lang.ClassNotFoundException: testpackage.TestLaunchFail
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.security.AccessController.doPrivileged(Native Method)
@@ -138,8 +138,8 @@ TestLaunchFail009:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.RuntimeException: TestLaunchFail009 runtime error.
-     [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)
-     [exec] Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009
+     [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009
+     [exec] 
      [exec] Exception in thread "main" 
      [exec] Result: 1
      [echo] Windows:
@@ -179,5 +179,5 @@ TestLaunchFail012:
      [exec] Error level is correctly returning a 1 
 
 BUILD SUCCESSFUL
-Total time: 57 seconds
+Total time: 1 minute 8 seconds
 Press any key to continue . . . 

@@ -1,7 +1,7 @@
 Release Notes
 
-Version 4.0.3
-* Thanks to Michael Knigge for the fix to allow commandline parameters to be passed to the Java class' main method for a Windows service.
+Version 4.0.4
+* Thanks to Michael Knigge for the improved error message when attempting to execute a Janel Windows service executable as a console application.
 
 
 

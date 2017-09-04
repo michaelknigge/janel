@@ -183,7 +183,12 @@ void JVMLauncher::launchService()
 
 	DEBUG_SHOW( _T("Start Service Control Dispatcher..."));
 	if(StartServiceCtrlDispatcher(entry) == 0)
-		throw tstring(_T("Error starting the service control dispatcher"));
+	{
+		if (GetLastError() == ERROR_FAILED_SERVICE_CONTROLLER_CONNECT)
+			throw tstring(_T("This program is a Windows service and can not be run as a regular application."));
+		else
+		throw tstring(_T("Error starting the service control dispatcher."));
+	}
 }
 
 void JVMLauncher::launch()
