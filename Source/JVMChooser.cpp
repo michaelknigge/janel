@@ -93,15 +93,6 @@ void JVMChooser::getAllJVMs(vector<JVMInfo>* pVecJvmInfo)
 		winsReg.addAllSdkJvms(pVecJvmInfo, regKey);
 		regKey = _T("SOFTWARE\\JavaSoft\\Java Runtime Environment");
 		winsReg.addAllJreJvms(pVecJvmInfo, regKey);
-
-#ifdef _M_IX86
-		// 32-bit registry on a 64-bit machine - only for 32-bit executable
-		tstring regKeyWow6432(_T("SOFTWARE\\Wow6432Node\\JavaSoft\\Java Development Kit"));
-		winsReg.addAllSdkJvms(pVecJvmInfo, regKeyWow6432);
-		regKeyWow6432 = _T("SOFTWARE\\Wow6432Node\\JavaSoft\\Java Runtime Environment");
-		winsReg.addAllJreJvms(pVecJvmInfo, regKeyWow6432);
-#endif
-
 	}
 	catch(...)
 	{

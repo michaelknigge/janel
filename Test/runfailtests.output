@@ -15,9 +15,9 @@ TestLaunchFail001:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.NoClassDefFoundError: testpackage/DoesNotExistError in Java launcher. Error occurred while attempting to find Java class testpackage/DoesNotExist
+     [exec] 
      [exec] Caused by: java.lang.ClassNotFoundException: testpackage.DoesNotExist
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
-     [exec] 
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.security.AccessController.doPrivileged(Native Method)
      [exec] 	at java.net.URLClassLoader.findClass(Unknown Source)
@@ -44,8 +44,8 @@ TestLaunchFail002:
      [echo] Testing a bad classpath for the class that has the main method.
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [exec] java.lang.NoClassDefFoundError: testpackage/TestLaunchFail
-     [exec] Error in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFail
+     [exec] java.lang.NoClassDefFoundError: testpackage/TestLaunchFailError in Java launcher. Error occurred while attempting to find Java class testpackage/TestLaunchFail
+     [exec] 
      [exec] Caused by: java.lang.ClassNotFoundException: testpackage.TestLaunchFail
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
      [exec] 	at java.net.URLClassLoader$1.run(Unknown Source)
@@ -113,8 +113,8 @@ TestLaunchFail007:
      [echo] Testing a bad nonstandard option.
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
-     [exec] Unrecognized option: -Xnotcorrect
      [exec] Error in Java launcher. Cannot create Java VM.
+     [exec] Unrecognized option: -Xnotcorrect
      [exec] Result: 1
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
@@ -126,8 +126,8 @@ TestLaunchFail008:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] Invalid maximum heap size: -Xmx25000M
-     [exec] The specified size exceeds the maximum representable size.
      [exec] Error in Java launcher. Cannot create Java VM.
+     [exec] The specified size exceeds the maximum representable size.
      [exec] Result: 1
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
@@ -140,8 +140,8 @@ TestLaunchFail009:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunchFail
      [exec] java.lang.RuntimeException: TestLaunchFail009 runtime error.
-     [exec] Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009
      [exec] 	at testpackage.TestLaunchFail009.main(Unknown Source)
+     [exec] Error in Java launcher. Error occured while calling main method in Java class testpackage/TestLaunchFail009
      [exec] Exception in thread "main" 
      [exec] Result: 1
      [echo] Windows:
@@ -181,5 +181,5 @@ TestLaunchFail012:
      [exec] Error level is correctly returning a 1 
 
 BUILD SUCCESSFUL
-Total time: 51 seconds
+Total time: 53 seconds
 Press any key to continue . . . 

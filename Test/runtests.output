@@ -1,6 +1,14 @@
 Buildfile: C:\CodeInProgress\Janel\Test\AntTest.xml
 
 init:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelConsole64.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestConsole.exe
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelWindows64.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows.exe
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelConsole32.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestConsole32.exe
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelWindows32.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows32.exe
 
 TestLaunch001:
      [echo] Console:
@@ -31,12 +39,12 @@ TestLaunch002:
 TestLaunch003:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.7.0_03\jre
+     [exec] java.home=C:\Program Files\Java\jdk1.7.0_07\jre
      [exec] Testing setting janel.java.bundle=require_SDK and janel.min.java.version
      [exec] TestLaunch003 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.7.0_03\jre
+     [exec] java.home=C:\Program Files\Java\jdk1.7.0_07\jre
      [exec] Testing setting janel.java.bundle=require_SDK and janel.min.java.version
      [exec] TestLaunch003 SUCCESSFUL
 
@@ -55,13 +63,13 @@ TestLaunch004:
 TestLaunch005:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.7.0_03\jre
+     [exec] java.home=C:\Program Files\Java\jdk1.7.0_07\jre
      [exec] testing janel.java.bundle=require_SDK and janel.bin.jvm.dir=require_server
      [exec] Also setting janel.min.java.version=1.4
      [exec] TestLaunch005 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.7.0_03\jre
+     [exec] java.home=C:\Program Files\Java\jdk1.7.0_07\jre
      [exec] testing janel.java.bundle=require_SDK and janel.bin.jvm.dir=require_server
      [exec] Also setting janel.min.java.version=1.4
      [exec] TestLaunch005 SUCCESSFUL
@@ -93,7 +101,7 @@ TestLaunch007:
 TestLaunch008:
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.7.0_03\jre
+     [exec] java.home=C:\Program Files\Java\jdk1.7.0_07\jre
      [exec] Testing GUI exe setup similar to JavadocExpress and JavadocJsharp
      [exec] setting -Djava.class.path=dist\TestLaunch.jar;${FOUND_JAVA_HOME}\lib\tools.jar
      [exec] setting -DJAVA_HOME=${FOUND_JAVA_HOME}
@@ -103,7 +111,7 @@ TestLaunch008:
      [exec] TestLaunch008 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
-     [exec] java.home=C:\Java\jdk1.7.0_03\jre
+     [exec] java.home=C:\Program Files\Java\jdk1.7.0_07\jre
      [exec] Testing GUI exe setup similar to JavadocExpress and JavadocJsharp
      [exec] setting -Djava.class.path=dist\TestLaunch.jar;${FOUND_JAVA_HOME}\lib\tools.jar
      [exec] setting -DJAVA_HOME=${FOUND_JAVA_HOME}
@@ -238,13 +246,13 @@ TestLaunch017:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=6996
+     [exec] process.id=8896
      [exec] TestLaunch017 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=4012
+     [exec] process.id=5840
      [exec] TestLaunch017 SUCCESSFUL
 
 TestLaunch018:
@@ -253,16 +261,16 @@ TestLaunch018:
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3480354816
-     [exec] Runtime.totalMemory=535887872 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3435659264
+     [exec] Runtime.totalMemory=529072128 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre7
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3478519808
-     [exec] Runtime.totalMemory=535822336 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3435659264
+     [exec] Runtime.totalMemory=529072128 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
 
 TestLaunch019:
@@ -332,6 +340,7 @@ TestLaunch022:
    [delete] Deleting directory C:\CodeInProgress\Janel\Test\TestLaunch\calldir
 
 TestLaunch023:
+    [mkdir] Created dir: C:\CodeInProgress\Janel\Test\TestLaunch\bin
      [echo] Console:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch\bin
@@ -699,6 +708,7 @@ TestLaunch045:
 
 TestLaunch046:
      [echo] Console:
+   [delete] Deleting: C:\Test\JanelTestLog046.txt
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] 
      [exec] SERVICE_NAME: JanelTestService 
@@ -709,11 +719,11 @@ TestLaunch046:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 4012
+     [exec]         PID                : 2760
      [exec]         FLAGS              : 
      [echo] Is TestLaunch046 successful? true
      [echo] No Windows executable for Windows service.
 
 BUILD SUCCESSFUL
-Total time: 1 minute 15 seconds
+Total time: 1 minute 18 seconds
 Press any key to continue . . . 

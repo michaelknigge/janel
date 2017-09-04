@@ -1,7 +1,7 @@
 Release Notes
 
-Version 4.0.1
-* Thanks to Roby Joehanes for his bug report. Now on a 64-bit PC only 32-bit Janel executables can invoke a 32-bit jvm.
+Version 4.0.2
+* Thanks to Michael Knigge on the report of a useless registry query.
 
 
 
