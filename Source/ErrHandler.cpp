@@ -10,6 +10,8 @@
 
 using namespace std;
 
+extern SERVICE_STATUS_HANDLE statusHandle;
+
 tstring ErrHandler::s_genericErrorMsg = _T("Error in Java launcher.");
 bool ErrHandler::s_showErrorDetail = true;
 
@@ -36,6 +38,10 @@ void ErrHandler::setShowErrorDetail(const bool showErrorDetails)
 void ErrHandler::display(const tstring& msg)
 {
 #ifdef _CONSOLE
+	// TODO: When running as a service all error messages currently disappear because a service
+	// is not allowed to interact with the desktop and/or has no console.... :-( So we should
+	// have an error log file (specified by a janel property) or we should log to the
+	// microsoft windows event log....
 	tcout << msg.c_str() << endl;
 #endif
 

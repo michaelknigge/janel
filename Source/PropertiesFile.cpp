@@ -470,6 +470,31 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 		{
 			m_pProperties->setWorkingDir(propertyValue);
 		}
+		// SERVICE_NAME
+		else if ( propertyName.compare(PropertiesCustom::SERVICE_NAME) == 0 )
+		{
+			m_pProperties->setServiceName(propertyValue);
+		}
+		// SERVICE_DISPLAY_NAME
+		else if ( propertyName.compare(PropertiesCustom::SERVICE_DISPLAY_NAME) == 0 )
+		{
+			m_pProperties->setServiceDisplayName(propertyValue);
+		}
+		// SERVICE_DESCRIPTION
+		else if ( propertyName.compare(PropertiesCustom::SERVICE_DESCRIPTION) == 0 )
+		{
+			m_pProperties->setServiceDescription(propertyValue);
+		}
+		// SERVICE_OPTION_INSTALL
+		else if ( propertyName.compare(PropertiesCustom::SERVICE_OPTION_INSTALL) == 0 )
+		{
+			m_pProperties->setServiceOptionInstall(propertyValue);
+		}
+		// SERVICE_OPTION_UNINSTALL
+		else if ( propertyName.compare(PropertiesCustom::SERVICE_OPTION_UNINSTALL) == 0 )
+		{
+			m_pProperties->setServiceOptionUninstall(propertyValue);
+		}
 		// MAIN_ARGUMENT
 		else if ( propertyName.compare(PropertiesCustom::MAIN_ARGUMENT) == 0 )
 		{

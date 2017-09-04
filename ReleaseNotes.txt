@@ -1,9 +1,9 @@
 Release Notes
 
-Version 3.4.0
-* Much thanks to Michael Knigge for his code and documentation of janel.working.dir, janel.library.path.dir.recursive, and 
-janel.classpath.jars.dir.recursive.
-* Added support for invoking a 32-bit JVM on a 64-bit machine.
+Version 4.0.0
+* Much thanks to Michael Knigge for his great work on adding the functionality to allow Janel to act as a Windows service.
+* And much thanks again to Michael Knigge for the coding on allowing Janel to run without the msvcr*.dll files.
+
 
 
 

@@ -15,22 +15,142 @@
 
 using namespace std;
 
-// console's main function
+
+int realMain(int argc, _TCHAR* argv[])
+{
+	try
+	{
+		Properties properties = getProperties(argc,argv);
+		launchJavaMainMethod(&properties);
+		return 0;
+	}
+	catch(tstring& se)
+	{
+		DEBUG_SHOW( _T("Exception in Janel.realMain()") );
+		ErrHandler::severeError(se);
+		return 1;
+	}
+	catch(...)
+	{
+		DEBUG_SHOW( _T("Exception in Janel.realMain()") );
+		ErrHandler::severeError();
+		return 1;
+	}
+}
+
+
+// console's or service's main function
 int _tmain(int argc, _TCHAR* argv[])
 {
 	try
-	{		
+	{
 		Properties properties = getProperties(argc,argv);
-		launchJavaMainMethod(&properties);
+		if(!properties.getServiceName().empty())
+		{
+			if(argc >= 2 && wcscmp(argv[1], properties.getServiceOptionInstall().c_str()) == 0)
+			{
+				DEBUG_SHOW( _T("Installing service....") );
 
-		return 0;
+				SC_HANDLE manager;
+				if((manager = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS)) == NULL)
+					throw tstring(_T("Error opening the Service Control Manager"));
+
+		 		TCHAR fullPathAndName[MAX_PATH+1];
+		 		GetModuleFileName(NULL, fullPathAndName, MAX_PATH);
+
+				SC_HANDLE service;
+				service = CreateService(manager,
+							properties.getServiceName().c_str(),
+							properties.getServiceDisplayName().empty() ? properties.getServiceName().c_str() : properties.getServiceDisplayName().c_str(),
+							SERVICE_ALL_ACCESS,
+							SERVICE_WIN32_OWN_PROCESS | SERVICE_INTERACTIVE_PROCESS,
+							SERVICE_AUTO_START,
+							SERVICE_ERROR_NORMAL,
+							fullPathAndName,
+							NULL,
+							NULL,
+							_T(""),
+							NULL,
+							NULL);
+
+				if(service == NULL)
+				{
+					CloseServiceHandle(manager);
+					throw tstring(_T("Error installing the service"));
+				}
+
+				if(!properties.getServiceDescription().empty())
+				{
+					SERVICE_DESCRIPTION desc;
+					desc.lpDescription = (wchar_t *)properties.getServiceDescription().c_str();
+					ChangeServiceConfig2(service, SERVICE_CONFIG_DESCRIPTION, &desc);
+				}
+
+				CloseServiceHandle(service);
+				CloseServiceHandle(manager);
+
+				return 0;
+			}
+
+			if(argc == 2 && wcscmp(argv[1], properties.getServiceOptionUninstall().c_str()) == 0)
+			{
+				SC_HANDLE manager;
+				if((manager = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS)) == NULL)
+					throw tstring(_T("Error opening the Service Control Manager"));
+
+				SC_HANDLE service;
+				if((service = OpenService(manager, properties.getServiceName().c_str(), SERVICE_ALL_ACCESS)) == NULL)
+				{
+					CloseServiceHandle(manager);
+					throw tstring(_T("Error opening the service"));
+				}
+   
+				if (!DeleteService(service))
+				{
+					CloseServiceHandle(service);
+					CloseServiceHandle(manager);
+					throw tstring(_T("Error deleting the service"));
+				}
+
+				CloseServiceHandle(service);
+				CloseServiceHandle(manager);
+				
+				return 0;
+			}
+
+			// Running as a service and no deinstallation or installation - in this case we try to
+			// update the services's description (we ignore any errors here because they do not have any
+			// impact on running the service....)
+			if(!properties.getServiceDescription().empty())
+			{
+				SC_HANDLE manager;
+				if((manager = OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS)) != NULL)
+				{
+					SC_HANDLE service;
+					if((service = OpenService(manager, properties.getServiceName().c_str(), SERVICE_ALL_ACCESS)) != NULL)
+					{
+						SERVICE_DESCRIPTION desc;
+						desc.lpDescription = (wchar_t *)properties.getServiceDescription().c_str();
+						
+						ChangeServiceConfig2(service, SERVICE_CONFIG_DESCRIPTION, &desc);
+						CloseServiceHandle(service);
+						CloseServiceHandle(manager);
+					}
+				}
+			}
+		}
+		return realMain(argc, argv);
+	}
+	catch(tstring& se)
+	{
+		DEBUG_SHOW( _T("Exception in Janel.main()") );
+		ErrHandler::severeError(se);
 	}
 	catch(...)
 	{
 		DEBUG_SHOW( _T("Exception in Janel.main()") );
 		ErrHandler::severeError();
 	}
-	return 1;
 }
 
 int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nShowCmd)
@@ -60,14 +180,18 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
 		argv[i + 1] = tempArgv[i];
 	}
 
-	return _tmain(argc + 1, (_TCHAR**)argv);
+	return realMain(argc + 1, (_TCHAR**)argv);
 #else
-	return _tmain(__argc, __argv);
+	return realMain(__argc, __argv);
 #endif
 }
 
 Properties& getProperties(int argc, TCHAR* argv[])
 {
+	// callerDir is static because getProperties() might be called multiple times
+	// with different current working directories...
+	static TCHAR callerDir[MAX_PATH+1] = { 0 };
+
 	Properties* pProperties = NULL;
 	try
 	{
@@ -77,10 +201,18 @@ Properties& getProperties(int argc, TCHAR* argv[])
  		GetModuleFileName(NULL, fullPathAndName, MAX_PATH);
  		pProperties->setFullPathAndNameOfExe(fullPathAndName);
 
- 		TCHAR callerDir[MAX_PATH+1];
-		_tgetcwd(callerDir,MAX_PATH);
- 		pProperties->setCallerDir(callerDir);
+		if (callerDir[0] == 0x00)
+		{
+		   _tgetcwd(callerDir,MAX_PATH);
+		}
 
+		pProperties->setCallerDir(callerDir);
+
+		// TODO: we should consider changing the working directory not here since
+		// changing the directory has nothing to do with getting the properties...
+        // The working directory should be changed just before we enter the
+        // java world....
+        // (separartion of concerns / single responsibility principle)
 		_tchdir(pProperties->getSelfHomePath().c_str());
 
 		pProperties->setNumberOfInitialCommandLineArgs(argc-1);
@@ -90,6 +222,11 @@ Properties& getProperties(int argc, TCHAR* argv[])
 		}
 
 		pProperties->loadProperties();
+	}
+	catch(tstring& se)
+	{
+		DEBUG_SHOW( _T("Exception in Janel.getProperties()") );
+		ErrHandler::severeError(se);
 	}
 	catch(...)
 	{
@@ -103,8 +240,23 @@ void launchJavaMainMethod(Properties* pProperties)
 {
 	try
 	{
+#ifdef _WINDOWS
+		if(!pProperties->getServiceName().empty())
+		{
+			DEBUG_SHOW( _T("Use the JanelConsole32.exe or JanelConsole64.exe for Windows services.") );
+			throw tstring(_T("Use the JanelConsole32.exe or JanelConsole64.exe for Windows services."));
+		}
+#endif
 		JVMLauncher jvmLauncher(pProperties);
-		jvmLauncher.launch();
+		if(pProperties->getServiceName().empty())
+			jvmLauncher.launch();
+		else
+			jvmLauncher.launchService();
+	}
+	catch(tstring& se)
+	{
+		DEBUG_SHOW( _T("Exception in Janel.launchJavaMainMethod()") );
+		ErrHandler::severeError(se);
 	}
 	catch(...)
 	{

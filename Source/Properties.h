@@ -34,7 +34,12 @@ private:
 	tstring m_libraryPath; // added to with janel.library.path.dir and/or janel.library.jars.dir.recursive
 	tstring m_workingDir; // Working directoty to be set
 	tstring m_callerDir; // the directory from which the executable is called
-	int m_numberOfInitialCommandLineArgs; // number of commandline arguments NOT passed with janel.main.argument 
+	tstring m_serviceName; // name of the Windows Service (used for execution and installation)
+	tstring m_serviceDisplayName; // display name of the Windows Service (used for installation)
+	tstring m_serviceDescription; // description of the Windows Service (used for installation)
+	tstring m_serviceOptionInstall; // Option-String (i. e. "--install") for performing Windows Service Installation
+	tstring m_serviceOptionUninstall; // Option-String (i. e. "--remove") for performing Windows Service Uninstallation
+	int m_numberOfInitialCommandLineArgs; // number of commandline arguments NOT passed with janel.main.argument
 
 	bool m_memoryCheckLimits; // Add check for largest available memory region
 	int m_maxMemory; // Kilobytes used as the maximum heap size (-Xmx)
@@ -147,17 +152,32 @@ public:
 
 	void setMemoryCheckLimits(const tstring& property);
 	bool isMemoryCheckLimits();
-    void setMaxMemoryPercentOfAvailable(const tstring& property);
-    void setInitMemoryPercentOfAvailable(const tstring& property);
-    void setMaxMemoryPercentOfTotal(const tstring& property);
-    void setInitMemoryPercentOfTotal(const tstring& property);
-    void setMaxMemoryUpperLimit(const tstring& property);
-    void setInitMemoryUpperLimit(const tstring& property);
-    void setMaxMemoryLowerLimit(const tstring& property);
-    void setInitMemoryLowerLimit(const tstring& property);
+	void setMaxMemoryPercentOfAvailable(const tstring& property);
+	void setInitMemoryPercentOfAvailable(const tstring& property);
+	void setMaxMemoryPercentOfTotal(const tstring& property);
+	void setInitMemoryPercentOfTotal(const tstring& property);
+	void setMaxMemoryUpperLimit(const tstring& property);
+	void setInitMemoryUpperLimit(const tstring& property);
+	void setMaxMemoryLowerLimit(const tstring& property);
+	void setInitMemoryLowerLimit(const tstring& property);
 
 	void setCallerDir(const tstring& callerDir);
 	tstring& getCallerDir();
+
+	void setServiceName(const tstring& serviceName);
+	tstring& getServiceName();
+
+	void setServiceDisplayName(const tstring& serviceDisplayName);
+	tstring& getServiceDisplayName();
+
+	void setServiceDescription(const tstring& serviceDescription);
+	tstring& getServiceDescription();
+
+	void setServiceOptionInstall(const tstring& serviceOptionInstall);
+	tstring& getServiceOptionInstall();
+
+	void setServiceOptionUninstall(const tstring& serviceOptionUninstall);
+	tstring& getServiceOptionUninstall();
 
 	void setNumberOfInitialCommandLineArgs(int numberOfInitialCommandLineArgs);
 	int getNumberOfInitialCommandLineArgs();

@@ -14,13 +14,15 @@ class JVMLauncher
 {
 private:
 	Properties* m_pProperties;
-	JavaVM*     m_pVM;
+	JavaVM* m_pVM;
 	void setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs);
 public:
 	JVMLauncher(Properties* pProperties);
 	virtual ~JVMLauncher();
 	void launch();
+	void launchService();
 	void callExit();
+	Properties* getProperties();
 };
 
 #endif // ifndef _JANEL_JVMLAUNCHER_H_INCLUDED_

@@ -433,6 +433,66 @@ tstring& Properties::getWorkingDir()
 	return m_workingDir;
 }
 
+void Properties::setServiceName(const tstring& property)
+{
+	DEBUG_SHOW(_T("setServiceName"));
+	m_serviceName = property;
+}
+
+tstring& Properties::getServiceName()
+{
+	DEBUG_SHOW(_T("getServiceName"));
+	return m_serviceName;
+}
+
+void Properties::setServiceDisplayName(const tstring& property)
+{
+	DEBUG_SHOW(_T("setServiceDisplayName"));
+	m_serviceDisplayName = property;
+}
+
+tstring& Properties::getServiceDisplayName()
+{
+	DEBUG_SHOW(_T("getServiceDisplayName"));
+	return m_serviceDisplayName;
+}
+
+void Properties::setServiceDescription(const tstring& property)
+{
+	DEBUG_SHOW(_T("setServiceDescription"));
+	m_serviceDescription = property;
+}
+
+tstring& Properties::getServiceDescription()
+{
+	DEBUG_SHOW(_T("getServiceDescription"));
+	return m_serviceDescription;
+}
+
+void Properties::setServiceOptionInstall(const tstring& property)
+{
+	DEBUG_SHOW(_T("setServiceOptionInstall"));
+	m_serviceOptionInstall = property;
+}
+
+tstring& Properties::getServiceOptionInstall()
+{
+	DEBUG_SHOW(_T("getServiceOptionInstall"));
+	return m_serviceOptionInstall;
+}
+
+void Properties::setServiceOptionUninstall(const tstring& property)
+{
+	DEBUG_SHOW(_T("setServiceOptionUninstall"));
+	m_serviceOptionUninstall = property;
+}
+
+tstring& Properties::getServiceOptionUninstall()
+{
+	DEBUG_SHOW(_T("getServiceOptionUninstall"));
+	return m_serviceOptionUninstall;
+}
+
 double Properties::getAvailablePhysicalMemoryKilobytes()
 {
     double physicalMemoryKb = 0.0;

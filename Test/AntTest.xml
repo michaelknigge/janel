@@ -4,7 +4,7 @@
 Set the default target to whatever is the highest number TestLaunch# target. 
 Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch 
 -->
-<project name="Janel-Test" default="TestLaunch045" >
+<project name="Janel-Test" default="TestLaunch046" >
 
 	<target name="init">
 		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" />
@@ -534,6 +534,26 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		<copy file="TestLaunch/TestWindows045.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />				
 		<exec executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
 		</exec>
+	</target>
+
+	<target name="TestLaunch046" depends="TestLaunch045">
+		<property name="test046.log" value="C:\Test\JanelTestLog046.txt"/>
+		<echo>Console:</echo>
+		<delete file="${test046.log}"/>
+		<copy file="TestLaunch/TestConsole046.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="--install"/>
+		</exec>
+		<exec executable="sc" dir="TestLaunch">
+			<arg value="start"/>
+			<arg value="JanelTestService"/>
+		</exec>
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="--uninstall"/>
+		</exec>
+		<available file="${test046.log}" property="test046.log.exists"/>
+		<echo>Is TestLaunch046 successful? ${test046.log.exists}</echo>	
+		<echo>No Windows executable for Windows service.</echo>		
 	</target>
 
 </project>

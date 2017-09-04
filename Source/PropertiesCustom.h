@@ -25,20 +25,25 @@ public:
 	static const tstring LIBRARY_PATH_DIR;
 	static const tstring LIBRARY_PATH_DIR_RECURSIVE;
 	static const tstring WORKING_DIR;
+	static const tstring SERVICE_NAME;
+	static const tstring SERVICE_DISPLAY_NAME;
+	static const tstring SERVICE_DESCRIPTION;
+	static const tstring SERVICE_OPTION_INSTALL;
+	static const tstring SERVICE_OPTION_UNINSTALL;
 	static const tstring MAIN_ARGUMENT;
 	static const tstring SYSPROP_PROCESS_ID;
-    static const tstring SPLASH;
+	static const tstring SPLASH;
 	static const tstring MEMORY_CHECK_LIMITS;
 	static const tstring MAX_MEMORY_AVAILABLE_PERCENT;
-    static const tstring MAX_MEMORY_TOTAL_PERCENT;
-    static const tstring MAX_MEMORY_UPPER_LIMIT;
-    static const tstring MAX_MEMORY_LOWER_LIMIT;
-    static const tstring INIT_MEMORY_AVAILABLE_PERCENT;
-    static const tstring INIT_MEMORY_TOTAL_PERCENT;
-    static const tstring INIT_MEMORY_UPPER_LIMIT;
-    static const tstring INIT_MEMORY_LOWER_LIMIT;
-    static const tstring CUSTOM_DEFAULT_ERROR_TEXT;
-    static const tstring SHOW_ERROR_DETAIL;
+	static const tstring MAX_MEMORY_TOTAL_PERCENT;
+	static const tstring MAX_MEMORY_UPPER_LIMIT;
+	static const tstring MAX_MEMORY_LOWER_LIMIT;
+	static const tstring INIT_MEMORY_AVAILABLE_PERCENT;
+	static const tstring INIT_MEMORY_TOTAL_PERCENT;
+	static const tstring INIT_MEMORY_UPPER_LIMIT;
+	static const tstring INIT_MEMORY_LOWER_LIMIT;
+	static const tstring CUSTOM_DEFAULT_ERROR_TEXT;
+	static const tstring SHOW_ERROR_DETAIL;
 
 
 	PropertiesCustom();

@@ -13,9 +13,17 @@
 
 using namespace std;
 
+// TODO: Due to these global variables the class JVMLauncher should/can be
+// implemented as a singleton - with a factory method "create()" and
+// a getter "getInstance()" for the instance....
+static JVMLauncher* jvmLauncher;
+static SERVICE_STATUS_HANDLE statusHandle = NULL;
+static SERVICE_STATUS serviceStatus;
+
 JVMLauncher::JVMLauncher(Properties* pProperties)
 {
 	m_pProperties = pProperties;
+	jvmLauncher = this;
 }
 
 JVMLauncher::~JVMLauncher()
@@ -23,7 +31,10 @@ JVMLauncher::~JVMLauncher()
 
 }
 
-static JVMLauncher* jvmLauncher;
+Properties* JVMLauncher::getProperties()
+{
+	return m_pProperties;
+}
 
 // Ctrl handler trap is to give service semantics
 BOOL WINAPI ConsoleCtrlHandler(DWORD ctrlType)
@@ -52,6 +63,8 @@ void JVMLauncher::callExit()
 	JNIEnv* pJniEnvironment;
 	jint result;
 
+	DEBUG_SHOW( _T("callExit invoked!"));
+
 	result = m_pVM->AttachCurrentThread((void**)&pJniEnvironment, NULL);
 	if (result >= 0)
 	{
@@ -73,6 +86,8 @@ void JVMLauncher::callExit()
 			javaMethodId = pJniEnvironment->GetStaticMethodID(javaClass, "initiateExit", "(I)V");
 			if (javaMethodId == 0)
 			{
+				// TODO: We should call System.exit() here to shut down - in case of a windows service
+				// if there is no initiateExit() Method -> the service would never end....
 				if (pJniEnvironment->ExceptionOccurred())
 					pJniEnvironment->ExceptionDescribe();
 			}
@@ -91,6 +106,85 @@ typedef void (*SplashInit_t)(void);
 typedef void (*SplashClose_t)(void);
 typedef void (*SplashSetFileJarName_t)(const char* fileName, 
                                        const char* jarName);
+
+VOID WINAPI serviceControlHandler(DWORD controlCode)
+{
+	DEBUG_SHOW( _T("Entered serviceControlHandler()") );
+	static DWORD dwCheckPoint = 1;
+
+	if(statusHandle == NULL) // should never-ever happen...
+		return;
+
+	if(controlCode == SERVICE_CONTROL_SHUTDOWN || controlCode == SERVICE_CONTROL_STOP)
+	{
+		serviceStatus.dwCurrentState = SERVICE_STOP_PENDING;
+		serviceStatus.dwControlsAccepted  = 0;
+	}
+	else
+	{
+		serviceStatus.dwCurrentState = SERVICE_RUNNING;
+		serviceStatus.dwControlsAccepted = SERVICE_ACCEPT_STOP | SERVICE_ACCEPT_SHUTDOWN;
+	}
+  
+	if (serviceStatus.dwCurrentState == SERVICE_RUNNING || serviceStatus.dwCurrentState == SERVICE_STOPPED)
+		serviceStatus.dwCheckPoint = 0;
+	else
+		serviceStatus.dwCheckPoint = dwCheckPoint++;
+
+	SetServiceStatus(statusHandle, &serviceStatus);
+
+	if(serviceStatus.dwCurrentState == SERVICE_STOP_PENDING)
+	{
+		DEBUG_SHOW( _T("Stopping service...") );
+		jvmLauncher->callExit();
+	}
+
+	return;
+}
+
+VOID WINAPI serviceMain(unsigned long argc, _TCHAR *argv[])
+{
+	serviceStatus.dwServiceType = SERVICE_WIN32;
+	serviceStatus.dwCurrentState = SERVICE_RUNNING;
+	serviceStatus.dwControlsAccepted = SERVICE_ACCEPT_STOP | SERVICE_ACCEPT_SHUTDOWN;
+	serviceStatus.dwWin32ExitCode = NO_ERROR;
+	serviceStatus.dwServiceSpecificExitCode = 0;
+	serviceStatus.dwCheckPoint = 0;
+	serviceStatus.dwWaitHint = 60 * 1000;
+
+	Properties* pProperties = jvmLauncher->getProperties();
+	if((statusHandle = RegisterServiceCtrlHandler(pProperties->getServiceName().c_str(), serviceControlHandler)) == NULL)
+	{
+		DEBUG_SHOW( _T("RegisterServiceCtrlHandler() failed") );
+		return;
+	}
+	
+	SetServiceStatus(statusHandle, &serviceStatus);
+
+	jvmLauncher->launch();
+  
+	serviceStatus.dwCurrentState = SERVICE_STOPPED;
+	SetServiceStatus(statusHandle, &serviceStatus);
+}
+
+
+void JVMLauncher::launchService()
+{
+	// when running as a service we don't want to "see" any annoying error message box...
+	SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
+
+	SERVICE_TABLE_ENTRY entry[2];
+
+	entry[0].lpServiceName = (wchar_t *) m_pProperties->getServiceName().c_str();
+	entry[0].lpServiceProc = serviceMain;
+
+	entry[1].lpServiceName = NULL;
+	entry[1].lpServiceProc = NULL;
+
+	DEBUG_SHOW( _T("Start Service Control Dispatcher..."));
+	if(StartServiceCtrlDispatcher(entry) == 0)
+		throw tstring(_T("Error starting the service control dispatcher"));
+}
 
 void JVMLauncher::launch()
 {
@@ -134,6 +228,29 @@ void JVMLauncher::launch()
 		if (m_pProperties->isMemoryCheckLimits())
 		{
 			dummyWnd = CreateWindowEx(WS_EX_TOOLWINDOW, _T("EDIT"), _T("JanelDummy"), WS_DISABLED| WS_POPUP | WS_VISIBLE, 0, 0, 0, 0, NULL, NULL, GetModuleHandle(NULL), NULL);
+		}
+
+		// TODO: pre-loading the CRT shoud be a little bit more intelligent. We should iterate over all existing
+		// msvcr*.dll files and load the one with the highest number.... Well... there should be only one
+		// present because it makes no sense to use/ship different versions of the CRT....
+
+		// Trying to pre-load the CRT from the desired JAVA-Directory...
+		tstring crtpath = m_pProperties->getBestJvmInfo()->getJavaHomePath() + tstring(_T("\\bin\\msvcr71.dll"));
+		DEBUG_SHOW(tstring(_T("Trying to load msvcr71.dll (for Java 1.6)...")));
+		HMODULE crt = LoadLibrary(crtpath.c_str());
+		if (crt)
+		{
+			DEBUG_SHOW(tstring(_T("msvcr71.dll loaded")));
+		}
+		else
+		{
+			crtpath = m_pProperties->getBestJvmInfo()->getJavaHomePath() + tstring(_T("\\bin\\msvcr100.dll"));
+			DEBUG_SHOW(tstring(_T("Trying to load msvcr100.dll (for Java 1.7)...")));
+			crt = LoadLibrary(crtpath.c_str());
+			if(crt)
+			{
+				DEBUG_SHOW(tstring(_T("msvcr100.dll loaded")));
+			}
 		}
 
 		// Show the splash screen
@@ -251,7 +368,6 @@ void JVMLauncher::launch()
 		// if trapping console
 		if (m_pProperties->getTrapConsoleCtrl())
 		{
-			jvmLauncher = this;
 			if (!::SetConsoleCtrlHandler(ConsoleCtrlHandler, TRUE))
 			{
 				throw tstring(_T("Unable to catch console ctrl events."));
@@ -351,6 +467,11 @@ void JVMLauncher::setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs)
 		jvmInitArgs.nOptions = numberOfSystemProperties;
 		jvmInitArgs.options  = pJvmOptions;
 		jvmInitArgs.ignoreUnrecognized = JNI_FALSE;
+	}
+	catch(tstring& se)
+	{
+		DEBUG_SHOW( _T("Exception in JVMLauncher.setupJavaVMInitArgs()") );
+		ErrHandler::severeError(se);
 	}
 	catch(...)
 	{
