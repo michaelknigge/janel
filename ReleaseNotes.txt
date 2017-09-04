@@ -1,8 +1,7 @@
 Release Notes
 
-Version 4.1.0
-* Much thanks to John Stroy for fixes found from static analysis.
-* Being built with Visual Studio Community 2015.
+Version 4.1.1
+* Thanks to John Stroy for fixing bugs found in 4.1.0.
 
 
 

@@ -4,13 +4,13 @@
 Set the default target to whatever is the highest number TestLaunch# target. 
 Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch 
 -->
-<project name="Janel-Test" default="TestLaunch047" >
+<project name="Janel-Test" default="TestLaunch048" >
 
 	<target name="init">
-		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" />
-		<copy file="../Executables/x64/JanelWindows64.exe" tofile="TestLaunch/TestWindows.exe" verbose="true" />			
-		<copy file="../Executables/Win32/JanelConsole32.exe" tofile="TestLaunch/TestConsole32.exe" verbose="true" />
-		<copy file="../Executables/Win32/JanelWindows32.exe" tofile="TestLaunch/TestWindows32.exe" verbose="true" />			
+		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" overwrite="true"/>
+		<copy file="../Executables/x64/JanelWindows64.exe" tofile="TestLaunch/TestWindows.exe" verbose="true" overwrite="true"/>			
+		<copy file="../Executables/Win32/JanelConsole32.exe" tofile="TestLaunch/TestConsole32.exe" verbose="true" overwrite="true"/>
+		<copy file="../Executables/Win32/JanelWindows32.exe" tofile="TestLaunch/TestWindows32.exe" verbose="true" overwrite="true"/>			
 	</target>
 	
 	<target name="TestLaunch001" depends="init">	
@@ -588,6 +588,43 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
        			<file file="${test047.log}"/>
     		</loadresource>
 		<echo>${FileContentsTest047}</echo>	
+	</target>
+
+	<target name="TestLaunch048" depends="TestLaunch047">
+		<property name="test048.log" value="C:\Test\JanelTestLog048.txt"/>
+		<property name="test048stopped.log" value="C:\Test\JanelTestLogStopped048.txt"/>
+		<delete file="${test048.log}"/>
+		<delete file="${test048stopped.log}"/>
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole048.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />		
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="--install"/>
+			<arg value="ArgumentOneFromCommandLine"/>
+			<arg value="ArgumentTwoFromCommandLine"/>
+		</exec>
+		<exec executable="sc" dir="TestLaunch">
+			<arg value="start"/>
+			<arg value="JanelTestService"/>
+		</exec>
+		<sleep seconds="5"/>
+		<exec executable="sc" dir="TestLaunch">
+			<arg value="stop"/>
+			<arg value="JanelTestService"/>
+		</exec>
+		<sleep seconds="5"/>
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+			<arg value="--uninstall"/>
+		</exec>
+		<available file="${test048.log}" property="test048.log.exists"/>
+		<available file="${test048stopped.log}" property="test048stopped.log.exists"/>
+		<echo>Is TestLaunch048 running successfully? ${test048.log.exists}</echo>	
+		<echo>Is TestLaunch048 stopped successfully? ${test048stopped.log.exists}</echo>
+		<echo>No Windows executable for Windows service.</echo>			
+		<echo>Contents of ${test048.log}:</echo>
+		<loadresource property="FileContentsTest048">
+       		<file file="${test048.log}"/>
+    	</loadresource>
+		<echo>${FileContentsTest048}</echo>	
 	</target>
 
 </project>

@@ -1,6 +1,14 @@
 Buildfile: C:\CodeInProgress\Janel\Test\AntTest.xml
 
 init:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelConsole64.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestConsole.exe
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\x64\JanelWindows64.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows.exe
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelConsole32.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestConsole32.exe
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [copy] Copying C:\CodeInProgress\Janel\Executables\Win32\JanelWindows32.exe to C:\CodeInProgress\Janel\Test\TestLaunch\TestWindows32.exe
 
 TestLaunch001:
      [echo] Console:
@@ -127,8 +135,8 @@ TestLaunch009:
      [exec] Testing setting Java system properties.
      [exec] setting -verbose:gc
      [exec] setting -Xincgc
-     [exec] Java HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
      [exec] TestLaunch009 SUCCESSFUL
+     [exec] Java HotSpot(TM) 64-Bit Server VM warning: Using incremental CMS is deprecated and will likely be removed in a future release
 
 TestLaunch010:
      [echo] Console:
@@ -240,13 +248,13 @@ TestLaunch017:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=11708
+     [exec] process.id=7860
      [exec] TestLaunch017 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.sysprop.process.id=true
-     [exec] process.id=3360
+     [exec] process.id=8560
      [exec] TestLaunch017 SUCCESSFUL
 
 TestLaunch018:
@@ -255,16 +263,16 @@ TestLaunch018:
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3167223808
-     [exec] Runtime.totalMemory=488636416 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3019898880
+     [exec] Runtime.totalMemory=466616320 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
      [echo] Windows:
      [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
      [exec] java.home=C:\Program Files\Java\jre1.8.0_25
      [exec] testing setting janel.memory.max.available.percent=70
      [exec] and setting janel.memory.init.available.percent=10
-     [exec] Runtime.maxMemory=3169320960
-     [exec] Runtime.totalMemory=488636416 (corresponds to setting initial memory)
+     [exec] Runtime.maxMemory=3019898880
+     [exec] Runtime.totalMemory=466616320 (corresponds to setting initial memory)
      [exec] TestLaunch018 SUCCESSFUL
 
 TestLaunch019:
@@ -713,7 +721,7 @@ TestLaunch046:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 9000
+     [exec]         PID                : 8404
      [exec]         FLAGS              : 
      [echo] Is TestLaunch046 successful? true
      [echo] No Windows executable for Windows service.
@@ -734,7 +742,7 @@ TestLaunch047:
      [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
      [exec]         CHECKPOINT         : 0x0
      [exec]         WAIT_HINT          : 0x0
-     [exec]         PID                : 10340
+     [exec]         PID                : 11752
      [exec]         FLAGS              : 
      [echo] Is TestLaunch047 successful? true
      [echo] No Windows executable for Windows service.
@@ -746,6 +754,38 @@ TestLaunch047:
      [echo] Argument 4=ArgumentTwoFromLapFile
      [echo] TestLaunch047 SUCCESSFUL
 
+TestLaunch048:
+   [delete] Deleting: C:\Test\JanelTestLog048.txt
+   [delete] Deleting: C:\Test\JanelTestLogStopped048.txt
+     [echo] Console:
+     [copy] Copying 1 file to C:\CodeInProgress\Janel\Test\TestLaunch
+     [exec] 
+     [exec] SERVICE_NAME: JanelTestService 
+     [exec]         TYPE               : 110  WIN32_OWN_PROCESS  (interactive)
+     [exec]         STATE              : 4  RUNNING 
+     [exec]                                 (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+     [exec]         WIN32_EXIT_CODE    : 0  (0x0)
+     [exec]         SERVICE_EXIT_CODE  : 0  (0x0)
+     [exec]         CHECKPOINT         : 0x0
+     [exec]         WAIT_HINT          : 0x0
+     [exec]         PID                : 3288
+     [exec]         FLAGS              : 
+     [exec] [SC] ControlService FAILED 109:
+     [exec] 
+     [exec] The pipe has been ended.
+     [exec] 
+     [exec] Result: 109
+     [echo] Is TestLaunch048 running successfully? true
+     [echo] Is TestLaunch048 stopped successfully? true
+     [echo] No Windows executable for Windows service.
+     [echo] Contents of C:\Test\JanelTestLog048.txt:
+     [echo] Testing Janel's service by installing the service, starting it, stopping it, then uninstalling it.
+     [echo] Argument 1=ArgumentOneFromCommandLine
+     [echo] Argument 2=ArgumentTwoFromCommandLine
+     [echo] Argument 3=ArgumentOneFromLapFile
+     [echo] Argument 4=ArgumentTwoFromLapFile
+     [echo] TestLaunch048 SUCCESSFUL
+
 BUILD SUCCESSFUL
-Total time: 1 minute 44 seconds
+Total time: 4 minutes 4 seconds
 Press any key to continue . . . 

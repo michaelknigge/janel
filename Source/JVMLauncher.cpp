@@ -83,22 +83,27 @@ void JVMLauncher::callExit()
 	result = m_pVM->AttachCurrentThread((void**)&pJniEnvironment, NULL);
 	if (result >= 0)
 	{
+		DEBUG_SHOW(_T("Attached to current thread"));
 		// I can't figure out how to get java.lang.System, exit method, so I require that main
 		// class have an "initiateExit" static method that we can call which will in turn call exit.
 #ifdef _UNICODE
-
+		DEBUG_SHOW( _T("Getting Java class to call initiateExit on. UNICODE") );
 		tstring mainClassString = m_pProperties->getMainClass();
 		std::string output = LocalUtilities::convertWideStringToUTF8(mainClassString);
 		size_t outSize = output.size();
-		char* buff = new char[outSize + 1];
+		size_t buffLength = outSize + 1;
+		char* buff = new char[buffLength];
 		buff[outSize] = 0;
+		::strncpy_s(buff, buffLength, output.c_str(), outSize);
 		javaClass = pJniEnvironment->FindClass( buff );
-		delete [] buff;
+		delete[] buff;
 #else
+		DEBUG_SHOW(_T("Getting Java class to call initiateExit on. NON-UNICODE"));
 		javaClass = pJniEnvironment->FindClass( m_pProperties->getMainClass().c_str() );
 #endif
 		if (javaClass == 0)
 		{
+			DEBUG_SHOW(_T("Java class not found for call to initiateExit."));
 			if (pJniEnvironment->ExceptionOccurred())
 				pJniEnvironment->ExceptionDescribe();
 		}
@@ -107,6 +112,7 @@ void JVMLauncher::callExit()
 			javaMethodId = pJniEnvironment->GetStaticMethodID(javaClass, "initiateExit", "(I)V");
 			if (javaMethodId == 0)
 			{
+				DEBUG_SHOW(_T("initiateExit method not found."));
 				// TODO: We should call System.exit() here to shut down - in case of a windows service
 				// if there is no initiateExit() Method -> the service would never end....
 				if (pJniEnvironment->ExceptionOccurred())
@@ -114,6 +120,7 @@ void JVMLauncher::callExit()
 			}
 			else
 			{
+				DEBUG_SHOW(_T("Calling initiateExit from JVMLauncher"));
 				pJniEnvironment->CallStaticVoidMethod(javaClass, javaMethodId, 0);
 			}
 		}
