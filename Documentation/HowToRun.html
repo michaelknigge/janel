@@ -1018,8 +1018,14 @@ All custom properties are case-sensitive. The custom properties available are: <
      mypackage.Start or mypackage/Start <o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
-     "Times New Roman"'>janel.main.argument = arguments passed to the Janel
-     executable. For details see below. <o:p></o:p></span></li>
+     "Times New Roman"'>janel.main.argument = an argument to be passed to the
+     Java main method. Multiple instances of this property may be used. The
+     order of arguments corresponds to order in .lap file. These arguments
+     follow any arguments passed at the actual command-line. For details see below.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
+     "Times New Roman"'>janel.allow.jvm.options = true/false, yes/no to allow setting of
+     JVM options at the command line. Defaults to false. For details see below.<o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.bin.jvm.dir = the type of JVM. Its current name
@@ -1090,12 +1096,6 @@ All custom properties are case-sensitive. The custom properties available are: <
      directory. Normally you should specify only one of the supported property
      value variables like ${CALLER_DIR} or ${SELF_HOME}. Starting with Janel
      3.0 the default is ${SELF_HOME}. <o:p></o:p></span></li>
- <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
-     mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
-     "Times New Roman"'>janel.main.argument = an argument to be passed to the
-     Java main method. Multiple instances of this property may be used. The
-     order of arguments corresponds to order in .lap file. These arguments
-     follow any arguments passed at the actual command-line. <o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.sysprop.process.id = true/false, yes/no to send
@@ -1314,6 +1314,23 @@ precede arguments specified with janel.main.argument. </p>
 will pass the two arguments to the main method in the Java class (provided you
 have a MyApp.lap file correctly setup in MyApp.exe's directory).<br>
 <code><span style='font-size:10.0pt'>MyApp.exe argument1 argument2</span></code>
+</p>
+
+<p><a name=cmdlineargs></a><b>JVM OPTIONS ON THE COMMAND-LINE</b><br>
+Normally all options for the JVM have to be specified in the .LAP file.
+But for some special cases, you may need to use different JVM options
+for every started instance of your application (i. e. different settings
+for the -Xmx option). When the custom property janel.allow.jvm.options is set
+to yes/true, every argument on the command line that starts with a single hyphen
+is treated as a JVM option. These options are passed to the JVM on creation
+and are not passed to the Java main method.</p>
+
+<p>Note that the options specified on the command line will follow the JVM
+options specified in the .LAP file. So, for example, if you specify -Xmx1024M
+in the .LAP file and -Xmx2048M on the command line, both options will be
+passed to the JVM, but the JVM will use the -Xmx2048M setting (this is an
+implementation detail of the JVM, but currently the Oracle JVM and the IBM
+JVM behave this way).
 </p>
 
 <p><a name=errmsgs></a><b>ERROR MESSAGES</b><br>

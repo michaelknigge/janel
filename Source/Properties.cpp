@@ -325,13 +325,41 @@ vector<tstring>& Properties::getCommandLineArguments()
 	vector<tstring>::iterator iter;
 	for(iter = m_commandLineArguments.begin(); iter != m_commandLineArguments.end(); iter++)
 	{
-		if(!iter->empty())
+		// if enabled with janel.allow.jvm.options=true, a command line argument that starts with a
+		// single "-" is treated as a JVM option (like "-Xmx1G" or "-Xverify") and is *NOT* passed
+		// to the main class as a command line argument....
+		if (getAllowJvmOptions() && (*iter).length() > 1 && (*iter)[0] == _T('-') && (*iter)[1] != _T('-'))
 		{
-			pCommandLineArgs->push_back(*iter);
+			DEBUG_SHOW( _T("treating as a JVM option: ") + current);
+		}
+		else
+		{
+		pCommandLineArgs->push_back(*iter);
 		}
 	}
 
 	return *pCommandLineArgs;
+}
+
+vector<tstring>& Properties::getCommandLineJavaOptions()
+{
+	vector<tstring>* pCommandLineJavaOpts = new vector<tstring>;
+	if (getAllowJvmOptions())
+	{
+		vector<tstring>::iterator iter;
+		for(iter = m_commandLineArguments.begin(); iter != m_commandLineArguments.end(); iter++)
+		{
+			if(!iter->empty())
+			{
+				if ((*iter).length() > 1 && (*iter)[0] == _T('-') && (*iter)[1] != _T('-'))
+				{
+					pCommandLineJavaOpts->push_back(*iter);
+				}
+			}
+		}
+	}
+
+	return *pCommandLineJavaOpts;
 }
 
 void Properties::setMinJavaVersion(const tstring& minJavaVersion)
@@ -414,6 +442,21 @@ void Properties::setTrapConsoleCtrl(const tstring& trapConsoleCtrl)
 bool Properties::getTrapConsoleCtrl()
 {
 	if( LocalUtilities::convertToBoolean(m_trapConsoleCtrl) )
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void Properties::setAllowJvmOptions(const tstring& allowJvmOptions)
+{
+	m_allowJvmOptions = allowJvmOptions;
+}
+
+bool Properties::getAllowJvmOptions()
+{
+	if( LocalUtilities::convertToBoolean(m_allowJvmOptions) )
 	{
 		return true;
 	}

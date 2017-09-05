@@ -30,6 +30,7 @@ const tstring PropertiesCustom::SERVICE_DESCRIPTION = _T("janel.service.descript
 const tstring PropertiesCustom::SERVICE_OPTION_INSTALL = _T("janel.service.option.install");
 const tstring PropertiesCustom::SERVICE_OPTION_UNINSTALL = _T("janel.service.option.uninstall");
 const tstring PropertiesCustom::MAIN_ARGUMENT = _T("janel.main.argument");
+const tstring PropertiesCustom::ALLOW_JVM_OPTIONS = _T("janel.allow.jvm.options");
 const tstring PropertiesCustom::SYSPROP_PROCESS_ID = _T("janel.sysprop.process.id");
 const tstring PropertiesCustom::SPLASH = _T("janel.splash");
 const tstring PropertiesCustom::MEMORY_CHECK_LIMITS = _T("janel.memory.check.limits");

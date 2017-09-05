@@ -504,6 +504,11 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 			pPropFileEntry->setValue(propertyValue);
 			m_pProperties->addCommandLineArgument(*pPropFileEntry);
 		}
+		// ALLOW_JVM_OPTIONS
+		else if ( propertyName.compare(PropertiesCustom::ALLOW_JVM_OPTIONS) == 0 )
+		{
+			m_pProperties->setAllowJvmOptions(propertyValue);
+		}
 		// SYSPROP_PROCESS_ID
 		else if ( propertyName.compare(PropertiesCustom::SYSPROP_PROCESS_ID) == 0 )
 		{

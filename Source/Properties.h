@@ -31,6 +31,7 @@ private:
 	tstring m_minJavaVersion; //set the minimum java version allowed
 	tstring m_maxJavaVersion; //set the maximum java version allowed
 	tstring m_trapConsoleCtrl; // set the console ctrl trap option
+	tstring m_allowJvmOptions; // set the allow jvm options option
 	tstring m_jarsInClasspath; // added to with janel.classpath.jars.dir and/or janel.classpath.jars.dir.recursive
 	JVMInfo* m_pBestJvmInfo;	// the best JVM found
 	tstring m_debugFile;	// debug file from janel.debug.file
@@ -113,6 +114,7 @@ public:
 	void addCommandLineArgument(const tstring& arg, unsigned int index);
 	void addCommandLineArgument(PropertyFileEntry& propFileEntry);
 	std::vector<tstring>& getCommandLineArguments();
+	std::vector<tstring>& getCommandLineJavaOptions();
 
 	void setMinJavaVersion(const tstring& minJavaVersion);
 	tstring& getMinJavaVersion();
@@ -125,6 +127,9 @@ public:
 
 	void setTrapConsoleCtrl(const tstring& trapConsoleCtrl);
 	bool getTrapConsoleCtrl();
+
+	void setAllowJvmOptions(const tstring& allowJvmOptions);
+	bool getAllowJvmOptions();
 
 	void addJarsToClasspath(tstring& jarsDir, bool recursive);
 	tstring& getJarsInClasspath();

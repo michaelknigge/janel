@@ -512,27 +512,36 @@ void JVMLauncher::setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs)
 			m_pProperties->addJavaSystemProperty(javaSysProp);
 		}
 
+		// Get the Java options specified at the command line (if janel.allow.jvm.options=true)
+		// and append them to the Java system properties
+		vector<tstring>& optionsVector = m_pProperties->getCommandLineJavaOptions();
+		for( int j=0; j < optionsVector.size(); j++)
+		{
+			numberOfSystemProperties++;
+			m_pProperties->addJavaSystemProperty(optionsVector.at(j));
+		}
+
 		JavaVMOption* pJvmOptions = new JavaVMOption[numberOfSystemProperties];
+
+		// Set the Java system properties and options that are built by Janel or specified in the LAP file
 		for( size_t j=0; j < numberOfSystemProperties; j++ )
 		{
 			tstring& javaSysProp(m_pProperties->getJavaSystemProperties().at(j));
-			
+
 #ifdef _UNICODE
-			const TCHAR* inBuff = javaSysProp.c_str();
-			
 			std::string output = LocalUtilities::convertWideStringToUTF8(javaSysProp);
 			size_t outStrLen = output.size();
-            size_t buffLength = outStrLen + 1;
+			size_t buffLength = outStrLen + 1;
 			char* buff = new char[buffLength];
 			buff[outStrLen] = 0;
 
-            ::strncpy_s(buff, buffLength, output.c_str(), outStrLen);
-			
+			::strncpy_s(buff, buffLength, output.c_str(), outStrLen);
+
 			pJvmOptions[j].optionString = buff;
 #else
 			pJvmOptions[j].optionString = (char*)javaSysProp.c_str();
 #endif
-            pJvmOptions[j].extraInfo = nullptr;
+			pJvmOptions[j].extraInfo = nullptr;
 			DEBUG_SHOW( tstring(_T("setupJavaVMInitArgs javaSysProp=")) + javaSysProp );
 		}
 

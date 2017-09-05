@@ -31,6 +31,7 @@ public:
 	static const tstring SERVICE_OPTION_INSTALL;
 	static const tstring SERVICE_OPTION_UNINSTALL;
 	static const tstring MAIN_ARGUMENT;
+	static const tstring ALLOW_JVM_OPTIONS;
 	static const tstring SYSPROP_PROCESS_ID;
 	static const tstring SPLASH;
 	static const tstring MEMORY_CHECK_LIMITS;
