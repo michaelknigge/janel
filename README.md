@@ -1,6 +1,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 [![Build status](https://ci.appveyor.com/api/projects/status/yelrh6y19v32ktg6/branch/enhanced?svg=true)](https://ci.appveyor.com/project/michaelknigge/janel/branch/enhanced)
-[![Download Binaries](https://img.shields.io/badge/Download-Binaries-orange.svg)](https://ci.appveyor.com/api/projects/michaelknigge/janel/artifacts/janel-enhanced.7z?branch=enhanced)
+[![Download official version](https://img.shields.io/badge/Download-Official_version-orange.svg)](https://sourceforge.net/projects/janel/files/latest/download)
+[![Download enhanced version](https://img.shields.io/badge/Download-Enhanced_version-orange.svg)](https://ci.appveyor.com/api/projects/michaelknigge/janel/artifacts/janel-enhanced.7z?branch=enhanced)
 
 # Java Native Executable / Launcher
 Janel is a free, Open Source Java native executable and launcher for Windows. Launch your Java application just like other
@@ -23,6 +24,8 @@ in two competing Janel distributions).
 
 Thanks to the free Continuous Delivery service for Windows [AppVeyor](https://www.appveyor.com/) you can always
 download a version of Janel that contains my changes. See the status badges at the top of the page.
+
+Note that my enhancements and fixes will be available in the branch _enhanced_. The _master_ branch contains an unmodified version of the Janel source code available at [Sourceforge](https://sourceforge.net/projects/janel/)
 
 # License
 MIT License
