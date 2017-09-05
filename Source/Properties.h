@@ -31,6 +31,7 @@ private:
 	tstring m_minJavaVersion; //set the minimum java version allowed
 	tstring m_maxJavaVersion; //set the maximum java version allowed
 	tstring m_trapConsoleCtrl; // set the console ctrl trap option
+	tstring m_bitnessMismatch; // set the bitness mismatch option
 	tstring m_allowJvmOptions; // set the allow jvm options option
 	tstring m_jarsInClasspath; // added to with janel.classpath.jars.dir and/or janel.classpath.jars.dir.recursive
 	JVMInfo* m_pBestJvmInfo;	// the best JVM found
@@ -73,6 +74,9 @@ public:
 	static const tstring PREFER_SERVER_BIN_JVM_DIR;
 	static const tstring REQUIRE_CLIENT_BIN_JVM_DIR;
 	static const tstring REQUIRE_SERVER_BIN_JVM_DIR;
+
+   static const tstring BITNESS_MISMATCH_SKIP;
+   static const tstring BITNESS_MISMATCH_FAIL;
 
 	Properties();
 	virtual ~Properties();
@@ -128,7 +132,11 @@ public:
 	void setTrapConsoleCtrl(const tstring& trapConsoleCtrl);
 	bool getTrapConsoleCtrl();
 
-	void setAllowJvmOptions(const tstring& allowJvmOptions);
+	void Properties::setBitnessMismatch(const tstring& bitnessMismatch);
+	bool Properties::failOnBitnessMismatch();
+	bool Properties::skipOnBitnessMismatch();
+
+	void setAllowJvmOptions(const tstring& trapConsoleCtrl);
 	bool getAllowJvmOptions();
 
 	void addJarsToClasspath(tstring& jarsDir, bool recursive);

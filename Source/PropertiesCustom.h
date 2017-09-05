@@ -45,6 +45,7 @@ public:
 	static const tstring INIT_MEMORY_LOWER_LIMIT;
 	static const tstring CUSTOM_DEFAULT_ERROR_TEXT;
 	static const tstring SHOW_ERROR_DETAIL;
+	static const tstring BITNESS_MISMATCH;
 
 
 	PropertiesCustom();

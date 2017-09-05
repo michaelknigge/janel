@@ -1045,7 +1045,10 @@ All custom properties are case-sensitive. The custom properties available are: <
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.jvm.path = the path to the jvm.dll file, example
      C:\Java\bin\client\jvm.dll. If set but file does not exist, Janel will
-     fall back to using another installed Java installation. <o:p></o:p></span></li>
+     fall back to using another installed Java installation. If set bit the bitness of
+     the JVM is different to the bitness of the runnung process, Janel will fail (default)
+     or fall back to using another installed Java installation. See the Janel property
+     janel.jbm.bitness.mismatch for details.<o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.java.home.path = the Java home path, the root
@@ -1053,7 +1056,18 @@ All custom properties are case-sensitive. The custom properties available are: <
      path is the directory that holds directory jre, which holds the bin
      directory. For JRE installations it is the directory that holds the bin
      directory. If set but directory does not exist, Janel will fall back to
-     using another installed Java installation. <o:p></o:p></span></li>
+     using another installed Java installation. If set bit the bitness of
+     the JVM is different to the bitness of the runnung process, Janel will fail (default)
+     or fall back to using another installed Java installation. See the Janel property
+     janel.jbm.bitness.mismatch for details.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
+     "Times New Roman"'>janel.jvm.bitness.mismatch = fail/skip specifies the desired
+     behaviour of Janel when the bitness of the JVM (specified with janel.jvm.path
+     or janel.java.home.path) differs from the bitness of the running process (the
+     Janel executable). The default behaviour is to fail (Janel will display a 
+     error message). If set to skip, Janel will ignore the specified JVM and
+     fall back to using another installed Java installation.<o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.min.java.version = the minimum version of the

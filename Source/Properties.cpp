@@ -32,6 +32,9 @@ const tstring Properties::PREFER_SERVER_BIN_JVM_DIR = _T("prefer_server");
 const tstring Properties::REQUIRE_CLIENT_BIN_JVM_DIR = _T("require_client");
 const tstring Properties::REQUIRE_SERVER_BIN_JVM_DIR = _T("require_server");
 
+const tstring Properties::BITNESS_MISMATCH_SKIP = _T("skip");
+const tstring Properties::BITNESS_MISMATCH_FAIL = _T("fail");
+
 #define BYTES_TO_KILOBYTES 1024
 
 typedef BOOL (WINAPI *LPFN_ISWOW64PROCESS) (HANDLE, PBOOL);
@@ -325,16 +328,19 @@ vector<tstring>& Properties::getCommandLineArguments()
 	vector<tstring>::iterator iter;
 	for(iter = m_commandLineArguments.begin(); iter != m_commandLineArguments.end(); iter++)
 	{
-		// if enabled with janel.allow.jvm.options=true, a command line argument that starts with a
-		// single "-" is treated as a JVM option (like "-Xmx1G" or "-Xverify") and is *NOT* passed
-		// to the main class as a command line argument....
-		if (getAllowJvmOptions() && (*iter).length() > 1 && (*iter)[0] == _T('-') && (*iter)[1] != _T('-'))
+		if(!iter->empty())
 		{
-			DEBUG_SHOW( _T("treating as a JVM option: ") + current);
-		}
-		else
-		{
-		pCommandLineArgs->push_back(*iter);
+			// if enabled with janel.allow.jvm.options=true, a command line argument that starts with a
+			// single "-" is treated as a JVM option (like "-Xmx1G" or "-Xverify") and is *NOT* passed
+			// to the main class as a command line argument....
+			if (getAllowJvmOptions() && (*iter).length() > 1 && (*iter)[0] == _T('-') && (*iter)[1] != _T('-'))
+			{
+				DEBUG_SHOW( _T("treating as a JVM option: ") + current);
+			}
+			else
+			{
+			pCommandLineArgs->push_back(*iter);
+			}
 		}
 	}
 
@@ -447,6 +453,22 @@ bool Properties::getTrapConsoleCtrl()
 	}
 
 	return false;
+}
+
+void Properties::setBitnessMismatch(const tstring& bitnessMismatch)
+{
+	m_bitnessMismatch = bitnessMismatch;
+	transform(m_bitnessMismatch.begin(), m_bitnessMismatch.end(), m_bitnessMismatch.begin(), (int(*)(int)) tolower);
+}
+
+bool Properties::failOnBitnessMismatch()
+{
+   return (m_bitnessMismatch.compare(BITNESS_MISMATCH_FAIL) == 0);
+}
+
+bool Properties::skipOnBitnessMismatch()
+{
+   return (m_bitnessMismatch.compare(BITNESS_MISMATCH_SKIP) == 0);
 }
 
 void Properties::setAllowJvmOptions(const tstring& allowJvmOptions)

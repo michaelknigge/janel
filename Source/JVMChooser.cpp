@@ -10,6 +10,7 @@
 #include "WindowsRegistry.h"
 #include <algorithm>
 #include "LocalUtilities.h"
+#include "Windows.h"
 
 using namespace std;
 
@@ -32,6 +33,28 @@ bool isFirstJvmBetter(JVMInfo& firstJvmInfo, JVMInfo& secondJvmInfo)
 	return false;
 }
 
+bool isBitnessOk(JVMInfo *jvm) {
+   UINT errorMode = SetErrorMode(SEM_FAILCRITICALERRORS | SEM_NOGPFAULTERRORBOX | SEM_NOOPENFILEERRORBOX);
+   bool result = true;
+
+   const TCHAR* pJvmPath = jvm->getJvmPath().c_str();
+   DEBUG_SHOW( tstring(_T("checking bitness of: ")) + pJvmPath );
+	HINSTANCE instance = LoadLibrary(pJvmPath);
+
+   if (instance == NULL)
+   {
+      result = (GetLastError() != ERROR_BAD_EXE_FORMAT);
+   }
+   else
+   {
+      FreeLibrary(instance);
+   }
+   DEBUG_SHOW( tstring(_T("bitness is: ")) + result ? _T("ok") : _T("not ok") );
+
+   SetErrorMode(errorMode);
+   return result;
+}
+
 JVMInfo* JVMChooser::getBestJVM()
 {
 	JVMInfo *pBestJvm = 0;
@@ -40,13 +63,21 @@ JVMInfo* JVMChooser::getBestJVM()
 		pBestJvm = getJvmFromCustomJvmPath();
 		if( pBestJvm != 0 )
 		{
-			return pBestJvm;
+         if( m_pProperties->failOnBitnessMismatch() || isBitnessOk(pBestJvm) )
+         {
+            return pBestJvm;
+         }
+         delete pBestJvm;
 		}
 
 		pBestJvm = getJvmFromCustomJavaHomePath();
 		if( pBestJvm != 0 )
 		{
-			return pBestJvm;
+         if( m_pProperties->failOnBitnessMismatch() || isBitnessOk(pBestJvm) )
+         {
+            return pBestJvm;
+         }
+         delete pBestJvm;
 		}
 
 		vector<JVMInfo>* pVecJvmInfo = new vector<JVMInfo>;

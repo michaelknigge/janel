@@ -423,6 +423,11 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 		{
 			m_pProperties->setCustomJvmPath(propertyValue);
 		}
+		// JVM_BITNESS_MISMATCH
+		else if( propertyName.compare(PropertiesCustom::BITNESS_MISMATCH) == 0 )
+		{
+			m_pProperties->setBitnessMismatch(propertyValue);
+		}
 		// JAVA_HOME_PATH
 		else if( propertyName.compare(PropertiesCustom::JAVA_HOME_PATH) == 0 )
 		{
