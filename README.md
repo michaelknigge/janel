@@ -22,7 +22,7 @@ I'll continue to push all my contributions to Timothy so he can integrate them i
 (and I really hope that Timothy will integrate them because I'm no friend of fragmentation and I have no interest
 in two competing Janel distributions).
 
-Thanks to the free Continuous Delivery service for Windows [AppVeyor](https://www.appveyor.com/) you can always
+Thanks to the free Continuous Delivery service [AppVeyor](https://www.appveyor.com/) you can always
 download a version of Janel that contains my changes. See the status badges at the top of the page.
 
 Note that my enhancements and fixes will be available in the branch _enhanced_. The _master_ branch contains an unmodified version of the Janel source code available at [Sourceforge](https://sourceforge.net/projects/janel/)
