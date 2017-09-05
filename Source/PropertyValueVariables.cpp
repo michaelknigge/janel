@@ -46,14 +46,14 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		{
 		    tstring tempString = strJustVariable.substr(4);
 			tstring& strEnvVariable = tempString;
-            size_t outputSize = 0;
-            _tgetenv_s( &outputSize, NULL, 0, strEnvVariable.c_str() );
-            TCHAR* envVariableValue = new TCHAR[outputSize];
-            size_t vOutputSize = 0;
-            _tgetenv_s( &vOutputSize, envVariableValue, outputSize, strEnvVariable.c_str() );
-            assert(vOutputSize == outputSize);
-			if ( envVariableValue != NULL )
+			size_t outputSize = 0;
+			_tgetenv_s( &outputSize, NULL, 0, strEnvVariable.c_str() );
+			if ( outputSize != 0)
 			{
+				TCHAR* envVariableValue = new TCHAR[outputSize];
+				size_t vOutputSize = 0;
+				_tgetenv_s( &vOutputSize, envVariableValue, outputSize, strEnvVariable.c_str() );
+				assert(vOutputSize == outputSize);
 				pValueFromVariable = new tstring(envVariableValue);
 			}
 		}
