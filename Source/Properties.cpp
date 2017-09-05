@@ -50,6 +50,8 @@ Properties::Properties()
 	m_initMemoryUpperLimit = MAXINT;
 	m_initMemoryLowerLimit = 0;
 
+	m_bitnessMismatch = BITNESS_MISMATCH_FAIL;
+
 #if _WIN64
 	m_exeBitness = _T("64");
 	m_operatingSystemBitness = _T("64");
