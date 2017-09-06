@@ -8,7 +8,6 @@ build_script:
 
     del Executables\Win32\JanelWindows32.exe
 
-
     del Executables\x64\JanelConsole64.exe
 
     del Executables\x64\JanelWindows64.exe
@@ -29,13 +28,13 @@ build_script:
     "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.com" Janel.sln /rebuild "Release Windows|x64"
 
 
-    copy "Release Windows\Janel.exe" ..\Executables\Win32\JanelConsole32.exe
+    copy "Release Console\Janel.exe" ..\Executables\Win32\JanelConsole32.exe
 
-    copy "Release Console\Janel.exe" ..\Executables\Win32\JanelWindows32.exe
+    copy "Release Windows\Janel.exe" ..\Executables\Win32\JanelWindows32.exe
 
-    copy "x64\Release Windows\Janel.exe" ..\Executables\x64\JanelConsole64.exe
+    copy "x64\Release Console\Janel.exe" ..\Executables\x64\JanelConsole64.exe
 
-    copy "x64\Release Console\Janel.exe" ..\Executables\x64\JanelWindows64.exe
+    copy "x64\Release Windows\Janel.exe" ..\Executables\x64\JanelWindows64.exe
 
 
     cd ..

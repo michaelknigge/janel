@@ -7,6 +7,7 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 <project name="Janel-Test" default="TestLaunch050" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
 	<mkdir dir="C:\Test"/>
+	<mkdir dir="C:\Temp"/>
 
 	<target name="init">
 		<copy file="../Executables/x64/JanelConsole64.exe" tofile="TestLaunch/TestConsole.exe" verbose="true" overwrite="true"/>
