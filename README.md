@@ -28,7 +28,7 @@ download a version of Janel that contains my changes. See the status badges at t
 **Note that my enhancements and fixes will be available in the branch _enhanced_. The _master_ branch contains an unmodified version of the Janel source code available at [Sourceforge](https://sourceforge.net/projects/janel/)**
 
 # Enhancements
-These are my enhancements to the official Version of Janel
+These are my enhancements to the official Version of Janel 4.2.0
 ## Fix crash at startup if an environment variable is missing
 Version 4.2.0 of Janel will crash at startup if you reference an environment variable in the LAP file that is not set. Imagine you want to add specific JARs to the CLASSPATH at runtime and specify
 
