@@ -46,7 +46,7 @@ then Janel crashes if the bitness of the JVM does not match the bitness of the J
     Error in Java launcher. The DLL "C:\Program Files\Java\jdk1.8.0_101\jre\bin\server\jvm.dll" could not be loaded. The bitness of te DLL and the running process "JanelConsole32.exe" are different
 
 ## Specify the behaviour of bitness mismatch
-Now you can specify how Janel should behave if the bitness if the JVM and the Janel executable does not match. Per default (see above) Janel will exit with an error message. But now you can also instuct Janel that it shall continue to look for a JVM that can be used. An example:
+Now you can specify how Janel should behave if the bitness if the JVM and the Janel executable does not match. Per default (see above) Janel will exit with an error message. But now you can also instruct Janel that it shall continue to look for a JVM that can be used. An example:
 
     janel.jvm.bitness.mismatch=skip
     janel.java.home.path=${env.JAVA_HOME}
