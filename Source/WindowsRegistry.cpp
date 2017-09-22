@@ -23,6 +23,16 @@ WindowsRegistry::~WindowsRegistry()
 
 void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
 {
+	addAllJvms(pVecJvmInfo, regKey, Properties::JRE_JAVA_BUNDLE);
+}
+
+void WindowsRegistry::addAllJreJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
+{
+	addAllJvms(pVecJvmInfo, regKey, Properties::JRE_JAVA_BUNDLE);
+}
+
+void WindowsRegistry::addAllJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey, const tstring& bundle)
+{
 	try
 	{
 		LONG result;
@@ -31,7 +41,7 @@ void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring&
 		result = RegOpenKeyEx(HKEY_LOCAL_MACHINE,regKey.c_str(),0,KEY_READ,&hKey);
 		if (result != ERROR_SUCCESS)
 		{
-			// key may not exist so exit 			
+			// key may not exist so exit 
 			return;
 		}
 
@@ -41,13 +51,13 @@ void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring&
 		{ 
 			DWORD lpcName = MAX_PATH;
 			result = RegEnumKeyEx(hKey, 
-                     index, 
-                     lpName, 
-                     &lpcName, 
-                     NULL, 
-                     NULL, 
-                     NULL, 
-                     NULL); 
+					index, 
+					lpName, 
+					&lpcName, 
+					NULL, 
+					NULL, 
+					NULL, 
+					NULL); 
 
 			if( result == ERROR_SUCCESS ) 
 			{
@@ -67,9 +77,11 @@ void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring&
 				}
 
 				JVMInfo *pJvmInfo = new JVMInfo;
-				pJvmInfo->setJavaBundle(Properties::SDK_JAVA_BUNDLE);
+				pJvmInfo->setJavaBundle(bundle);
 				pJvmInfo->setJavaHomePath(javaHome);
 				pJvmInfo->setVersion(dirName);
+
+				DEBUG_SHOW( tstring(_T("Found JDK version ")) + dirName +  tstring(_T(" in directory  ")) + javaHome);
 
 				pVecJvmInfo->push_back(*pJvmInfo);
 			}
@@ -88,75 +100,7 @@ void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring&
 	}
 }
 
-void WindowsRegistry::addAllJreJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
-{
-	try
-	{
-		LONG result;
-		HKEY hKey;
-
-		result = RegOpenKeyEx(HKEY_LOCAL_MACHINE,regKey.c_str(),0,KEY_READ,&hKey);
-		if (result != ERROR_SUCCESS)
-		{
-			// key may not exist so exit
-			return;
-		}
-
-		TCHAR lpName[MAX_PATH];
-
-		for (DWORD index = 0, result = ERROR_SUCCESS; result == ERROR_SUCCESS; index++) 
-		{ 
-			DWORD lpcName = MAX_PATH;
-			result = RegEnumKeyEx(hKey, 
-                     index, 
-                     lpName, 
-                     &lpcName, 
-                     NULL, 
-                     NULL, 
-                     NULL, 
-                     NULL); 
-
-			if( result == ERROR_SUCCESS ) 
-			{
-				tstring dirName(lpName);	
-				if( dirName.empty() )
-				{
-					continue;
-				}
-
-				tstring fullKeyPath = regKey + tstring(_T("\\")) + dirName;
-
-				DEBUG_SHOW( tstring(_T("fullKeyPath=")) + fullKeyPath );
-				tstring& javaHome = getStringValue(fullKeyPath, _T("JavaHome"));
-				if( javaHome.empty() )
-				{
-					continue;
-				}
-
-				JVMInfo *pJvmInfo = new JVMInfo;
-				pJvmInfo->setJavaBundle(Properties::JRE_JAVA_BUNDLE);
-				pJvmInfo->setJavaHomePath(javaHome);
-				pJvmInfo->setVersion(dirName);
-
-				pVecJvmInfo->push_back(*pJvmInfo);
-			}
-		} 
-
-		RegCloseKey(hKey);
-	}
-	catch(tstring& se)
-	{
-		ErrHandler::severeError( se );
-	}
-	catch(...)
-	{
-		DEBUG_SHOW( _T("Exception in WindowsRegistry.addAllJreJvms()") );
-		ErrHandler::severeError( _T("Error getting JVM paths from registry.") );
-	}
-}
-
-tstring& WindowsRegistry::getStringValue(const tstring& regKeyPath,
-										const tstring& regValueName)
+tstring& WindowsRegistry::getStringValue(const tstring& regKeyPath, const tstring& regValueName)
 {
 	tstring* pStringValue = new tstring;
 	try
@@ -173,7 +117,7 @@ tstring& WindowsRegistry::getStringValue(const tstring& regKeyPath,
 			DEBUG_SHOW( tstring(_T("Registry key ")) + regKeyPath + tstring(_T(" could not be opened.")));
 		}
 		else
-		{			
+		{
 			DWORD regValueDataLength = MAX_PATH;
 			DWORD type = REG_SZ;
 

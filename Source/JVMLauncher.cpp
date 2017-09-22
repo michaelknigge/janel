@@ -195,6 +195,45 @@ VOID WINAPI serviceMain(unsigned long argc, _TCHAR *argv[])
 	SetServiceStatus(statusHandle, &serviceStatus);
 }
 
+void JVMLauncher::preloadRuntimeLibrary()
+{
+	// When dealing with native code there *might* come up problems when the C-Runtime library
+	// (MSVC*.DLL) loaded with the native code uses/loads a version of the library that is
+	// incompatible with the version of the library that is required by the JVM. So we
+	// preload the C-Runtime library to make sure the library that is released/used by
+	// the JVM is loaded first...
+
+	// Try for Java 1.6...
+	if (preloadRuntimeLibrary(tstring(_T("\\bin\\msvcr71.dll")))) {
+		return;
+	}
+
+	// Try for Java 1.7 and 1.8...
+	if (preloadRuntimeLibrary(tstring(_T("\\bin\\msvcr100.dll")))) {
+		return;
+	}
+
+	// Try for Java 9...
+	if (preloadRuntimeLibrary(tstring(_T("\\bin\\msvcr120.dll")))) {
+		return;
+	}
+
+	DEBUG_SHOW(tstring(_T("MSVCR (C-Runtime) library could not be loaded.")));
+}
+
+bool JVMLauncher::preloadRuntimeLibrary(tstring& filename)
+{
+	tstring crtpath = m_pProperties->getBestJvmInfo()->getJavaHomePath() + filename;
+	DEBUG_SHOW(tstring(_T("Trying to load ")) + crtpath);
+
+	if (LoadLibrary(crtpath.c_str()))
+	{
+		DEBUG_SHOW(tstring(_T("Loaded successfully")));
+		return true;
+	}
+
+	return false;
+}
 
 void JVMLauncher::launchService()
 {
@@ -263,28 +302,7 @@ void JVMLauncher::launch()
 			dummyWnd = CreateWindowEx(WS_EX_TOOLWINDOW, _T("EDIT"), _T("JanelDummy"), WS_DISABLED| WS_POPUP | WS_VISIBLE, 0, 0, 0, 0, NULL, NULL, GetModuleHandle(NULL), NULL);
 		}
 
-		// TODO: pre-loading the CRT shoud be a little bit more intelligent. We should iterate over all existing
-		// msvcr*.dll files and load the one with the highest number.... Well... there should be only one
-		// present because it makes no sense to use/ship different versions of the CRT....
-
-		// Trying to pre-load the CRT from the desired JAVA-Directory...
-		tstring crtpath = m_pProperties->getBestJvmInfo()->getJavaHomePath() + tstring(_T("\\bin\\msvcr71.dll"));
-		DEBUG_SHOW(tstring(_T("Trying to load msvcr71.dll (for Java 1.6)...")));
-		HMODULE crt = LoadLibrary(crtpath.c_str());
-		if (crt)
-		{
-			DEBUG_SHOW(tstring(_T("msvcr71.dll loaded")));
-		}
-		else
-		{
-			crtpath = m_pProperties->getBestJvmInfo()->getJavaHomePath() + tstring(_T("\\bin\\msvcr100.dll"));
-			DEBUG_SHOW(tstring(_T("Trying to load msvcr100.dll (for Java 1.7)...")));
-			crt = LoadLibrary(crtpath.c_str());
-			if(crt)
-			{
-				DEBUG_SHOW(tstring(_T("msvcr100.dll loaded")));
-			}
-		}
+		preloadRuntimeLibrary();
 
 		// Show the splash screen
 		tstring splash = m_pProperties->getSplash();
@@ -364,8 +382,8 @@ void JVMLauncher::launch()
 			pJniEnvironment->ExceptionDescribe();
 			throw tstring(_T("Error occurred while creating Java VM."));
 		}
-		m_pVM = pJvm;		
-		
+		m_pVM = pJvm;
+
 		// find main class
         tstring& mainClass = m_pProperties->getMainClass();
         

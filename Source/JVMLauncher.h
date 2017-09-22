@@ -16,6 +16,8 @@ private:
 	Properties* m_pProperties;
 	JavaVM* m_pVM;
 	void setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs);
+	void preloadRuntimeLibrary();
+	bool preloadRuntimeLibrary(tstring& filename);
 public:
 	JVMLauncher(Properties* pProperties);
 	virtual ~JVMLauncher();
@@ -23,7 +25,7 @@ public:
 	void launchService();
 	void callExit();
 	Properties* getProperties();
-	void teardownJavaVMInitArgs( JavaVMInitArgs& jvmInitArgs );
+	void teardownJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs);
 };
 
 #endif // ifndef _JANEL_JVMLAUNCHER_H_INCLUDED_

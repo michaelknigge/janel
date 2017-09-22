@@ -120,9 +120,20 @@ void JVMChooser::getAllJVMs(vector<JVMInfo>* pVecJvmInfo)
 	{
 		WindowsRegistry winsReg(m_pProperties);
 
+		// JDK up to (including) 1.8 (Java 8)
 		tstring regKey(_T("SOFTWARE\\JavaSoft\\Java Development Kit"));
 		winsReg.addAllSdkJvms(pVecJvmInfo, regKey);
+
+		// JRE up to (including) 1.8 (Java 8)
 		regKey = _T("SOFTWARE\\JavaSoft\\Java Runtime Environment");
+		winsReg.addAllJreJvms(pVecJvmInfo, regKey);
+
+		// JDK starting with Java 9
+		regKey = _T("SOFTWARE\\JavaSoft\\JDK");
+		winsReg.addAllSdkJvms(pVecJvmInfo, regKey);
+
+		// JRE starting with Java 9
+		regKey = _T("SOFTWARE\\JavaSoft\\JRE");
 		winsReg.addAllJreJvms(pVecJvmInfo, regKey);
 	}
 	catch(...)

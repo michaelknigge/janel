@@ -14,18 +14,13 @@ class WindowsRegistry
 {
 private:
 	Properties* m_pProperties;
-	//tstring& getJavaBundleRegKeyPath();
-	//tstring& getCurrentVersion(tstring javaBundleRegKeyPath);
 
-	tstring& getStringValue(const tstring& regKeyPath,
-			const tstring& regValueName);
+	void addAllJvms(std::vector<JVMInfo>* pVecJvmInfo, const tstring& regKey, const tstring& bundle);
+	tstring& getStringValue(const tstring& regKeyPath, const tstring& regValueName);
 public:
 	WindowsRegistry(Properties* pProperties);
 	virtual ~WindowsRegistry();
 	
-	//tstring& getPathToJavaHome();
-	//tstring& getJvmPathViaRuntimeLib();
-	//std::vector<tstring>& getCurrentJVMPaths();
 	void addAllSdkJvms(std::vector<JVMInfo>* pVecJvmInfo, const tstring& regKey);
 	void addAllJreJvms(std::vector<JVMInfo>* pVecJvmInfo, const tstring& regKey);
 };

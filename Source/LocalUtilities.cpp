@@ -94,6 +94,7 @@ bool LocalUtilities::fileExists(const tstring& fileName)
 		else
 		{
 			exists = true;
+			_findclose(hFileFound);
 		}
 
 		delete pfileDataFound;
