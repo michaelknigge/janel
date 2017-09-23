@@ -39,7 +39,7 @@ Version 4.2.0 of Janel will crash at startup if you reference an environment var
 in the LAP file. Now if the environment variable USER_DEFINED_JARS_FOLDER is not set, Janel will crash. My enhanced version fixes this bug.
 
 ## Fix crash at startup if the bitness of the JVM and Janel does not match
-If you set the path the the JVM to be used, i. e. with
+If you set the path of the JVM to be used, i. e. with
 
     janel.java.home.path=C:\Program Files\Java\jdk1.8.0_101
     
@@ -50,7 +50,7 @@ then Janel crashes if the bitness of the JVM does not match the bitness of the J
     process "JanelConsole32.exe" are different
 
 ## Specify the behaviour of bitness mismatch
-Now you can specify how Janel should behave if the bitness if the JVM and the Janel executable does not match. Per default (see above) Janel will exit with an error message. But now you can also instruct Janel that it shall continue to look for a JVM that can be used. An example:
+Now you can specify how Janel should behave if the bitness of the JVM and the Janel executable does not match. Per default (see above) Janel will exit with an error message. But now you can also instruct Janel that it shall continue to look for a JVM that can be used. An example:
 
     janel.jvm.bitness.mismatch=skip
     janel.java.home.path=${env.JAVA_HOME}
