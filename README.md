@@ -36,7 +36,7 @@ Version 4.2.0 of Janel will crash at startup if you reference an environment var
 
     janel.classpath.jars.dir.recursive=${env.USER_DEFINED_JARS_FOLDER}
     
-in the LAP file. Now if the environment variable USER_DEFINED_JARS_FOLDER is not set, Janel will crash.
+in the LAP file. Now if the environment variable USER_DEFINED_JARS_FOLDER is not set, Janel will crash. My enhanced version fixes this bug.
 
 ## Fix crash at startup if the bitness of the JVM and Janel does not match
 If you set the path the the JVM to be used, i. e. with
@@ -62,7 +62,7 @@ Janel uses the LAP file to pass options to the JVM. But for command line applica
 
     janel.allow.jvm.options=true
 
-exactly this is possible. If set to true, Janel will treat each command line parameter that starts with a single "-" as a Java option and pass this to the JVM. Note that these options are passes after the options specified in the LAP file. So for example if you specify the option -Xmx4G in the LAP file and -Xmx12G at the command line, the last one (12G) will win.
+exactly this is possible. If set to true, Janel will treat each command line parameter that starts with a single "-" as a Java option and pass this to the JVM. Note that these options are passed after the options specified in the LAP file. So for example if you specify the option -Xmx4G in the LAP file and -Xmx12G at the command line, the last one (12G) will win.
 
 # License
 MIT License
