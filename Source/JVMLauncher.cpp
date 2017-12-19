@@ -466,7 +466,7 @@ void JVMLauncher::launch()
 		if(pJniEnvironment->ExceptionOccurred() != 0)
 		{
 			pJniEnvironment->ExceptionDescribe();
-			throw tstring(_T("Error occured while calling main method in Java class ") + m_pProperties->getMainClass());
+			throw tstring(_T("Error occurred while calling main method in Java class ") + m_pProperties->getMainClass());
 		}
 
 		pJvm->DestroyJavaVM();
