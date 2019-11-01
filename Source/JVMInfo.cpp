@@ -51,7 +51,7 @@ tstring& JVMInfo::getVersion()
 	return m_version;
 }
 
-tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regularVersion)
+tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regularVersion, TCHAR* fillToken)
 {
 	tstring* pComparableVersion = new tstring();
 	try
@@ -72,7 +72,7 @@ tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regular
 			token = _tcstok_s(NULL, sep, &context);
 			if( token == NULL && versionNumberType < 4 )
 			{
-				token = _T("0");
+				token = fillToken;
 			}
 		}
 	}

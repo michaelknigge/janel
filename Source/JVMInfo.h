@@ -27,7 +27,7 @@ public:
 	void setVersion(const tstring& version);
 	tstring& getVersion();
 	void setComparableVersion(const tstring& comparableVersion);
-	tstring& getComparableVersionUsingRegularVersion(const tstring& regularVersion);
+	tstring& getComparableVersionUsingRegularVersion(const tstring& regularVersion, TCHAR* fillToken);
 	tstring& getComparableVersion();
 	void setJvmPath(const tstring& jvmPath);
 	tstring& getJvmPath();
