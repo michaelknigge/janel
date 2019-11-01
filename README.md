@@ -29,7 +29,7 @@ download a version of Janel that contains my changes. See the status badges at t
 
 # Enhancements
 These are my enhancements to the official Version of Janel 4.2.0
-## Support of Java 9
+## Support of Java 9 and newer
 Java 9 is fully supported (JDK and JRE). With version 9 the Windows registry keys that hold version information about installed Java versions changed. Furthermore, the JDK does no longer contain a subdirectory "jre" that contains the JRE. Due to these changes Janel had to be enhanced.
 ## Fix crash at startup if an environment variable is missing
 Version 4.2.0 of Janel will crash at startup if you reference an environment variable in the LAP file that is not set. Imagine you want to add specific JARs to the CLASSPATH at runtime and specify
@@ -37,6 +37,9 @@ Version 4.2.0 of Janel will crash at startup if you reference an environment var
     janel.classpath.jars.dir.recursive=${env.USER_DEFINED_JARS_FOLDER}
     
 in the LAP file. Now if the environment variable USER_DEFINED_JARS_FOLDER is not set, Janel will crash. My enhanced version fixes this bug.
+
+## Support of OpenJDK (HotSpot and OpenJ9)
+Janel will consider JVMs from Oracle and the JVMs releasd by [AdoptOpenJDK](https://adoptopenjdk.net/).
 
 ## Fix crash at startup if the bitness of the JVM and Janel does not match
 If you set the path of the JVM to be used, i. e. with
