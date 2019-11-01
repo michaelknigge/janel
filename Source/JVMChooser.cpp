@@ -157,8 +157,7 @@ void JVMChooser::breakoutBinJvmDirs(vector<JVMInfo>* pVecJvmInfo)
 			DEBUG_SHOW( _T("Top of first loop through JVMInfos") );
 			JVMInfo& jvmInfo = pVecJvmInfo->at(i);
 			
-			if( jvmInfo.existsJvmDLL(Properties::CLIENT_BIN_JVM_DIR) &&
-					jvmInfo.existsJvmDLL(Properties::SERVER_BIN_JVM_DIR) )
+			if( jvmInfo.existsJvmDLL(Properties::CLIENT_BIN_JVM_DIR) && jvmInfo.existsJvmDLL(Properties::SERVER_BIN_JVM_DIR) )
 			{
 				JVMInfo* pNewJvmInfo = jvmInfo.partialClone();
 				pNewJvmInfo->setBinJvmDir(Properties::SERVER_BIN_JVM_DIR);
@@ -215,7 +214,7 @@ void JVMChooser::determineVersions(vector<JVMInfo>* pVecJvmInfo)
 				jvmInfo.setAcceptable(false);
 			}
 
-			jvmInfo.setComparableVersion(jvmInfo.getComparableVersionUsingRegularVersion(jvmInfo.getVersion()));
+			jvmInfo.setComparableVersion(jvmInfo.getComparableVersionUsingRegularVersion(jvmInfo.getVersion(), _T("0")));
 
 			if( (m_pProperties->getCustomBinJvmDir().empty() && m_pProperties->getCustomJavaBundle().empty()) ||
 				m_pProperties->isCustomJavaBundleRequired() ||
