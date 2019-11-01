@@ -23,7 +23,7 @@ WindowsRegistry::~WindowsRegistry()
 
 void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
 {
-	addAllJvms(pVecJvmInfo, regKey, Properties::JRE_JAVA_BUNDLE);
+	addAllJvms(pVecJvmInfo, regKey, Properties::SDK_JAVA_BUNDLE);
 }
 
 void WindowsRegistry::addAllJreJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
