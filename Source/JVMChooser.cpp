@@ -135,6 +135,10 @@ void JVMChooser::getAllJVMs(vector<JVMInfo>* pVecJvmInfo)
 		// JRE starting with Java 9
 		regKey = _T("SOFTWARE\\JavaSoft\\JRE");
 		winsReg.addAllJreJvms(pVecJvmInfo, regKey);
+
+		// AdoptOpenJDK
+		regKey = _T("SOFTWARE\\AdoptOpenJDK\\JDK");
+		winsReg.addAllSdkJvms(pVecJvmInfo, regKey);
 	}
 	catch(...)
 	{
