@@ -255,12 +255,19 @@ tstring& Properties::getCustomJvmPath()
 
 void Properties::setCustomJavaHomePath(const tstring& customJavaHomePath)
 {
-	if( !LocalUtilities::fileExists(customJavaHomePath) )
+	tstring cleanPath = customJavaHomePath;
+
+	if (cleanPath[cleanPath.size() - 1] == _T('\\'))
+	{
+		cleanPath.erase(cleanPath.size() - 1);
+	}
+
+	if( !LocalUtilities::fileExists(cleanPath) )
 	{
 		return;
 	}
 
-	m_customJavaHomePath = customJavaHomePath;
+	m_customJavaHomePath = cleanPath;
 }
 
 tstring& Properties::getCustomJavaHomePath()
