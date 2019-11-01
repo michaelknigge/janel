@@ -1,7 +1,7 @@
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 [![Build status](https://ci.appveyor.com/api/projects/status/yelrh6y19v32ktg6/branch/enhanced?svg=true)](https://ci.appveyor.com/project/michaelknigge/janel/branch/enhanced)
 [![Download official version](https://img.shields.io/badge/Download-Official_version-orange.svg)](https://sourceforge.net/projects/janel/files/latest/download)
-[![Download enhanced version](https://img.shields.io/badge/Download-Enhanced_version-orange.svg)](https://ci.appveyor.com/api/projects/michaelknigge/janel/artifacts/janel-enhanced.7z?branch=enhanced)
+[![Download enhanced version](https://img.shields.io/badge/Download-Enhanced_version-orange.svg)](https://github.com/michaelknigge/janel/releases)
 
 # Java Native Executable / Launcher
 Janel is a free, Open Source Java native executable and launcher for Windows. Launch your Java application just like other
@@ -22,14 +22,14 @@ I'll continue to push all my contributions to Timothy so he can integrate them i
 (and I really hope that Timothy will integrate them because I'm no friend of fragmentation and I have no interest
 in two competing Janel distributions).
 
-Thanks to the free Continuous Delivery service [AppVeyor](https://www.appveyor.com/) you can always
-download a version of Janel that contains my changes. See the status badges at the top of the page.
+Every release of my enhanced Janel is built by the free Continuous Delivery service [AppVeyor](https://www.appveyor.com/)
+in a clean environment. The status badges at the top of the page will guide you to the download pages.
 
 **Note that my enhancements and fixes will be available in the branch _enhanced_. The _master_ branch contains an unmodified version of the Janel source code available at [Sourceforge](https://sourceforge.net/projects/janel/)**
 
 # Enhancements
 These are my enhancements to the official Version of Janel 4.2.0
-## Support of Java 9
+## Support of Java 9 and newer
 Java 9 is fully supported (JDK and JRE). With version 9 the Windows registry keys that hold version information about installed Java versions changed. Furthermore, the JDK does no longer contain a subdirectory "jre" that contains the JRE. Due to these changes Janel had to be enhanced.
 ## Fix crash at startup if an environment variable is missing
 Version 4.2.0 of Janel will crash at startup if you reference an environment variable in the LAP file that is not set. Imagine you want to add specific JARs to the CLASSPATH at runtime and specify
@@ -37,6 +37,9 @@ Version 4.2.0 of Janel will crash at startup if you reference an environment var
     janel.classpath.jars.dir.recursive=${env.USER_DEFINED_JARS_FOLDER}
     
 in the LAP file. Now if the environment variable USER_DEFINED_JARS_FOLDER is not set, Janel will crash. My enhanced version fixes this bug.
+
+## Support of OpenJDK (HotSpot and OpenJ9)
+Janel will consider JVMs from Oracle and JVMs releasd by [AdoptOpenJDK](https://adoptopenjdk.net/).
 
 ## Fix crash at startup if the bitness of the JVM and Janel does not match
 If you set the path of the JVM to be used, i. e. with
