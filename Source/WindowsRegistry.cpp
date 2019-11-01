@@ -121,8 +121,7 @@ tstring& WindowsRegistry::getStringValue(const tstring& regKeyPath, const tstrin
 			DWORD regValueDataLength = MAX_PATH;
 			DWORD type = REG_SZ;
 
-			result = RegQueryValueEx(hKey,regValueName.c_str(),NULL,&type,
-					(LPBYTE)regValueData,&regValueDataLength);
+			result = RegQueryValueEx(hKey,regValueName.c_str(),NULL,&type, (LPBYTE)regValueData,&regValueDataLength);
 			if (result != ERROR_SUCCESS)
 			{
 				// errors that should not cause a complete failure of launch
