@@ -106,6 +106,8 @@ void JVMLauncher::callExit()
 			DEBUG_SHOW(_T("Java class not found for call to initiateExit."));
 			if (pJniEnvironment->ExceptionOccurred())
 				pJniEnvironment->ExceptionDescribe();
+
+			callSystemExit();
 		}
 		else
 		{
@@ -113,10 +115,10 @@ void JVMLauncher::callExit()
 			if (javaMethodId == 0)
 			{
 				DEBUG_SHOW(_T("initiateExit method not found."));
-				// TODO: We should call System.exit() here to shut down - in case of a windows service
-				// if there is no initiateExit() Method -> the service would never end....
 				if (pJniEnvironment->ExceptionOccurred())
 					pJniEnvironment->ExceptionDescribe();
+
+				callSystemExit();
 			}
 			else
 			{
@@ -125,6 +127,58 @@ void JVMLauncher::callExit()
 			}
 		}
 		m_pVM->DetachCurrentThread();
+	}
+}
+
+void JVMLauncher::callSystemExit()
+{
+	jclass javaClass;
+	jmethodID javaMethodId;
+	JNIEnv* pJniEnvironment;
+	jint result;
+
+	DEBUG_SHOW(_T("callSystemExit invoked!"));
+
+#ifdef _UNICODE
+	DEBUG_SHOW(_T("Getting Java class to call System.exit() on. UNICODE"));
+	std::string output = LocalUtilities::convertWideStringToUTF8(_T("java/lang/System"));
+	size_t outSize = output.size();
+	size_t buffLength = outSize + 1;
+	char* buff = new char[buffLength];
+	buff[outSize] = 0;
+	::strncpy_s(buff, buffLength, output.c_str(), outSize);
+	javaClass = pJniEnvironment->FindClass(buff);
+	delete[] buff;
+#else
+	DEBUG_SHOW(_T("Getting Java class to call System.exit() on. NON-UNICODE"));
+	javaClass = pJniEnvironment->FindClass(tstring(_T("java/lang/System")).c_str());
+#endif
+	if (javaClass == 0)
+	{
+		DEBUG_SHOW(_T("Java class java.lang.System not found"));
+		if (pJniEnvironment->ExceptionOccurred())
+			pJniEnvironment->ExceptionDescribe();
+
+		// Last chance... Just quit the C program...
+		exit(0);
+	}
+	else
+	{
+		javaMethodId = pJniEnvironment->GetStaticMethodID(javaClass, "exit", "()V");
+		if (javaMethodId == 0)
+		{
+			DEBUG_SHOW(_T("System.exit() method not found."));
+			if (pJniEnvironment->ExceptionOccurred())
+				pJniEnvironment->ExceptionDescribe();
+
+			// Last chance... Just quit the C program...
+			exit(0);
+		}
+		else
+		{
+			DEBUG_SHOW(_T("Calling System.exit() from JVMLauncher"));
+			pJniEnvironment->CallStaticVoidMethod(javaClass, javaMethodId);
+		}
 	}
 }
 

@@ -24,6 +24,7 @@ public:
 	void launch();
 	void launchService();
 	void callExit();
+	void callSystemExit();
 	Properties* getProperties();
 	void teardownJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs);
 };
