@@ -70,7 +70,7 @@ test_script:
     set PATH=%PATH%;C:\cygwin\bin
 
 
-    wget http://mirror.netcologne.de/apache.org/ant/binaries/apache-ant-1.10.5-bin.tar.gz
+    wget http://mirror.netcologne.de/apache.org/ant/binaries/apache-ant-1.10.7-bin.tar.gz
 
     tar -xzf apache-ant-1.10.5-bin.tar.gz
 

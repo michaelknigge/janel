@@ -255,12 +255,19 @@ tstring& Properties::getCustomJvmPath()
 
 void Properties::setCustomJavaHomePath(const tstring& customJavaHomePath)
 {
-	if( !LocalUtilities::fileExists(customJavaHomePath) )
+	tstring cleanPath = customJavaHomePath;
+
+	if (cleanPath[cleanPath.size() - 1] == _T('\\'))
+	{
+		cleanPath.erase(cleanPath.size() - 1);
+	}
+
+	if( !LocalUtilities::fileExists(cleanPath) )
 	{
 		return;
 	}
 
-	m_customJavaHomePath = customJavaHomePath;
+	m_customJavaHomePath = cleanPath;
 }
 
 tstring& Properties::getCustomJavaHomePath()
@@ -401,8 +408,8 @@ bool Properties::isVersionLessThanEqualMax(const tstring& regularVersion)
 		}
 		
 		JVMInfo jvmInfo;
-		tstring comparableMaxVersion = jvmInfo.getComparableVersionUsingRegularVersion(maxJavaVersion);
-		tstring comparableVersion = jvmInfo.getComparableVersionUsingRegularVersion(regularVersion);
+		tstring comparableMaxVersion = jvmInfo.getComparableVersionUsingRegularVersion(maxJavaVersion, _T("999"));
+		tstring comparableVersion = jvmInfo.getComparableVersionUsingRegularVersion(regularVersion, _T("0"));
 		if ( comparableVersion.compare(comparableMaxVersion) <= 0 )
 		{
 			return true;
@@ -427,8 +434,8 @@ bool Properties::isVersionGreaterThanEqualMin(const tstring& regularVersion)
 		}
 		
 		JVMInfo jvmInfo;
-		tstring comparableMinVersion = jvmInfo.getComparableVersionUsingRegularVersion(minJavaVersion);
-		tstring comparableVersion = jvmInfo.getComparableVersionUsingRegularVersion(regularVersion);
+		tstring comparableMinVersion = jvmInfo.getComparableVersionUsingRegularVersion(minJavaVersion, _T("0"));
+		tstring comparableVersion = jvmInfo.getComparableVersionUsingRegularVersion(regularVersion, _T("0"));
 		if ( comparableVersion.compare(comparableMinVersion) >= 0 )
 		{
 			return true;

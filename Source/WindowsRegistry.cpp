@@ -23,7 +23,7 @@ WindowsRegistry::~WindowsRegistry()
 
 void WindowsRegistry::addAllSdkJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
 {
-	addAllJvms(pVecJvmInfo, regKey, Properties::JRE_JAVA_BUNDLE);
+	addAllJvms(pVecJvmInfo, regKey, Properties::SDK_JAVA_BUNDLE);
 }
 
 void WindowsRegistry::addAllJreJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& regKey)
@@ -59,21 +59,40 @@ void WindowsRegistry::addAllJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& re
 					NULL, 
 					NULL); 
 
-			if( result == ERROR_SUCCESS ) 
+			if (result == ERROR_SUCCESS)
 			{
-				tstring dirName(lpName);	
-				if( dirName.empty() )
+				tstring dirName(lpName);
+				if (dirName.empty())
 				{
 					continue;
 				}
 
-				tstring fullKeyPath = regKey + tstring(_T("\\")) + dirName;
+				tstring oracleKeyPath = regKey + tstring(_T("\\")) + dirName;
 
-				DEBUG_SHOW( _T("fullKeyPath=") + fullKeyPath );
-				tstring& javaHome = getStringValue(fullKeyPath, _T("JavaHome"));
-				if( javaHome.empty() )
+				DEBUG_SHOW(_T("oracleKeyPath=") + oracleKeyPath);
+				tstring& javaHome = getStringValue(oracleKeyPath, _T("JavaHome"));
+				if (javaHome.empty())
 				{
-					continue;
+					// Seems to be no Oracle JDK/JRE... Let's check if it is an OpenJDK HotSpot
+					tstring hotspotKeyPath = regKey + tstring(_T("\\")) + dirName + tstring(_T("\\hotspot\\MSI"));
+					DEBUG_SHOW(_T("hotspotKeyPath=") + hotspotKeyPath);
+					javaHome = getStringValue(hotspotKeyPath, _T("Path"));
+					if (javaHome.empty())
+					{
+						// Okay, last try.... Let's check if it is an OpenJDK OpenJ9
+						tstring openJ9KeyPath = regKey + tstring(_T("\\")) + dirName + tstring(_T("\\openj9\\MSI"));
+						DEBUG_SHOW(_T("openJ9KeyPath=") + openJ9KeyPath);
+						javaHome = getStringValue(openJ9KeyPath, _T("Path"));
+						if (javaHome.empty())
+						{
+							continue;
+						}
+					}
+				}
+
+				if (javaHome[javaHome.size() - 1] == _T('\\'))
+				{
+					javaHome.erase(javaHome.size() - 1);
 				}
 
 				JVMInfo *pJvmInfo = new JVMInfo;
@@ -121,8 +140,7 @@ tstring& WindowsRegistry::getStringValue(const tstring& regKeyPath, const tstrin
 			DWORD regValueDataLength = MAX_PATH;
 			DWORD type = REG_SZ;
 
-			result = RegQueryValueEx(hKey,regValueName.c_str(),NULL,&type,
-					(LPBYTE)regValueData,&regValueDataLength);
+			result = RegQueryValueEx(hKey,regValueName.c_str(),NULL,&type, (LPBYTE)regValueData,&regValueDataLength);
 			if (result != ERROR_SUCCESS)
 			{
 				// errors that should not cause a complete failure of launch

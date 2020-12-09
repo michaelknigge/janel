@@ -51,7 +51,7 @@ tstring& JVMInfo::getVersion()
 	return m_version;
 }
 
-tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regularVersion)
+tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regularVersion, TCHAR* fillToken)
 {
 	tstring* pComparableVersion = new tstring();
 	try
@@ -72,7 +72,7 @@ tstring& JVMInfo::getComparableVersionUsingRegularVersion(const tstring& regular
 			token = _tcstok_s(NULL, sep, &context);
 			if( token == NULL && versionNumberType < 4 )
 			{
-				token = _T("0");
+				token = fillToken;
 			}
 		}
 	}
@@ -309,11 +309,14 @@ tstring& JVMInfo::getJrePath()
 		}
 		else if( getJavaBundle().compare(Properties::SDK_JAVA_BUNDLE) == 0 )
 		{
-			// The location of the "client" or "server" directory has changed with Java 9...
-			m_jrePath = getJavaHomePath() + tstring(_T("\\jre\\bin\\")); // pre Java 9....
-			if( !LocalUtilities::fileExists(m_jrePath) )
+			m_jrePath = getJavaHomePath() + tstring(_T("\\jre\\bin"));
+			if( LocalUtilities::fileExists(m_jrePath) )
 			{
-				m_jrePath = getJavaHomePath() + tstring(_T("\\bin\\")); // since Java 9...
+				m_jrePath = m_jrePath + tstring(_T("\\"));
+			}
+			else
+			{
+				m_jrePath = getJavaHomePath() + tstring(_T("\\bin\\"));
 			}
 		}
 		else
