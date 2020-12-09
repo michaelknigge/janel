@@ -134,7 +134,6 @@ void JVMLauncher::callSystemExit(JNIEnv* pJniEnvironment)
 {
 	jclass javaClass;
 	jmethodID javaMethodId;
-	jint result;
 
 	DEBUG_SHOW(_T("callSystemExit invoked!"));
 
