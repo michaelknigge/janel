@@ -107,7 +107,7 @@ void JVMLauncher::callExit()
 			if (pJniEnvironment->ExceptionOccurred())
 				pJniEnvironment->ExceptionDescribe();
 
-			callSystemExit();
+			callSystemExit(pJniEnvironment);
 		}
 		else
 		{
@@ -118,7 +118,7 @@ void JVMLauncher::callExit()
 				if (pJniEnvironment->ExceptionOccurred())
 					pJniEnvironment->ExceptionDescribe();
 
-				callSystemExit();
+				callSystemExit(pJniEnvironment);
 			}
 			else
 			{
@@ -130,11 +130,10 @@ void JVMLauncher::callExit()
 	}
 }
 
-void JVMLauncher::callSystemExit()
+void JVMLauncher::callSystemExit(JNIEnv* pJniEnvironment)
 {
 	jclass javaClass;
 	jmethodID javaMethodId;
-	JNIEnv* pJniEnvironment;
 	jint result;
 
 	DEBUG_SHOW(_T("callSystemExit invoked!"));

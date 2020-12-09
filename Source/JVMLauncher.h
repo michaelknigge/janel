@@ -24,7 +24,7 @@ public:
 	void launch();
 	void launchService();
 	void callExit();
-	void callSystemExit();
+	void callSystemExit(JNIEnv* pJniEnvironment);
 	Properties* getProperties();
 	void teardownJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs);
 };
