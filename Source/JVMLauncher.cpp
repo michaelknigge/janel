@@ -331,6 +331,11 @@ void JVMLauncher::launch()
 
 		DEBUG_SHOW( tstring(_T("pBestJvmInfo->toString()=")) + pBestJvmInfo->toString() );
 
+	    // On some Windows environments with AdoptJDK or Adoptium the DLLs couldn't be loaded.
+	    // Specifically add the jre dlls to the dll search directory.
+		tstring binpath = pBestJvmInfo->getJavaHomePath() + tstring(_T("\\bin\\"));
+		SetDllDirectory(binpath.c_str());
+
 		JNIEnv* pJniEnvironment;
 		JavaVM* pJvm;
 		jint result;
