@@ -29,8 +29,10 @@ in a clean environment. The status badges at the top of the page will guide you 
 
 # Enhancements
 These are my enhancements to the official Version of Janel 4.2.0
+
 ## Support of Java 9 and newer
 Java 9 is fully supported (JDK and JRE). With version 9 the Windows registry keys that hold version information about installed Java versions changed. Furthermore, the JDK does no longer contain a subdirectory "jre" that contains the JRE. Due to these changes Janel had to be enhanced.
+
 ## Fix crash at startup if an environment variable is missing
 Version 4.2.0 of Janel will crash at startup if you reference an environment variable in the LAP file that is not set. Imagine you want to add specific JARs to the CLASSPATH at runtime and specify
 
