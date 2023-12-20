@@ -139,6 +139,10 @@ void JVMChooser::getAllJVMs(vector<JVMInfo>* pVecJvmInfo)
 		// AdoptOpenJDK
 		regKey = _T("SOFTWARE\\AdoptOpenJDK\\JDK");
 		winsReg.addAllSdkJvms(pVecJvmInfo, regKey);
+
+		// Azul Zulu JDK
+		regKey = _T("SOFTWARE\\Azul Systems\\Zulu");
+		winsReg.addAllSdkJvms(pVecJvmInfo, regKey);
 	}
 	catch(...)
 	{

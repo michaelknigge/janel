@@ -72,6 +72,9 @@ exactly this is possible. If set to true, Janel will treat each command line par
 ## Fix crash due to runtime modifications by anti-virus software
 Certain anti virus programs add themselves as agent via Java's intrumentation API. In such a case the original release of Janel will crash.
 
+## Support of Azul Zulu JDK
+Janel will consider [Azul Zulu JDKs](https://www.azul.com/downloads/#zulu).
+
 # License
 MIT License
 

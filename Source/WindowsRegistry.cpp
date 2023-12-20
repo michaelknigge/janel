@@ -67,6 +67,7 @@ void WindowsRegistry::addAllJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& re
 					continue;
 				}
 
+				tstring javaVersion = dirName;
 				tstring oracleKeyPath = regKey + tstring(_T("\\")) + dirName;
 
 				DEBUG_SHOW(_T("oracleKeyPath=") + oracleKeyPath);
@@ -79,13 +80,21 @@ void WindowsRegistry::addAllJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& re
 					javaHome = getStringValue(hotspotKeyPath, _T("Path"));
 					if (javaHome.empty())
 					{
-						// Okay, last try.... Let's check if it is an OpenJDK OpenJ9
+						// Next try.... Let's check if it is an OpenJDK OpenJ9
 						tstring openJ9KeyPath = regKey + tstring(_T("\\")) + dirName + tstring(_T("\\openj9\\MSI"));
 						DEBUG_SHOW(_T("openJ9KeyPath=") + openJ9KeyPath);
 						javaHome = getStringValue(openJ9KeyPath, _T("Path"));
 						if (javaHome.empty())
 						{
-							continue;
+							// Last try.... Let's check if it is an Azul Zulu JDK
+							tstring zuluKeyPath = regKey + tstring(_T("\\")) + dirName;
+							DEBUG_SHOW(_T("zuluKeyPath=") + zuluKeyPath);
+							javaHome = getStringValue(zuluKeyPath, _T("InstallationPath"));
+							javaVersion = getStringValue(zuluKeyPath, _T("CurrentVersion"));
+							if (javaHome.empty() || javaVersion.empty())
+							{
+								continue;
+							}
 						}
 					}
 				}
@@ -98,9 +107,9 @@ void WindowsRegistry::addAllJvms(vector<JVMInfo>* pVecJvmInfo, const tstring& re
 				JVMInfo *pJvmInfo = new JVMInfo;
 				pJvmInfo->setJavaBundle(bundle);
 				pJvmInfo->setJavaHomePath(javaHome);
-				pJvmInfo->setVersion(dirName);
+				pJvmInfo->setVersion(javaVersion);
 
-				DEBUG_SHOW( tstring(_T("Found JDK version ")) + dirName +  tstring(_T(" in directory  ")) + javaHome);
+				DEBUG_SHOW( tstring(_T("Found JDK version ")) + javaVersion +  tstring(_T(" in directory  ")) + javaHome);
 
 				pVecJvmInfo->push_back(*pJvmInfo);
 			}
