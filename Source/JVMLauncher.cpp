@@ -425,10 +425,16 @@ void JVMLauncher::launch()
 		// setup options
 		JavaVMInitArgs jvmInitArgs;
 		setupJavaVMInitArgs(jvmInitArgs);
+		const jsize argsCount = jvmInitArgs.nOptions;
 
 		result = CreateJavaVM(&pJvm,(void**)&pJniEnvironment,&jvmInitArgs);
 
-		teardownJavaVMInitArgs(jvmInitArgs);
+		// We need to check if the array of JVM arguments was modified during startup of the JVM.
+		// This can happen if certain anti virus programs add themselves as agent via Java's intrumentation API.
+		// In such a case, we must not release the memory of the arguments array, because this can lead to a crash.
+		if (argsCount == jvmInitArgs.nOptions) {
+			teardownJavaVMInitArgs(jvmInitArgs);
+		}
 
 		if (result < 0)
 		{
