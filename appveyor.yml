@@ -7,13 +7,11 @@ init:
 - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 build_script:
 - cmd: >-
-    del Executables\Win32\JanelConsole32.exe
+    mkdir Executables
 
-    del Executables\Win32\JanelWindows32.exe
+    mkdir Executables\Win32
 
-    del Executables\x64\JanelConsole64.exe
-
-    del Executables\x64\JanelWindows64.exe
+    mkdir Executables\x64
 
 
     cd Source
