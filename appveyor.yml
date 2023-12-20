@@ -68,12 +68,12 @@ test_script:
     set PATH=%PATH%;C:\cygwin\bin
 
 
-    wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.12-bin.tar.gz
+    wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.14-bin.tar.gz
 
-    tar -xzf apache-ant-1.10.12-bin.tar.gz
+    tar -xzf apache-ant-1.10.14-bin.tar.gz
 
 
-    set ANT_HOME=C:\projects\janel\apache-ant-1.10.12
+    set ANT_HOME=C:\projects\janel\apache-ant-1.10.14
 
     set JAVA_HOME=C:\Program Files\Java\jdk1.8.0
 
