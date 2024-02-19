@@ -67,6 +67,12 @@ Janel uses the LAP file to pass options to the JVM. But for command line applica
 
 exactly this is possible. If set to true, Janel will treat each command line parameter that starts with a single "-" as a Java option and pass this to the JVM. Note that these options are passed after the options specified in the LAP file. So for example if you specify the option -Xmx4G in the LAP file and -Xmx12G at the command line, the last one (12G) will win.
 
+## Fix crash due to runtime modifications by anti-virus software
+Certain anti virus programs add themselves as agent via Java's intrumentation API. In such a case the original release of Janel will crash.
+
+## Support of Azul Zulu JDK
+Janel will consider [Azul Zulu JDKs](https://www.azul.com/downloads/#zulu).
+
 # License
 MIT License
 
