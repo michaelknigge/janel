@@ -1275,8 +1275,8 @@ This is the same as -Dprocess.id=X, where X is the process id. </p>
 <p><a name=propvaluevars></a><b>PROPERTY VALUE VARIABLES IN A .LAP FILE</b><br>
 Properties may also contain variables that are resolved by the Janel
 executable. Their format is ${property value variable}. For example, a property
-may be -DJAVA_HOME=${FOUND_JAVA_HOME}. Currently there are three property value
-variables: </p>
+may be -DJAVA_HOME=${FOUND_JAVA_HOME}. Currently there are these property value
+variables available: </p>
 
 <ul type=disc>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
@@ -1289,8 +1289,16 @@ variables: </p>
      Same as SELF_HOME but does not remove the trailing &quot;\bin&quot;. <o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l3 level1 lfo5;tab-stops:list .5in'><span style='mso-fareast-font-family:
+     "Times New Roman"'>FOUND_EXE is the path and name to the Janel executable.
+     Same as SELF_NAME but does not remove the trailing &quot;.exe&quot;. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo5;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>SELF_HOME is the path to the Janel executable with a
      trailing &quot;\bin&quot; removed if it is present. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l3 level1 lfo5;tab-stops:list .5in'><span style='mso-fareast-font-family:
+     "Times New Roman"'>SELF_NAME is the path and name of the Janel executable with a
+     trailing &quot;.exe&quot; removed. <o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-list:l3 level1 lfo5;
      tab-stops:list .5in'><span style='mso-fareast-font-family:"Times New Roman"'>CALLER_DIR
      is the path to the directory in which the executable was called. Calling
