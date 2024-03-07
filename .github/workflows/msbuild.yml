@@ -22,7 +22,9 @@ jobs:
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: Build.cmd
+      shell: cmd
+      run: |
+        Build.cmd
 
     - name: Archive Janel distribution
       uses: actions/upload-artifact@v4
