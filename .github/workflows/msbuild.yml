@@ -1,0 +1,31 @@
+name: MSBuild
+
+on:
+  push:
+    branches: [ "enhanced" ]
+
+  pull_request:
+    branches: [ "enhanced" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-2019
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: Build.cmd
+
+    - name: Archive Janel distribution
+      uses: actions/upload-artifact@v4
+      with:
+        name: Janel-Distribution
+        path: janel-*.7z
