@@ -43,9 +43,16 @@ jobs:
         copy "Source\x64\Release Windows\Janel.exe" Distribution\JanelWindows64.exe
         copy Documentation\HowToRun.html Distribution\HowToRun.html
         git log > Distribution\Changelog.txt
+        "C:\Program Files\7-Zip\7z.exe" a -r janel-%GITHUB_SHA%.7z %DISTRIBUTION%
 
     - name: Archive Janel distribution
       uses: actions/upload-artifact@v4
       with:
         name: Janel-Distribution
         path: janel-*.7z
+
+    - name: Archive Janel executables
+      uses: actions/upload-artifact@v4
+      with:
+        name: Janel executables
+        path: Distribution\*
