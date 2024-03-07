@@ -70,7 +70,7 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		}
 		else if (strJustVariable.compare( FOUND_EXE ) == 0 )
 		{
-			pValueFromVariable = m_pProperties->getFullPathAndNameOfExe();
+			pValueFromVariable = &m_pProperties->getFullPathAndNameOfExe();
 		}
 		else if (strJustVariable.compare( FOUND_EXE_FOLDER ) == 0 )
 		{
