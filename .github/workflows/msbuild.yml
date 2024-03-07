@@ -20,6 +20,18 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
+    - name: Build app for 32 Bit Console Release
+      run: msbuild Source\Janel.csproj -t:rebuild -verbosity:diag "-p:Configuration=Release Console" -p:Platform=Win32
+
+    - name: Build app for 64 Bit Console Release
+      run: msbuild Source\Janel.csproj -t:rebuild -verbosity:diag "-p:Configuration=Release Console" -p:Platform=y64
+
+    - name: Build app for 32 Bit Windows Release
+      run: msbuild Source\Janel.csproj -t:rebuild -verbosity:diag "-p:Configuration=Release Windows" -p:Platform=Win32
+
+    - name: Build app for 64 Bit Windows Release
+      run: msbuild Source\Janel.csproj -t:rebuild -verbosity:diag "-p:Configuration=Release Windows" -p:Platform=y64
+  
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
