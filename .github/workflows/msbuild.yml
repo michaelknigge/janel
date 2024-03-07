@@ -20,23 +20,29 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Build app for 32 Bit Console Release
+    - name: Build Janel for 32 Bit Console Release
       run: msbuild Source\Janel.sln -t:rebuild -verbosity:diag "-p:Configuration=Release Console" -p:Platform=Win32
 
-    - name: Build app for 64 Bit Console Release
-      run: msbuild Source\Janel.sln -t:rebuild -verbosity:diag "-p:Configuration=Release Console" -p:Platform=y64
+    - name: Build Janel for 64 Bit Console Release
+      run: msbuild Source\Janel.sln -t:rebuild -verbosity:diag "-p:Configuration=Release Console" -p:Platform=x64
 
-    - name: Build app for 32 Bit Windows Release
+    - name: Build Janel for 32 Bit Windows Release
       run: msbuild Source\Janel.sln -t:rebuild -verbosity:diag "-p:Configuration=Release Windows" -p:Platform=Win32
 
-    - name: Build app for 64 Bit Windows Release
-      run: msbuild Source\Janel.sln -t:rebuild -verbosity:diag "-p:Configuration=Release Windows" -p:Platform=y64
+    - name: Build Janel for 64 Bit Windows Release
+      run: msbuild Source\Janel.sln -t:rebuild -verbosity:diag "-p:Configuration=Release Windows" -p:Platform=x64
   
-    - name: Build
+    - name: Build Janel distribution
       working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
-        Build.cmd
+        mkdir Distribution
+        copy "Source\Release Console\Janel.exe" Distribution\JanelConsole32.exe
+        copy "Source\Release Windows\Janel.exe" Distribution\JanelWindows32.exe
+        copy "Source\x64\Release Console\Janel.exe" Distribution\JanelConsole64.exe
+        copy "Source\x64\Release Windows\Janel.exe" Distribution\JanelWindows64.exe
+        copy Documentation\HowToRun.html Distribution\HowToRun.html
+        git log > Distribution\Changelog.txt
 
     - name: Archive Janel distribution
       uses: actions/upload-artifact@v4
