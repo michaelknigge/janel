@@ -33,6 +33,8 @@ private:
 	void processCustomProps_WithLatePropertyValueVars(std::vector<PropertyFileEntry*>& propsFromFile, PropertyValueVariables& propertyValueVars);
 	void processNonCustomProps_WithLatePropertyValueVars(std::vector<PropertyFileEntry*>& propsFromFile, PropertyValueVariables& propertyValueVars);
 	bool isLineTerminatorEscaped(const tstring& strProperty);
+	void setEnvironmentVariable(PropertyFileEntry* pEnvFileEntry);
+	void setEnvironmentVariables(const tstring& fileName);
 
 public:
 	PropertiesFile(Properties* pProperties);
@@ -42,7 +44,6 @@ public:
 	void loadPropertiesFromFile();
 
 	static const char LINE_CONTINUATION_CARET;
-
 };
 
 #endif // ifndef _JANEL_PROPERTIESFILE_H_INCLUDED_

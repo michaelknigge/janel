@@ -586,6 +586,11 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
                 m_pProperties->setShowErrorDetail(false);
             }
         }
+        // ENVIRONMENT_FILE
+        else if (propertyName.compare(PropertiesCustom::ENVIRONMENT_FILE) == 0)
+        {
+            setEnvironmentVariables(propertyValue);
+        }
 
 		// put other property checks here
 	}
@@ -596,3 +601,68 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 	}
 }
 
+void PropertiesFile::setEnvironmentVariables(const tstring& fileName)
+{
+	try
+	{
+		vector<PropertyFileEntry*> envFromFile;
+		tifstream envFile(fileName.c_str());
+
+		if (!envFile)
+		{
+			DEBUG_SHOW(_T("Could not open file ") + fileName);
+			return;
+		}
+
+		// load envFromFile leaving out comments and blank lines
+		loadProps_NoCommentsBlanks(envFile, envFromFile);
+		envFile.close();
+
+		PropertyValueVariables propertyValueVars(m_pProperties);
+
+		vector<PropertyFileEntry*>::iterator iter;
+		for (iter = envFromFile.begin(); iter != envFromFile.end(); iter++)
+		{
+			setEnvironmentVariable(*iter);
+		}
+	}
+	catch (tstring& se)
+	{
+		ErrHandler::severeError(se);
+	}
+	catch (...)
+	{
+		DEBUG_SHOW(_T("Exception in PropertiesFile.setEnvironmentVariables()"));
+		ErrHandler::severeError(_T("Error setting environment variables."));
+	}
+}
+
+void PropertiesFile::setEnvironmentVariable(PropertyFileEntry* pEnvFileEntry)
+{
+	try
+	{
+		tstring& strEntry = pEnvFileEntry->getText();
+		DEBUG_SHOW(tstring(_T("PropertiesFile::setEnvironmentVariable() strEntry=")) + tstring(strEntry));
+
+		PropertyValueVariables propertyValueVars(m_pProperties);
+		propertyValueVars.resolvePropertyVariables(strEntry);
+
+		tstring envName;
+		tstring envValue;
+		envName = LocalUtilities::trim(parsePropertyName(strEntry));
+		envValue = LocalUtilities::trim(parsePropertyValue(strEntry));
+
+		DEBUG_STMT(tstring debugReadEnv = _T("strEntry=") + strEntry +
+			_T(",envName=") + envName +
+			_T(",envValue=") + envValue; )
+			DEBUG_SHOW(debugReadEnv);
+
+
+		SetEnvironmentVariable(envName.c_str(), envValue.c_str());
+	}
+	catch (...)
+	{
+		DEBUG_SHOW(_T("Exception in setEnvironmentVariable"));
+		ErrHandler::severeError(_T("Error setting environment variable."));
+	}
+}

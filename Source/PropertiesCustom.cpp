@@ -45,7 +45,7 @@ const tstring PropertiesCustom::INIT_MEMORY_LOWER_LIMIT = _T("janel.memory.init.
 const tstring PropertiesCustom::CUSTOM_DEFAULT_ERROR_TEXT = _T("janel.error.default.text");
 const tstring PropertiesCustom::SHOW_ERROR_DETAIL = _T("janel.error.show.detail");
 const tstring PropertiesCustom::BITNESS_MISMATCH = _T("janel.jvm.bitness.mismatch");
-
+const tstring PropertiesCustom::ENVIRONMENT_FILE = _T("janel.environment.file");
 
 PropertiesCustom::PropertiesCustom()
 {
