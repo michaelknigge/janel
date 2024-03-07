@@ -270,7 +270,12 @@ void JVMLauncher::preloadRuntimeLibrary()
 		return;
 	}
 
-	DEBUG_SHOW(tstring(_T("MSVCR (C-Runtime) library could not be loaded.")));
+	// Try for Java 11 up to 23...
+	if (preloadRuntimeLibrary(tstring(_T("\\bin\\vcruntime140.dll")))) {
+		return;
+	}
+
+	DEBUG_SHOW(tstring(_T("MSVCR / VCRUNTIME (C-Runtime) library could not be loaded.")));
 }
 
 bool JVMLauncher::preloadRuntimeLibrary(tstring& filename)
