@@ -75,6 +75,16 @@ Certain anti virus programs add themselves as agent via Java's intrumentation AP
 ## Support of Azul Zulu JDK
 Janel will consider [Azul Zulu JDKs](https://www.azul.com/downloads/#zulu).
 
+## Additional property value variables
+The new variable SELF_NAME contains the path and name of the Janel executable with a trailing ".exe" removed. This variable is useful for the new custom property janel.environment.file.
+
+## Additional environment variables can be set before entering the JVM
+In some circumstances it might be useful to let Janel set some additional environment variables before entering the JVM. Using a new custom property you can provide a file (in properties format) that contains environment variables to be set. The new variable SELF_NAME is useful for this.
+
+    janel.environment.file=${SELF_NAME}.env
+
+Using this configuration, you can place a file with the suffix ".env" right beside your .exe that contains key-value-pairs of environment variabes to be set.
+
 # License
 MIT License
 
