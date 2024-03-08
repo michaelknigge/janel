@@ -66,8 +66,9 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		else if ( strJustVariable.compare( SELF_NAME ) == 0 )
 		{
 			tstring& nameOfExecutable = m_pProperties->getFullPathAndNameOfExe();
-
-			pValueFromVariable = new tstring(nameOfExecutable.substr(nameOfExecutable.find_last_of(_T('\\')) + 1, nameOfExecutable.find_last_of(_T('.')) ) );
+			
+			tstring tempString = nameOfExecutable.substr(0, nameOfExecutable.find_last_of(_T('.')));
+			pValueFromVariable = new tstring(tempString.substr(nameOfExecutable.find_last_of(_T('\\')) + 1));
 		}
 		else if (strJustVariable.compare( FOUND_EXE ) == 0 )
 		{
