@@ -1309,6 +1309,17 @@ variables available: </p>
      executable C:\Dev\MyApp.exe from directory C:\Temp would place
      &quot;C:\Temp&quot; in ${CALLER_DIR}. <o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-list:l3 level1 lfo5;
+     tab-stops:list .5in'><span style='mso-fareast-font-family:"Times New Roman"'>MAINCLASS_NAME
+     is the name of the Java main class as specified in the property
+     &quot;janel.main.class&quot;. Note that the separator character is always the 
+     &quot;.&quot;. So if &quot;mypackage/Start&quot; was specified as the main class,
+     this variable will contain &quot;mypackage.Start&quot;.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-list:l3 level1 lfo5;
+     tab-stops:list .5in'><span style='mso-fareast-font-family:"Times New Roman"'>MAINCLASS_SHORTNAME
+     is the short name of the Java main class as specified in the property
+     &quot;janel.main.class&quot;. I. e. if &quot;mypackage.Start&quot; was specified
+     as the main class, this variable will contain &quot;Start&quot;.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-list:l3 level1 lfo5;
      tab-stops:list .5in'><span style='mso-fareast-font-family:"Times New Roman"'>EXE_BITNESS
      is set to 32 or 64, depending on the bitness of the current running executable. <o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-list:l3 level1 lfo5;
