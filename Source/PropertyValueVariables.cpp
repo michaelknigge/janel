@@ -17,6 +17,7 @@ const tstring PropertyValueVariables::FOUND_EXE_FOLDER = _T("FOUND_EXE_FOLDER");
 const tstring PropertyValueVariables::FOUND_EXE = _T("FOUND_EXE");
 const tstring PropertyValueVariables::SELF_HOME = _T("SELF_HOME");
 const tstring PropertyValueVariables::SELF_NAME = _T("SELF_NAME");
+const tstring PropertyValueVariables::SELF_PARENT_NAME = _T("SELF_PARENT_NAME");
 const tstring PropertyValueVariables::CALLER_DIR = _T("CALLER_DIR");
 const tstring PropertyValueVariables::EXE_BITNESS = _T("EXE_BITNESS");
 const tstring PropertyValueVariables::OS_BITNESS = _T("OS_BITNESS");
@@ -71,6 +72,11 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 			
 			tstring tempString = nameOfExecutable.substr(0, nameOfExecutable.find_last_of(_T('.')));
 			pValueFromVariable = new tstring(tempString.substr(nameOfExecutable.find_last_of(_T('\\')) + 1));
+		}
+		else if (strJustVariable.compare(SELF_PARENT_NAME) == 0)
+		{
+			tstring& selfHome = m_pProperties->getSelfHomePath();
+			pValueFromVariable = new tstring(selfHome.substr(selfHome.find_last_of(_T('\\'))));
 		}
 		else if (strJustVariable.compare( FOUND_EXE ) == 0 )
 		{

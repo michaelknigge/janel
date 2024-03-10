@@ -19,6 +19,7 @@ public:
 	static const tstring FOUND_EXE;
 	static const tstring SELF_HOME;
 	static const tstring SELF_NAME;
+	static const tstring SELF_PARENT_NAME;
 	static const tstring CALLER_DIR;
 	static const tstring EXE_BITNESS;
 	static const tstring OS_BITNESS;
