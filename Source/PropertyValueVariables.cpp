@@ -76,7 +76,7 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		else if (strJustVariable.compare(SELF_PARENT_NAME) == 0)
 		{
 			tstring& selfHome = m_pProperties->getSelfHomePath();
-			pValueFromVariable = new tstring(selfHome.substr(selfHome.find_last_of(_T('\\'))));
+			pValueFromVariable = new tstring(selfHome.substr(selfHome.find_last_of(_T('\\')) + 1));
 		}
 		else if (strJustVariable.compare( FOUND_EXE ) == 0 )
 		{
