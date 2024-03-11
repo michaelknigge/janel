@@ -24,7 +24,7 @@ public:
 	static const tstring EXE_BITNESS;
 	static const tstring OS_BITNESS;
 	static const tstring MAINCLASS_NAME;
-	static const tstring MAINCLASS_SIMPLENAME;
+	static const tstring MAINCLASS_SIMPLE_NAME;
 
 	PropertyValueVariables(Properties* pProperties);
 	virtual ~PropertyValueVariables();

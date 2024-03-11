@@ -22,7 +22,7 @@ const tstring PropertyValueVariables::CALLER_DIR = _T("CALLER_DIR");
 const tstring PropertyValueVariables::EXE_BITNESS = _T("EXE_BITNESS");
 const tstring PropertyValueVariables::OS_BITNESS = _T("OS_BITNESS");
 const tstring PropertyValueVariables::MAINCLASS_NAME = _T("MAINCLASS_NAME");
-const tstring PropertyValueVariables::MAINCLASS_SIMPLENAME = _T("MAINCLASS_SIMPLENAME");
+const tstring PropertyValueVariables::MAINCLASS_SIMPLE_NAME = _T("MAINCLASS_SIMPLE_NAME");
 
 PropertyValueVariables::PropertyValueVariables(Properties* pProperties)
 {
@@ -103,10 +103,10 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		{
 			pValueFromVariable = &LocalUtilities::swapChar(m_pProperties->getMainClass(), _T('/'), _T('.'));
 		}
-		else if (strJustVariable.compare(MAINCLASS_SIMPLENAME) == 0)
+		else if (strJustVariable.compare(MAINCLASS_SIMPLE_NAME) == 0)
 		{
 			tstring& className = m_pProperties->getMainClass();
-			pValueFromVariable = new tstring(className.substr(0, className.find_last_of(_T('/'))));
+			pValueFromVariable = new tstring(className.substr(className.find_last_of(_T('/')) + 1));
 		}
 		// check for other property value variables
 	}
