@@ -595,22 +595,10 @@ double Properties::getAvailablePhysicalMemoryKilobytes()
 {
     double physicalMemoryKb = 0.0;
 
-    // Get physical memory amount.
-#if _WIN32_WINNT>=0x0500
-    DEBUG_SHOW(_T("using GlobalMemoryStatusEx"));
-    // Windows 2000 and XP only.
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     GlobalMemoryStatusEx(&statex);
     physicalMemoryKb = statex.ullAvailPhys >> 10;
-#else
-    DEBUG_SHOW(_T("using GlobalMemoryStatus"));
-    // Everything else, but only recognizes up to 4GB of memory!
-    // See MS docs on GlobalMemoryStatus for more limitations.
-    MEMORYSTATUS stat;
-    GlobalMemoryStatus(&stat);
-    physicalMemoryKb = stat.dwAvailPhys >> 10;
-#endif
 
     return(physicalMemoryKb);
 }
@@ -700,20 +688,10 @@ double Properties::getTotalPhysicalMemoryKilobytes()
 {
     double physicalMemoryKb = 0.0;
 
-    // Get physical memory amount.
-#if _WIN32_WINNT>=0x0500
-    // Windows 2000 and XP only.
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     GlobalMemoryStatusEx(&statex);
     physicalMemoryKb = (double) (statex.ullTotalPhys >> 10);
-#else
-    // Everything else, but only recognizes up to 4GB of memory!
-    // See MS docs on GlobalMemoryStatus for more limitations.
-    MEMORYSTATUS stat;
-    GlobalMemoryStatus(&stat);
-    physicalMemoryKb = stat.dwTotalPhys >> 10;
-#endif
 
     return(physicalMemoryKb);
 }
