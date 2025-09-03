@@ -72,7 +72,7 @@ void PropertiesFile::loadPropertiesFromFile()
 	try
 	{
 		vector<PropertyFileEntry*> propsFromFile;
-        tstring& name = getPropertiesFileName();
+		tstring& name = getPropertiesFileName();
 		tifstream propsFile( name.c_str() );
 
 		if( !propsFile )
@@ -524,73 +524,73 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 		{
 			m_pProperties->setSplash(propertyValue);
 		}
-        // MEMORY_CHECK_LIMITS
-        else if ( propertyName.compare(PropertiesCustom::MEMORY_CHECK_LIMITS) == 0 )
-        {
-            m_pProperties->setMemoryCheckLimits(propertyValue);
-        }
-        // MAX_MEMORY_AVAILABLE_PERCENT
-        else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_AVAILABLE_PERCENT) == 0 )
-        {
-            m_pProperties->setMaxMemoryPercentOfAvailable(propertyValue);
-        }
-        // INIT_MEMORY_AVAILABLE_PERCENT
-        else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_AVAILABLE_PERCENT) == 0 )
-        {
-            m_pProperties->setInitMemoryPercentOfAvailable(propertyValue);
-        }
-        // MAX_MEMORY_TOTAL_PERCENT
-        else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_TOTAL_PERCENT) == 0 )
-        {
-            m_pProperties->setMaxMemoryPercentOfTotal(propertyValue);
-        }
-        // INIT_MEMORY_TOTAL_PERCENT
-        else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_TOTAL_PERCENT) == 0 )
-        {
-            m_pProperties->setInitMemoryPercentOfTotal(propertyValue);
-        }
-        // MAX_MEMORY_UPPER_LIMIT
-        else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_UPPER_LIMIT) == 0 )
-        {
-            m_pProperties->setMaxMemoryUpperLimit(propertyValue);
-        }
-        // INIT_MEMORY_UPPER_LIMIT
-        else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_UPPER_LIMIT) == 0 )
-        {
-            m_pProperties->setInitMemoryUpperLimit(propertyValue);
-        }
-        // MAX_MEMORY_LOWER_LIMIT
-        else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_LOWER_LIMIT) == 0 )
-        {
-            m_pProperties->setMaxMemoryLowerLimit(propertyValue);
-        }
-        // INIT_MEMORY_LOWER_LIMIT
-        else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_LOWER_LIMIT) == 0 )
-        {
-            m_pProperties->setInitMemoryLowerLimit(propertyValue);
-        }
+		// MEMORY_CHECK_LIMITS
+		else if ( propertyName.compare(PropertiesCustom::MEMORY_CHECK_LIMITS) == 0 )
+		{
+			m_pProperties->setMemoryCheckLimits(propertyValue);
+		}
+		// MAX_MEMORY_AVAILABLE_PERCENT
+		else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_AVAILABLE_PERCENT) == 0 )
+		{
+			m_pProperties->setMaxMemoryPercentOfAvailable(propertyValue);
+		}
+		// INIT_MEMORY_AVAILABLE_PERCENT
+		else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_AVAILABLE_PERCENT) == 0 )
+		{
+			m_pProperties->setInitMemoryPercentOfAvailable(propertyValue);
+		}
+		// MAX_MEMORY_TOTAL_PERCENT
+		else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_TOTAL_PERCENT) == 0 )
+		{
+			m_pProperties->setMaxMemoryPercentOfTotal(propertyValue);
+		}
+		// INIT_MEMORY_TOTAL_PERCENT
+		else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_TOTAL_PERCENT) == 0 )
+		{
+			m_pProperties->setInitMemoryPercentOfTotal(propertyValue);
+		}
+		// MAX_MEMORY_UPPER_LIMIT
+		else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_UPPER_LIMIT) == 0 )
+		{
+			m_pProperties->setMaxMemoryUpperLimit(propertyValue);
+		}
+		// INIT_MEMORY_UPPER_LIMIT
+		else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_UPPER_LIMIT) == 0 )
+		{
+			m_pProperties->setInitMemoryUpperLimit(propertyValue);
+		}
+		// MAX_MEMORY_LOWER_LIMIT
+		else if ( propertyName.compare(PropertiesCustom::MAX_MEMORY_LOWER_LIMIT) == 0 )
+		{
+			m_pProperties->setMaxMemoryLowerLimit(propertyValue);
+		}
+		// INIT_MEMORY_LOWER_LIMIT
+		else if ( propertyName.compare(PropertiesCustom::INIT_MEMORY_LOWER_LIMIT) == 0 )
+		{
+			m_pProperties->setInitMemoryLowerLimit(propertyValue);
+		}
 		// CUSTOM_ERROR_TEXT
-        else if ( propertyName.compare(PropertiesCustom::CUSTOM_DEFAULT_ERROR_TEXT) == 0 )
-        {
-            m_pProperties->setCustomErrorDefaultText(propertyValue);
-        }
-        // SHOW_ERROR_DETAIL
-        else if ( propertyName.compare(PropertiesCustom::SHOW_ERROR_DETAIL) == 0 )
-        {
+		else if ( propertyName.compare(PropertiesCustom::CUSTOM_DEFAULT_ERROR_TEXT) == 0 )
+		{
+			m_pProperties->setCustomErrorDefaultText(propertyValue);
+		}
+		// SHOW_ERROR_DETAIL
+		else if ( propertyName.compare(PropertiesCustom::SHOW_ERROR_DETAIL) == 0 )
+		{
 			if ( LocalUtilities::convertToBoolean(propertyValue) ) 
 			{
-                m_pProperties->setShowErrorDetail(true);
-            } 
+				m_pProperties->setShowErrorDetail(true);
+			} 
 			else 
 			{
-                m_pProperties->setShowErrorDetail(false);
-            }
-        }
-        // ENVIRONMENT_FILE
-        else if (propertyName.compare(PropertiesCustom::ENVIRONMENT_FILE) == 0)
-        {
-            setEnvironmentVariables(propertyValue);
-        }
+				m_pProperties->setShowErrorDetail(false);
+			}
+		}
+		// ENVIRONMENT_FILE
+		else if (propertyName.compare(PropertiesCustom::ENVIRONMENT_FILE) == 0)
+		{
+			setEnvironmentVariables(propertyValue);
+		}
 
 		// put other property checks here
 	}
