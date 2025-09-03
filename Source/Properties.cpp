@@ -593,11 +593,11 @@ tstring& Properties::getServiceOptionUninstall()
 
 double Properties::getAvailablePhysicalMemoryKilobytes()
 {
-    MEMORYSTATUSEX statex;
-    statex.dwLength = sizeof(statex);
-    GlobalMemoryStatusEx(&statex);
+	MEMORYSTATUSEX statex;
+	statex.dwLength = sizeof(statex);
+	GlobalMemoryStatusEx(&statex);
 
-    return((double) (statex.ullAvailPhys >> 10));
+	return((double) (statex.ullAvailPhys >> 10));
 }
 
 void Properties::setMemoryCheckLimits(const tstring& property)
@@ -612,54 +612,54 @@ bool Properties::isMemoryCheckLimits()
 
 void Properties::setMaxMemoryPercentOfAvailable(const tstring& property)
 {
-    double percent = LocalUtilities::convertStringToPercent( property );
-    DEBUG_SHOW(_T("setMaxMemoryPercentOfAvailable"));
-    
-    if( percent < 0.0 ) {
+	double percent = LocalUtilities::convertStringToPercent( property );
+	DEBUG_SHOW(_T("setMaxMemoryPercentOfAvailable"));
+	
+	if( percent < 0.0 ) {
 		percent = 0.0;
-    }
-    
-    if( percent > 100.0 ) {
+	}
+	
+	if( percent > 100.0 ) {
 		percent = 100.0;
-    }
-    
-    double availablePhysicalMemory = getAvailablePhysicalMemoryKilobytes();
+	}
+	
+	double availablePhysicalMemory = getAvailablePhysicalMemoryKilobytes();
 
-    int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
+	int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
 	m_maxMemory = memoryToUse;
 }
 
 void Properties::setInitMemoryPercentOfAvailable(const tstring& property)
 {
-    double percent = LocalUtilities::convertStringToPercent( property );
-    DEBUG_SHOW(_T("setInitMemoryPercentOfAvailable"));
-    
-    if( percent < 0.0 ) {
+	double percent = LocalUtilities::convertStringToPercent( property );
+	DEBUG_SHOW(_T("setInitMemoryPercentOfAvailable"));
+	
+	if( percent < 0.0 ) {
 		percent = 0.0;
-    }
-    
-    if( percent > 100.0 ) {
+	}
+	
+	if( percent > 100.0 ) {
 		percent = 100.0;
-    }
-    
-    double availablePhysicalMemory = getAvailablePhysicalMemoryKilobytes();
+	}
+	
+	double availablePhysicalMemory = getAvailablePhysicalMemoryKilobytes();
 
-    int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
+	int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
 	m_initMemory = memoryToUse;
 }
 
 void Properties::setMaxMemoryUpperLimit(const tstring& property)
 {
 	int kb = _ttoi(property.c_str());
-    DEBUG_SHOW(_T("setMaxMemoryUpperLimit"));
+	DEBUG_SHOW(_T("setMaxMemoryUpperLimit"));
 
 	m_maxMemoryUpperLimit = kb;
 }
 
 void Properties::setMaxMemoryLowerLimit(const tstring& property)
 {
-    int kb = _ttoi(property.c_str());
-    DEBUG_SHOW(_T("setMaxMemoryLowerLimit"));
+	int kb = _ttoi(property.c_str());
+	DEBUG_SHOW(_T("setMaxMemoryLowerLimit"));
 
 	m_maxMemoryLowerLimit = kb;
 }
@@ -667,64 +667,64 @@ void Properties::setMaxMemoryLowerLimit(const tstring& property)
 
 void Properties::setInitMemoryUpperLimit(const tstring& property)
 {
-    int kb = _ttoi(property.c_str());
-    DEBUG_SHOW(_T("setInitMemoryUpperLimit"));
+	int kb = _ttoi(property.c_str());
+	DEBUG_SHOW(_T("setInitMemoryUpperLimit"));
 
 	m_initMemoryUpperLimit = kb;
 }
 
 void Properties::setInitMemoryLowerLimit(const tstring& property)
 {
-    int kb = _ttoi(property.c_str());
-    DEBUG_SHOW(_T("setInitMemoryLowerLimit"));
+	int kb = _ttoi(property.c_str());
+	DEBUG_SHOW(_T("setInitMemoryLowerLimit"));
 
 	m_initMemoryLowerLimit = kb;
 }
 
 double Properties::getTotalPhysicalMemoryKilobytes()
 {
-    MEMORYSTATUSEX statex;
-    statex.dwLength = sizeof(statex);
-    GlobalMemoryStatusEx(&statex);
+	MEMORYSTATUSEX statex;
+	statex.dwLength = sizeof(statex);
+	GlobalMemoryStatusEx(&statex);
 
-    return((double)(statex.ullTotalPhys >> 10));
+	return((double)(statex.ullTotalPhys >> 10));
 }
 
 void Properties::setMaxMemoryPercentOfTotal(const tstring& property)
 {
-    double percent = LocalUtilities::convertStringToPercent( property );
-    DEBUG_SHOW(_T("setMaxMemoryPercentOfTotal"));
-    
-    if( percent < 0.0 ) {
+	double percent = LocalUtilities::convertStringToPercent( property );
+	DEBUG_SHOW(_T("setMaxMemoryPercentOfTotal"));
+	
+	if( percent < 0.0 ) {
 		percent = 0.0;
-    }
-    
-    if( percent > 100.0 ) {
+	}
+	
+	if( percent > 100.0 ) {
 		percent = 100.0;
-    }
-    
-    double availablePhysicalMemory = getTotalPhysicalMemoryKilobytes();
+	}
+	
+	double availablePhysicalMemory = getTotalPhysicalMemoryKilobytes();
 
-    int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
+	int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
 	m_maxMemory = memoryToUse;
 }
 
 void Properties::setInitMemoryPercentOfTotal(const tstring& property)
 {
-    double percent = LocalUtilities::convertStringToPercent( property );
-    DEBUG_SHOW(_T("setInitMemoryPercentOfTotal"));
-    
-    if( percent < 0.0 ) {
-        percent = 0.0;
-    }
-    
-    if( percent > 100.0 ) {
-        percent = 100.0;
-    }
-    
-    double availablePhysicalMemory = getTotalPhysicalMemoryKilobytes();
+	double percent = LocalUtilities::convertStringToPercent( property );
+	DEBUG_SHOW(_T("setInitMemoryPercentOfTotal"));
+	
+	if( percent < 0.0 ) {
+		percent = 0.0;
+	}
+	
+	if( percent > 100.0 ) {
+		percent = 100.0;
+	}
+	
+	double availablePhysicalMemory = getTotalPhysicalMemoryKilobytes();
 
-    int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
+	int memoryToUse = (int)(availablePhysicalMemory * percent / 100.0);
 	m_initMemory = memoryToUse;
 }
 

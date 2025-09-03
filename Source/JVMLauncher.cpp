@@ -185,7 +185,7 @@ typedef int (*SplashLoadFile_t)(const char* filename);
 typedef void (*SplashInit_t)(void);
 typedef void (*SplashClose_t)(void);
 typedef void (*SplashSetFileJarName_t)(const char* fileName, 
-                                       const char* jarName);
+									   const char* jarName);
 
 VOID WINAPI serviceControlHandler(DWORD controlCode)
 {
@@ -336,8 +336,8 @@ void JVMLauncher::launch()
 
 		DEBUG_SHOW( tstring(_T("pBestJvmInfo->toString()=")) + pBestJvmInfo->toString() );
 
-	    // On some Windows environments with AdoptJDK or Adoptium the DLLs couldn't be loaded.
-	    // Specifically add the jre dlls to the dll search directory.
+		// On some Windows environments with AdoptJDK or Adoptium the DLLs couldn't be loaded.
+		// Specifically add the jre dlls to the dll search directory.
 		tstring binpath = pBestJvmInfo->getJavaHomePath() + tstring(_T("\\bin\\"));
 		SetDllDirectory(binpath.c_str());
 
@@ -453,15 +453,15 @@ void JVMLauncher::launch()
 		m_pVM = pJvm;
 
 		// find main class
-        tstring& mainClass = m_pProperties->getMainClass();
-        
+		tstring& mainClass = m_pProperties->getMainClass();
+		
 #ifdef _UNICODE
-        ::std::string utf8MainClass = LocalUtilities::convertWideStringToUTF8(mainClass);
+		::std::string utf8MainClass = LocalUtilities::convertWideStringToUTF8(mainClass);
 #else
-        ::std::string utf8MainClass = m_pProperties->getMainClass();
+		::std::string utf8MainClass = m_pProperties->getMainClass();
 #endif
-        javaClass = pJniEnvironment->FindClass( utf8MainClass.c_str() );
-        
+		javaClass = pJniEnvironment->FindClass( utf8MainClass.c_str() );
+		
 		if(pJniEnvironment->ExceptionOccurred() != 0)
 		{
 			pJniEnvironment->ExceptionDescribe();

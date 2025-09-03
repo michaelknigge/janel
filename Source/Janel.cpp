@@ -238,9 +238,9 @@ Properties& getProperties(int argc, TCHAR* argv[])
 
 		// TODO: we should consider changing the working directory not here since
 		// changing the directory has nothing to do with getting the properties...
-        // The working directory should be changed just before we enter the
-        // java world....
-        // (separartion of concerns / single responsibility principle)
+		// The working directory should be changed just before we enter the
+		// java world....
+		// (separartion of concerns / single responsibility principle)
 		_tchdir(pProperties->getSelfHomePath().c_str());
 
 		pProperties->setNumberOfInitialCommandLineArgs(argc-1);

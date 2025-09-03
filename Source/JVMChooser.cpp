@@ -43,11 +43,11 @@ bool isBitnessOk(JVMInfo *jvm) {
 
    if (instance == NULL)
    {
-      result = (GetLastError() != ERROR_BAD_EXE_FORMAT);
+	  result = (GetLastError() != ERROR_BAD_EXE_FORMAT);
    }
    else
    {
-      FreeLibrary(instance);
+	  FreeLibrary(instance);
    }
    DEBUG_SHOW( tstring(_T("bitness is: ")) + result ? _T("ok") : _T("not ok") );
 
@@ -63,21 +63,21 @@ JVMInfo* JVMChooser::getBestJVM()
 		pBestJvm = getJvmFromCustomJvmPath();
 		if( pBestJvm != 0 )
 		{
-         if( m_pProperties->failOnBitnessMismatch() || isBitnessOk(pBestJvm) )
-         {
-            return pBestJvm;
-         }
-         delete pBestJvm;
+		 if( m_pProperties->failOnBitnessMismatch() || isBitnessOk(pBestJvm) )
+		 {
+			return pBestJvm;
+		 }
+		 delete pBestJvm;
 		}
 
 		pBestJvm = getJvmFromCustomJavaHomePath();
 		if( pBestJvm != 0 )
 		{
-         if( m_pProperties->failOnBitnessMismatch() || isBitnessOk(pBestJvm) )
-         {
-            return pBestJvm;
-         }
-         delete pBestJvm;
+		 if( m_pProperties->failOnBitnessMismatch() || isBitnessOk(pBestJvm) )
+		 {
+			return pBestJvm;
+		 }
+		 delete pBestJvm;
 		}
 
 		vector<JVMInfo>* pVecJvmInfo = new vector<JVMInfo>;

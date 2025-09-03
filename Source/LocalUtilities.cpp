@@ -128,12 +128,12 @@ double LocalUtilities::convertStringToPercent(const tstring& s)
 	tistringstream i(s);
 	double x;
 	if (!(i >> x))
-    {
-        // It might make sense to throw an exception here, but we'll just
-        // log it and move on for now.
-        // FIXME - put a note in the log.
+	{
+		// It might make sense to throw an exception here, but we'll just
+		// log it and move on for now.
+		// FIXME - put a note in the log.
 		x = -1.0;
-    }
+	}
 	return x;
  }
 

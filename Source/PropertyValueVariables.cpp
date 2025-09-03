@@ -49,7 +49,7 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		}
 		else if ( strJustVariable.find( _T("env.") ) == 0)
 		{
-		    tstring tempString = strJustVariable.substr(4);
+			tstring tempString = strJustVariable.substr(4);
 			tstring& strEnvVariable = tempString;
 			size_t outputSize = 0;
 			_tgetenv_s( &outputSize, NULL, 0, strEnvVariable.c_str() );

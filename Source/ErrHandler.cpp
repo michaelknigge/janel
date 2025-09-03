@@ -48,11 +48,11 @@ void ErrHandler::display(const tstring& msg)
 #ifdef _WINDOWS
 	TCHAR name[MAX_PATH+1];
 	GetModuleFileName(NULL, name, MAX_PATH);
-    MessageBox( NULL,
+	MessageBox( NULL,
 		msg.c_str(),
 			name, 
 			MB_OK | MB_ICONEXCLAMATION );
-    
+	
 #endif
 }
 
