@@ -593,14 +593,11 @@ tstring& Properties::getServiceOptionUninstall()
 
 double Properties::getAvailablePhysicalMemoryKilobytes()
 {
-    double physicalMemoryKb = 0.0;
-
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     GlobalMemoryStatusEx(&statex);
-    physicalMemoryKb = statex.ullAvailPhys >> 10;
 
-    return(physicalMemoryKb);
+    return((double) (statex.ullAvailPhys >> 10));
 }
 
 void Properties::setMemoryCheckLimits(const tstring& property)
@@ -686,14 +683,11 @@ void Properties::setInitMemoryLowerLimit(const tstring& property)
 
 double Properties::getTotalPhysicalMemoryKilobytes()
 {
-    double physicalMemoryKb = 0.0;
-
     MEMORYSTATUSEX statex;
     statex.dwLength = sizeof(statex);
     GlobalMemoryStatusEx(&statex);
-    physicalMemoryKb = (double) (statex.ullTotalPhys >> 10);
 
-    return(physicalMemoryKb);
+    return((double)(statex.ullTotalPhys >> 10));
 }
 
 void Properties::setMaxMemoryPercentOfTotal(const tstring& property)
