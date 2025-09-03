@@ -140,12 +140,12 @@ double LocalUtilities::convertStringToPercent(const tstring& s)
 ::std::string LocalUtilities::convertWideStringToUTF8(const tstring& s)
 {
 	const TCHAR* inBuff = s.c_str();
-	size_t inLength = s.length();
+	int inLength = (int) s.length();
 	assert(inLength < ((size_t) std::numeric_limits<int>::max()));
-	size_t outSize = WideCharToMultiByte(CP_UTF8, 0, inBuff, inLength, NULL, 0, NULL, NULL);
+	int outSize = WideCharToMultiByte(CP_UTF8, 0, inBuff, inLength, NULL, 0, NULL, NULL);
 	char* buff = new char[outSize + 1];
 	assert(outSize < ((size_t) std::numeric_limits<int>::max()));
-	size_t actualSize = WideCharToMultiByte(CP_UTF8, 0, inBuff, inLength, buff, outSize, NULL, NULL);
+	int actualSize = WideCharToMultiByte(CP_UTF8, 0, inBuff, inLength, buff, outSize, NULL, NULL);
 	buff[actualSize] = 0;
 	assert(actualSize == outSize);
 	::std::string output(buff);

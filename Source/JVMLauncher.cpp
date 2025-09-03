@@ -601,7 +601,7 @@ void JVMLauncher::setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs)
 		// Get the Java options specified at the command line (if janel.allow.jvm.options=true)
 		// and append them to the Java system properties
 		vector<tstring>& optionsVector = m_pProperties->getCommandLineJavaOptions();
-		for( int j=0; j < optionsVector.size(); j++)
+		for(size_t j=0; j < optionsVector.size(); j++)
 		{
 			numberOfSystemProperties++;
 			m_pProperties->addJavaSystemProperty(optionsVector.at(j));
