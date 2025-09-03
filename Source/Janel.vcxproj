@@ -175,6 +175,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Console|Win32'">
     <ClCompile>
@@ -196,6 +202,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Windows|Win32'">
     <ClCompile>
@@ -217,6 +229,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Windows|Win32'">
     <ClCompile>
@@ -238,6 +256,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Console|x64'">
     <Midl>
@@ -262,6 +286,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Console|x64'">
     <Midl>
@@ -286,6 +316,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug Windows|x64'">
     <Midl>
@@ -310,6 +346,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release Windows|x64'">
     <Midl>
@@ -334,6 +376,12 @@
       </DataExecutionPrevention>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
+    <PostBuildEvent>
+      <Command>mt.exe -manifest "Janel.manifest" -outputresource:"$(OutDirFullPath)$(TargetFileName)";1</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Embedding manifest</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Debug.cpp" />
