@@ -92,6 +92,11 @@ It might be useful to set defaults in the LAP file of your application, but let 
 
 Using this configuration, you can place a file with the suffix ".inc" right beside your .exe that may contain any entry that might occur in a LAP file.
 
+## Fix codepage problems when passing options and/or properties to the JVM
+If an entry in the LAP file contains some special characters (i. e. german umlauts) they have not been passed correctly to the JVM.
+
+
+
 # License
 MIT License
 
