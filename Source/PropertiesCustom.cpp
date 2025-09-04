@@ -46,6 +46,7 @@ const tstring PropertiesCustom::CUSTOM_DEFAULT_ERROR_TEXT = _T("janel.error.defa
 const tstring PropertiesCustom::SHOW_ERROR_DETAIL = _T("janel.error.show.detail");
 const tstring PropertiesCustom::BITNESS_MISMATCH = _T("janel.jvm.bitness.mismatch");
 const tstring PropertiesCustom::ENVIRONMENT_FILE = _T("janel.environment.file");
+const tstring PropertiesCustom::INCLUDE_FILE = _T("janel.include.file");
 
 PropertiesCustom::PropertiesCustom()
 {

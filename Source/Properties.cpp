@@ -83,7 +83,7 @@ void Properties::loadProperties()
 	try
 	{
 		PropertiesFile propsFile(this);
-		propsFile.loadPropertiesFromFile();
+		propsFile.loadPropertiesFromDefaultFile();
 	}
 	catch(...)
 	{

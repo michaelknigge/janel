@@ -1127,7 +1127,15 @@ All custom properties are case-sensitive. The custom properties available are: <
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.environment.file = file (properties format) that contains
-     additional environment variables to be set. <o:p></o:p></span></li>
+     additional environment variables to be set. No
+     error will be thrown if the specified file can not be opened.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
+     "Times New Roman"'>janel.include.file = file (LAP format) that will be included
+     at this point. This allows nesting and/or concatenating of LAP files. No
+     error will be thrown if the specified file can not be opened. Furthermore no
+     loop detection is performed. If you include file A.lap that includes B.lap that
+     includes A.lap - you get an infinitive loop. You get what you've asked for.<o:p></o:p></span></li>
  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
      mso-list:l8 level1 lfo3;tab-stops:list .5in'><span style='mso-fareast-font-family:
      "Times New Roman"'>janel.debug.file = the file which will have debugging

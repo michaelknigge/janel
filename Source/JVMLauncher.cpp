@@ -270,7 +270,7 @@ void JVMLauncher::preloadRuntimeLibrary()
 		return;
 	}
 
-	// Try for Java 11 up to 23...
+	// Try for Java 11 up to 24...
 	if (preloadRuntimeLibrary(tstring(_T("\\bin\\vcruntime140.dll")))) {
 		return;
 	}

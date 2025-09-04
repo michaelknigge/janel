@@ -47,6 +47,7 @@ public:
 	static const tstring SHOW_ERROR_DETAIL;
 	static const tstring BITNESS_MISMATCH;
 	static const tstring ENVIRONMENT_FILE;
+	static const tstring INCLUDE_FILE;
 
 
 	PropertiesCustom();

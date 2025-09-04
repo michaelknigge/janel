@@ -41,7 +41,8 @@ public:
 	virtual ~PropertiesFile();
 
 	tstring& getPropertiesFileName();	
-	void loadPropertiesFromFile();
+	void loadPropertiesFromDefaultFile();
+	void loadPropertiesFromFile(const tstring& fileName, const bool isOptionalFile);
 
 	static const char LINE_CONTINUATION_CARET;
 };

@@ -59,6 +59,11 @@ tstring& PropertiesFile::getPropertiesFileName()
 	return m_propertiesFileName;
 }
 
+void PropertiesFile::loadPropertiesFromDefaultFile()
+{
+	loadPropertiesFromFile(getPropertiesFileName(), false);
+}
+
 // remove comments and blanks from properties
 // then process custom properties without variables
 // then process custom properties with early variables, no late variables
@@ -67,17 +72,26 @@ tstring& PropertiesFile::getPropertiesFileName()
 // then get the best JVM
 // then process custom properties with late variables
 // then process non-custom properties with late variables
-void PropertiesFile::loadPropertiesFromFile()
+void PropertiesFile::loadPropertiesFromFile(const tstring& name, const bool isOptionalFile)
 {
 	try
 	{
+		DEBUG_SHOW(_T("Loading properties and settings from file ") + name);
+
 		vector<PropertyFileEntry*> propsFromFile;
-		tstring& name = getPropertiesFileName();
 		tifstream propsFile( name.c_str() );
 
 		if( !propsFile )
 		{
-			throw tstring(_T("Could not open file ") + name);
+			if (isOptionalFile)
+			{
+				DEBUG_SHOW(_T("Could not open file ") + fileName);
+				return;
+			}
+			else
+			{
+				throw tstring(_T("Could not open file ") + name);
+			}
 		}
 
 		// load propsFromFile leaving out comments and blank lines
@@ -590,6 +604,11 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 		else if (propertyName.compare(PropertiesCustom::ENVIRONMENT_FILE) == 0)
 		{
 			setEnvironmentVariables(propertyValue);
+		}
+		// INCLUDE_FILE
+		else if (propertyName.compare(PropertiesCustom::INCLUDE_FILE) == 0)
+		{
+			loadPropertiesFromFile(propertyValue, true);
 		}
 
 		// put other property checks here

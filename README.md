@@ -85,10 +85,17 @@ In some circumstances it might be useful to let Janel set some additional enviro
 
 Using this configuration, you can place a file with the suffix ".env" right beside your .exe that contains key-value-pairs of environment variabes to be set.
 
+## Nesting of .LAP files
+It might be useful to set defaults in the LAP file of your application, but let the user change those defaults without having the user to change the LAP file everytime a new release of the software is released.
+
+    janel.include.file=${SELF_NAME}.inc
+
+Using this configuration, you can place a file with the suffix ".inc" right beside your .exe that may contain any entry that might occur in a LAP file.
+
 # License
 MIT License
 
-Copyright (c) 2017 Timothy Kil, Michael Knigge and others who had contributed code to Janel
+Copyright (c) 2017-2025 Timothy Kil, Michael Knigge and others who had contributed code to Janel
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
