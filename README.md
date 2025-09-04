@@ -27,6 +27,12 @@ in a clean environment. The status badges at the top of the page will guide you 
 
 **Note that my enhancements and fixes will be available in the branch _enhanced_. The _master_ branch contains an unmodified version of the Janel source code available at [Sourceforge](https://sourceforge.net/projects/janel/)**
 
+# How to build
+See the manual [How to build](./Documentation/HowToBuild.md).
+
+# How to run
+See the manual [How to run](./Documentation/HotToRun.md).
+
 # Enhancements
 These are my enhancements to the official Version of Janel 4.2.0
 
@@ -95,6 +101,8 @@ Using this configuration, you can place a file with the suffix ".inc" right besi
 ## Fix codepage problems when passing options and/or properties to the JVM
 If an entry in the LAP file contains some special characters (i. e. german umlauts) they have not been passed correctly to the JVM.
 
+## Converted documentation from HTML to Markdown
+The documentation is now available in Markdown. See the manuals [How to build](./Documentation/HowToBuild.md) and [How to run](./Documentation/HotToRun.md).
 
 
 # License

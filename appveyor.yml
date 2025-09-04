@@ -46,7 +46,7 @@ build_script:
     mkdir %DISTRIBUTION%
 
 
-    copy Documentation\HowToRun.html %DISTRIBUTION%
+    copy Documentation\HowToRun.md %DISTRIBUTION%
 
     copy "Source\Release Windows\Janel.exe" %DISTRIBUTION%\JanelWindows32.exe
 

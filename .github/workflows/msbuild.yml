@@ -41,7 +41,7 @@ jobs:
         copy "Source\Release Windows\Janel.exe" Distribution\JanelWindows32.exe
         copy "Source\x64\Release Console\Janel.exe" Distribution\JanelConsole64.exe
         copy "Source\x64\Release Windows\Janel.exe" Distribution\JanelWindows64.exe
-        copy Documentation\HowToRun.html Distribution\HowToRun.html
+        copy Documentation\HowToRun.md Distribution\HowToRun.md
         copy JanelLicense.txt Distribution\JanelLicense.txt
         git log --full-history > Distribution\Changelog.txt
 
