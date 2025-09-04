@@ -344,11 +344,11 @@ vector<tstring>& Properties::getCommandLineArguments()
 			// to the main class as a command line argument....
 			if (getAllowJvmOptions() && (*iter).length() > 1 && (*iter)[0] == _T('-') && (*iter)[1] != _T('-'))
 			{
-				DEBUG_SHOW( _T("treating as a JVM option: ") + current);
+				DEBUG_SHOW( _T("treating as a JVM option: ") + *iter);
 			}
 			else
 			{
-			pCommandLineArgs->push_back(*iter);
+				pCommandLineArgs->push_back(*iter);
 			}
 		}
 	}

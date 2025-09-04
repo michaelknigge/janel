@@ -85,7 +85,7 @@ void PropertiesFile::loadPropertiesFromFile(const tstring& name, const bool isOp
 		{
 			if (isOptionalFile)
 			{
-				DEBUG_SHOW(_T("Could not open file ") + fileName);
+				DEBUG_SHOW(_T("Could not open file ") + name);
 				return;
 			}
 			else

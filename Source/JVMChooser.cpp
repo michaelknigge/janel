@@ -49,7 +49,7 @@ bool isBitnessOk(JVMInfo *jvm) {
    {
 	  FreeLibrary(instance);
    }
-   DEBUG_SHOW( tstring(_T("bitness is: ")) + result ? _T("ok") : _T("not ok") );
+   DEBUG_SHOW( tstring(_T("bitness is: ")) + (result ? _T("ok") : _T("not ok")));
 
    SetErrorMode(errorMode);
    return result;
