@@ -499,7 +499,7 @@ void JVMLauncher::launch()
 		for(unsigned int i=0; i < argsVector.size(); i++)
 		{
 			DEBUG_STMT( TCHAR debugstr[5000]; );
-			DEBUG_STMT( _stprintf(debugstr, _T("command line arg[%u]=%s"), i, argsVector.at(i).c_str()); );
+			DEBUG_STMT( swprintf_s(debugstr, _T("command line arg[%u]=%s"), i, argsVector.at(i).c_str()); );
 			DEBUG_SHOW( debugstr );
 
 			size_t argSize = argsVector.at(i).length();
@@ -615,7 +615,7 @@ void JVMLauncher::setupJavaVMInitArgs(JavaVMInitArgs& jvmInitArgs)
 			tstring& javaSysProp(m_pProperties->getJavaSystemProperties().at(j));
 
 #ifdef _UNICODE
-			std::string output = LocalUtilities::convertWideStringToUTF8(javaSysProp);
+			std::string output = LocalUtilities::convertWideCharToMultiByte(javaSysProp);
 			size_t outStrLen = output.size();
 			size_t buffLength = outStrLen + 1;
 			char* buff = new char[buffLength];

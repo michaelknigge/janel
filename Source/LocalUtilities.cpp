@@ -152,3 +152,19 @@ double LocalUtilities::convertStringToPercent(const tstring& s)
 	delete [] buff;
 	return output;
 }
+
+::std::string LocalUtilities::convertWideCharToMultiByte(const tstring& s)
+{
+	const TCHAR* inBuff = s.c_str();
+	int inLength = (int)s.length();
+	assert(inLength < ((size_t)std::numeric_limits<int>::max()));
+	int outSize = WideCharToMultiByte(1252, 0, inBuff, inLength, NULL, 0, NULL, NULL);
+	char* buff = new char[outSize + 1];
+	assert(outSize < ((size_t)std::numeric_limits<int>::max()));
+	int actualSize = WideCharToMultiByte(1252, 0, inBuff, inLength, buff, outSize, NULL, NULL);
+	buff[actualSize] = 0;
+	assert(actualSize == outSize);
+	::std::string output(buff);
+	delete[] buff;
+	return output;
+}

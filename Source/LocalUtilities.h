@@ -21,6 +21,7 @@ public:
 	static bool convertToBoolean(const tstring& text);
 	static double convertStringToPercent(const tstring& s);
 	static ::std::string convertWideStringToUTF8(const tstring& s);
+	static ::std::string convertWideCharToMultiByte(const tstring& s);
 };
 
 #endif // ifndef _JANEL_LOCALUTILITIES_H_INCLUDED_
