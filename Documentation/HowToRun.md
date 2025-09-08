@@ -130,7 +130,7 @@ Properties may also contain variables that are resolved by the Janel executable.
 * ```EXE_BITNESS``` is set to 32 or 64, depending on the bitness of the current running executable.
 * ```OS_BITNESS``` is set to 32 or 64, depending on the bitness of operating system.
 
-Any environment variable may also be used as a property value variable by prefixing it with `env.`. For example, `${env.CATALINA_HOME}` would resolve to the value of the environment variable `CATALINA_HOME`. Note that a non-existing environment variable is substitute by an empty string. So `janel.include.file=${env.APPL_CONFIGDIR}\custom.lap` will resolve to `janel.include.file=\custom.lap` if the environment variable 'APPL_CONFIGDIR' is not set.
+Any environment variable may also be used as a property value variable by prefixing it with `env.`. For example, `${env.CATALINA_HOME}` would resolve to the value of the environment variable `CATALINA_HOME`. Note that a non-existing environment variable is substituted by an empty string. So `janel.include.file=${env.APPL_CONFIGDIR}\custom.lap` will resolve to `janel.include.file=\custom.lap` if the environment variable 'APPL_CONFIGDIR' is not set.
 
 Below is an example of a property value variable in a .lap file. The Java system property called found.exe.folder.test will be set to the path to the Janel executable.  
 `-Dfound.exe.folder.test=${FOUND_EXE_FOLDER}`
@@ -215,6 +215,7 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
 
 
