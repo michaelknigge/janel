@@ -189,8 +189,8 @@ Custom icons for the executable can be set in one of two ways:
 To set the version of the executable, so that it can be viewed in the properties of the executable using Windows Explorer, you will need to add a Version resource to the executable. Use Visual Studio or, if one is available, a resource editor that allows you to add a Version resource. The following instructions are for Visual Studio.
 
 1. Open the executable file with Visual Studio. You will see a view of the resources.
-2. Right-click the name of the executable and select Add Resource...
-3. Select Version.
+2. Right-click the name of the executable and select _Add Resource..._
+3. Select _Version_.
 4. Add your version information.
 5. Save All.
 
@@ -208,13 +208,14 @@ Starting with Janel 3.0 relative paths within the .lap file are relative to the 
 Janel uses the Unicode character set so it is compatible with most languages.
 
 ### Why does my Windows Service not end?
-Make sure you have implemented an initiateExit(int) static method in your main Java class. This method gets called if the service is requested to stop.
+Make sure you have implemented an _initiateExit(int)_ static method in your main Java class. This method gets called if the service is requested to stop.
 
 ### Why do I get a "broken pipe error" when I try to stop my Windows Service with the command line utility “sc”?
 See the question above, first you have to implement the _initiateExit(int)_ static method in your main class. The responsibility of this method is to shut down your Windows Service (in other words, this method has to make sure that your main static method returns). If you do anything that simply terminates the process, i.e. calling _System.exit()_, Janel has no chance to inform Windows that the service has successfully ended (and furthermore, for the Service Control Manager the service has ended unexpectedly which in turn triggers the _broken pipe error_).
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
 
 
