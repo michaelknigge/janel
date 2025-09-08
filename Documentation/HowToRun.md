@@ -59,18 +59,18 @@ All custom properties are case-sensitive. The custom properties available are:
 * ```janel.java.bundle``` : informs Janel whether to look for the JVM from a SDK or a JRE install. The possible values are _prefer\_jre_ (the default), _prefer\_sdk_, _require\_jre_ (the same as JRE), and _require\_sdk_ (the same as SDK). _prefer_ means that Janel will use the other Java installation if necessary. All values are case-insensitive.
 * ```janel.jvm.path``` : the path to the _jvm.dll_ file, example _C:\\Java\\bin\\client\\jvm.dll_. If set but file does not exist, Janel will fall back to using another installed Java installation. If the the bitness of the JVM is different to the bitness of the runnung process, Janel will fail (default) or fall back to using another installed Java installation. See the Janel property ```janel.jvm.bitness.mismatch``` for details.
 * ```janel.java.home.path``` : the Java home path, the root directory of the Java installation. For SDK installations the Java home path is the directory that holds directory _jre_, which holds the _bin_ directory. For JRE installations it is the directory that holds the _bin_ directory. If set but directory does not exist, Janel will fall back to using another installed Java installation. If set bit the bitness of the JVM is different to the bitness of the runnung process, Janel will fail (default) or fall back to using another installed Java installation. See the Janel property ```janel.jvm.bitness.mismatch``` for details.
-* ```janel.jvm.bitness.mismatch``` : fail/skip specifies the desired behaviour of Janel when the bitness of the JVM (specified with ```janel.jvm.path``` or ```janel.java.home.path```) differs from the bitness of the running process (the Janel executable). The default behaviour is to fail (Janel will display a error message). If set to skip, Janel will ignore the specified JVM and fall back to using another installed Java installation.
+* ```janel.jvm.bitness.mismatch``` : _fail_ or _skip_ specifies the desired behaviour of Janel when the bitness of the JVM (specified with ```janel.jvm.path``` or ```janel.java.home.path```) differs from the bitness of the running process (the Janel executable). The default behaviour is to fail (Janel will display a error message). If set to skip, Janel will ignore the specified JVM and fall back to using another installed Java installation.
 * ```janel.min.java.version``` : the minimum version of the JVM, example 1.4.1
 * ```janel.max.java.version``` : the maximum version of the JVM, example 1.7.0
-* ```janel.trap.console.ctrl``` : true/false, yes/no to trap console control commands and call an _initiateExit(int)_ static method in the main Java class. Defaults to false.
+* ```janel.trap.console.ctrl``` : _true_ or _false_ (_yes_ or _no_ works too) to trap console control commands and call an _initiateExit(int)_ static method in the main Java class. Defaults to false.
 * ```janel.classpath.jars.dir``` : the path to one directory of jars that will be included in the classpath. Multiple instances of this property can be used to include multiple directories.
 * ```janel.classpath.jars.dir.recursive``` : like ```janel.classpath.jars.dir```, but the specified directory is scanned recursively for jar files. Please note that the order of the jars on the classpath is undefined!
 * ```janel.library.path.dir``` : the path to be added to Java system property ```java.library.path```. which is used to locate native DLLs. Multiple instances of this property may be used.
 * ```janel.library.path.dir.recursive``` : like ```janel.library.path.dir```, but also all subdirectories of the specified directory are added to the library path. Please note that the order of the directories is undefined!
 * ```janel.working.dir``` : just before the main class gets called, Janel will change the current working directory to the specified directory. Normally you should specify only one of the supported property value variables like _${CALLER\_DIR}_ or _${SELF\_HOME}_. Starting with Janel 3.0 the default is _${SELF\_HOME}_.
-* ```janel.sysprop.process.id``` : true/false, yes/no to send the Java system property process.id equal to the process id. Defaults to false.
+* ```janel.sysprop.process.id``` : _true_ or _false_ (_yes_ or _no_ works too) to send the Java system property process.id equal to the process id. Defaults to false.
 * ```janel.error.default.text``` : overrides the default error text (_Error in Java launcher._) with a custom error message.
-* ```janel.error.show.detail``` : true/false, yes/no enables detailed error messages. If true, the default error message will be displayed followed by the details. Defaults to true.
+* ```janel.error.show.detail``` : _true_ or _false_ (_yes_ or _no_ works too) enables detailed error messages. If _true_, the default error message will be displayed followed by the details. Defaults to _true_.
 * ```janel.environment.file``` : file (properties format) that contains additional environment variables to be set. No error will be thrown if the specified file can not be opened.
 * ```janel.include.file``` : file (LAP format) that will be included at this point. This allows nesting and/or concatenating of LAP files. No error will be thrown if the specified file can not be opened. Furthermore no loop detection is performed. If you include file A.lap that includes B.lap that includes A.lap - you get an infinitive loop. You get what you've asked for.
 * ```janel.debug.file``` : the file which will have debugging messages written to it.
@@ -215,6 +215,7 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
 
 
