@@ -104,7 +104,7 @@ The exact path to the _jvm.dll_ that will be used to call the main method of the
 6. None of the above custom properties are set. ```janel.bin.jvm.dir``` defaults to _prefer\_client_. ```janel.java.bundle``` defaults to _prefer\_jre_. The version of JVM will be checked.
 
 ## Java system properties in a .LAP file
-Java system properties start with a `-` (dash) and are passed directly to the JVM. For example, `-Djava.class.path=C:\\MyPrograms\\program.jar`, `-verbose:gc`, and `-Xincgc` would be passed as is to the JVM.
+Java system properties start with a `-` (dash) and are passed directly to the JVM. For example, `-Djava.class.path=C:\MyPrograms\program.jar`, `-verbose:gc`, and `-Xincgc` would be passed as is to the JVM.
 
 For a list of the Java system properties a good place to look is the J2SE Javadocs for System.getProperties(). The standard options available are the system properties that are assigned with -D and the -verbose\[:class|gc|jni\] options. The nonstandard options are dependent upon the JVM and begin with `-X`. For a list of the available nonstandard options run `java.exe -X`.
 
@@ -215,4 +215,5 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
