@@ -2,7 +2,7 @@
 
 
 ## Short answer
-The short answer to how-to run Janel is: Go to Janel's Executables\\Win32 directory. Change JanelConsole32.exe to the name of your Java application that you want to launch, such as MyApp.exe. Rename a .lap file to MyApp.lap. In the .lap file set the property janel.main.class to the fully qualified name of the class that has your main method, and set the -Djava.class.path property to the desired classpath. Copy MyApp.exe, MyApp.lap to a directory, and you should be ready to launch your Java application with Janel.
+The short answer to how-to run Janel is: Go to Janel's _Executables\\Win32_ directory. Change _JanelConsole32.exe_ to the name of your Java application that you want to launch, such as _MyApp.exe_. Rename a ```.lap``` file to _MyApp.lap_. In the .lap file set the property janel.main.class to the fully qualified name of the class that has your main method, and set the -Djava.class.path property to the desired classpath. Copy MyApp.exe, MyApp.lap to a directory, and you should be ready to launch your Java application with Janel.
 
 Another example:
 
@@ -118,17 +118,17 @@ This is the same as `-Dprocess.id=X`, where _X_ is the process id.
 ## Property value variables in a .LAP file
 Properties may also contain variables that are resolved by the Janel executable. Their format is `${property value variable}`. For example, a property may be `-DJAVA_HOME=${FOUND_JAVA_HOME}`. Currently there are these property value variables available:
 
-* ```FOUND\_JAVA\_HOME``` is the Java home path that is determined by the Janel executable
-* ```FOUND\_EXE\_FOLDER``` is the path to the Janel executable. Same as _SELF\_HOME_ but does not remove the trailing _\\bin_.
-* ```FOUND\_EXE``` is the path and name to the Janel executable.
-* ```SELF\_HOME``` is the path to the Janel executable with a trailing _\\bin_ removed if it is present.
-* ```SELF\_NAME``` is name of the Janel executable (without the path) with a trailing _.exe_ removed.
-* ```SELF\_PARENT\_NAME``` is name of the directory that contains the Janel executable (without the path). If Janel executable is in a directory named _bin_, than ```SELF\_PARENT\_NAME``` contains the name of the parent-parent directory. In example, ```SELF\_PARENT\_NAME``` will contain _MyApp_ when the Janel executable is in _C:\\Program Files\\MyApp_ or in _C:\\Program Files\\MyApp\\bin_.
-* ```CALLER\_DIR``` is the path to the directory in which the executable was called. Calling executable _C:\\Dev\\MyApp.exe_ from directory _C:\\Temp_ would place _C:\\Temp_ in ```$CALLER\_DIR```.
-* ```MAINCLASS\_NAME``` is the name of the Java main class as specified in the property ```janel.main.class```. Note that the separator character is always the ```.``` (dot). So if _mypackage/Start_ was specified as the main class, this variable will contain _mypackage.Start_.
-* ```MAINCLASS\_SIMPLE\_NAME``` is the simple name of the Java main class as specified in the property ```janel.main.class```. I. e. if _mypackage.Start_ was specified as the main class, this variable will contain _Start_.
-* ```EXE\_BITNESS``` is set to 32 or 64, depending on the bitness of the current running executable.
-* ```OS\_BITNESS``` is set to 32 or 64, depending on the bitness of operating system.
+* ```FOUND_JAVA_HOME``` is the Java home path that is determined by the Janel executable
+* ```FOUND_EXE_FOLDER``` is the path to the Janel executable. Same as _SELF\_HOME_ but does not remove the trailing _\\bin_.
+* ```FOUND_EXE``` is the path and name to the Janel executable.
+* ```SELF_HOME``` is the path to the Janel executable with a trailing _\\bin_ removed if it is present.
+* ```SELF_NAME``` is name of the Janel executable (without the path) with a trailing _.exe_ removed.
+* ```SELF_PARENT_NAME``` is name of the directory that contains the Janel executable (without the path). If Janel executable is in a directory named _bin_, than ```SELF_PARENT_NAME``` contains the name of the parent-parent directory. In example, ```SELF_PARENT_NAME``` will contain _MyApp_ when the Janel executable is in _C:\\Program Files\\MyApp_ or in _C:\\Program Files\\MyApp\\bin_.
+* ```CALLER_DIR``` is the path to the directory in which the executable was called. Calling executable _C:\\Dev\\MyApp.exe_ from directory _C:\\Temp_ would place _C:\\Temp_ in ```$CALLER_DIR```.
+* ```MAINCLASS_NAME``` is the name of the Java main class as specified in the property ```janel.main.class```. Note that the separator character is always the ```.``` (dot). So if _mypackage/Start_ was specified as the main class, this variable will contain _mypackage.Start_.
+* ```MAINCLASS_SIMPLE_NAME``` is the simple name of the Java main class as specified in the property ```janel.main.class```. I. e. if _mypackage.Start_ was specified as the main class, this variable will contain _Start_.
+* ```EXE_BITNESS``` is set to 32 or 64, depending on the bitness of the current running executable.
+* ```OS_BITNESS``` is set to 32 or 64, depending on the bitness of operating system.
 
 Any environment variable may also be used as a property value variable by prefixing it with `env.`. For example, `${env.CATALINA_HOME}` would resolve to the value of the environment variable `CATALINA_HOME`.
 
@@ -215,3 +215,4 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
