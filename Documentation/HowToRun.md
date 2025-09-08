@@ -183,7 +183,7 @@ To edit the resources of the executable use either Visual Studio, or possibly on
 Custom icons for the executable can be set in one of two ways:
 
 1. Use one of the resource editors mentioned above to replace the generic icons with your own custom icons.
-2. Or replace the App.ico file with your own custom icon file, naming it App.ico. Then rebuild Janel following the instructions in `HowToCompile.md`.
+2. Or replace the App.ico file with your own custom icon file, naming it App.ico. Then rebuild Janel following the instructions in [How to build](./HowToBuild.md).
 
 ## Versioning
 To set the version of the executable, so that it can be viewed in the properties of the executable using Windows Explorer, you will need to add a Version resource to the executable. Use Visual Studio or, if one is available, a resource editor that allows you to add a Version resource. The following instructions are for Visual Studio.
@@ -215,6 +215,7 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
 
 
