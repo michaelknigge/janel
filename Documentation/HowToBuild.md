@@ -20,6 +20,7 @@ There are two sets of tests - tests that should succeed and tests that should fa
 
 Do the following before testing:
 
-1.  Set environment variable ANT\_HOME to the root directory of your Ant installation.
-2.  Set environment variable JAVA\_HOME to the root directory of your Java SDK (not JRE) installation.
+1.  Set environment variable `ANT_HOME` to the root directory of your Ant installation.
+2.  Set environment variable `JAVA_HOME` to the root directory of your Java SDK (not JRE) installation.
 3.  To execute the runtests.bat and runfailtests.bat open the command prompt with “Run as administrator”.
+
