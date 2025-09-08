@@ -2,20 +2,20 @@
 
 
 ## Short answer
-The short answer to how-to run Janel is: Go to Janel's _Executables\\Win32_ directory. Change _JanelConsole32.exe_ to the name of your Java application that you want to launch, such as _MyApp.exe_. Rename a ```.lap``` file to _MyApp.lap_. In the .lap file set the property janel.main.class to the fully qualified name of the class that has your main method, and set the -Djava.class.path property to the desired classpath. Copy MyApp.exe, MyApp.lap to a directory, and you should be ready to launch your Java application with Janel.
+The short answer to how-to run Janel is: Go to Janel's _Executables\\Win32_ directory. Change _JanelConsole32.exe_ to the name of your Java application that you want to launch, such as _MyApp.exe_. Rename a ```.lap``` file to _MyApp.lap_. In the .lap file set the property janel.main.class to the fully qualified name of the class that has your main method, and set the ```-Djava.class.path``` property to the desired classpath. Copy _MyApp.exe_ and _MyApp.lap_ to a directory, and you should be ready to launch your Java application with Janel.
 
 Another example:
 
-1. Go to Janel's Executables directory.
-2. Rename JanelWindows32.exe to MyExampleApp.exe.
-3. Rename JanelWindows32.lap to MyExampleApp.lap.
+1. Go to Janel's _Executables_ directory.
+2. Rename _JanelWindows32.exe_ to _MyExampleApp.exe_.
+3. Rename _JanelWindows32.lap_ to _MyExampleApp.lap_.
 4. Set the contents of MyExampleApp.lap to be:  
    ```
    janel.main.class=example.ClassThatHasMainMethod
    -Djava.class.path=lib\MyExample.jar
    ```
-5. Put MyExampleApp.exe and MyExampleApp.lap in the same directory.
-6. MyExampleApp.exe is ready to launch.
+5. Put _MyExampleApp.exe_ and _MyExampleApp.lap_ in the same directory.
+6. _MyExampleApp.exe_ is ready to launch.
 
 ## Files included
 There are four binary Janel executables (listed below) included in the downloaded distribution file:
@@ -215,5 +215,6 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
 
