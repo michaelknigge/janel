@@ -72,7 +72,7 @@ All custom properties are case-sensitive. The custom properties available are:
 * ```janel.error.default.text``` : overrides the default error text (_Error in Java launcher._) with a custom error message.
 * ```janel.error.show.detail``` : _true_ or _false_ (_yes_ or _no_ works too) enables detailed error messages. If _true_, the default error message will be displayed followed by the details. Defaults to _true_.
 * ```janel.environment.file``` : file (properties format) that contains additional environment variables to be set. No error will be thrown if the specified file can not be opened.
-* ```janel.include.file``` : file (LAP format) that will be included at this point. This allows nesting and/or concatenating of LAP files. No error will be thrown if the specified file can not be opened. Furthermore no loop detection is performed. If you include file A.lap that includes B.lap that includes A.lap - you get an infinitive loop. You get what you've asked for.
+* ```janel.include.file``` : file (LAP format) that will be included at this point. This allows nesting and/or concatenating of LAP files. No error will be thrown if the specified file can not be opened. Furthermore no loop detection is performed. If you include file _foo.lap_ that includes _ba.lap_ that includes _foo.lap_ - you get an infinitive loop. You get what you've asked for.
 * ```janel.debug.file``` : the file which will have debugging messages written to it.
 * ```janel.memory.max.available.percent``` : sets the max memory via ```-Xmx``` as percent of available memory. Use only integers, no percent signs or decimals. 50 (not .50) is equal to 50 percent.
 * ```janel.memory.init.available.percent``` : sets the initial memory via ```-Xms``` as percent of available memory. See above for percent explanation.
@@ -215,6 +215,7 @@ See the question above, first you have to implement the _initiateExit(int)_ stat
 
 ### When I try to stop my service (by using the GUI) it takes very long and finally ends in an error message "the service did not respond" - why?
 See the question above, it is the same reason.
+
 
 
 
