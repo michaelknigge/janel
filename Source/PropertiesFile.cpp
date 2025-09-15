@@ -50,6 +50,7 @@ tstring& PropertiesFile::getPropertiesFileName()
 		{
 			m_propertiesFileName = (m_pProperties->getFullPathAndNameOfExe()) + _T(".lap");
 		}
+		DEBUG_SHOW(_T("Default properties file=") + m_propertiesFileName);
 	}
 	catch(...)
 	{
@@ -61,6 +62,7 @@ tstring& PropertiesFile::getPropertiesFileName()
 
 void PropertiesFile::loadPropertiesFromDefaultFile()
 {
+	DEBUG_SHOW(_T("loadPropertiesFromDefaultFile"));
 	loadPropertiesFromFile(getPropertiesFileName(), false);
 }
 
@@ -125,6 +127,7 @@ void PropertiesFile::loadPropertiesFromFile(const tstring& name, const bool isOp
 	}
 	catch(tstring& se)
 	{
+		DEBUG_SHOW(_T("severe error... "));
 		ErrHandler::severeError( se );
 	}
 	catch(...)
@@ -397,19 +400,19 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 		tstring propertyValue;
 		if( isAssignmentProperty(strProperty) )
 		{
-			propertyName = LocalUtilities::trim(
-					parsePropertyName(strProperty) ); 
-			propertyValue = LocalUtilities::trim(
-					parsePropertyValue(strProperty) ); 
+			propertyName = LocalUtilities::trim( parsePropertyName(strProperty) );
+			propertyValue = LocalUtilities::trim( parsePropertyValue(strProperty) );
 		}
 		else
 		{
 			propertyName = LocalUtilities::trim( strProperty );
 		}
 		
-		DEBUG_STMT( tstring debugReadProp = _T("strProperty=") + strProperty +
+		DEBUG_STMT( tstring debugReadProp = 
+				_T("strProperty=") + strProperty +
 				_T(",propertyName=") + propertyName +
 				_T(",propertyValue=") + propertyValue; )
+
 		DEBUG_SHOW( debugReadProp );
 		
 		// isJavaSystemProperty
@@ -608,6 +611,7 @@ void PropertiesFile::processProperty(PropertyFileEntry* pPropFileEntry)
 		// INCLUDE_FILE
 		else if (propertyName.compare(PropertiesCustom::INCLUDE_FILE) == 0)
 		{
+			DEBUG_SHOW(tstring(_T("loadPropertiesFromFile (due to include): ")) + tstring(propertyValue));
 			loadPropertiesFromFile(propertyValue, true);
 		}
 
