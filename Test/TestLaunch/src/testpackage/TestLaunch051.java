@@ -14,12 +14,12 @@ public class TestLaunch051
 						
 			Properties props = System.getProperties();
 			System.out.println( "self.home.test=" + props.getProperty("self.home.test"));
-			System.out.println( "myprop.test1" + props.getProperty("myprop.test1"));	
-			System.out.println( "myprop.test2" + props.getProperty("myprop.test2"));
-			System.out.println( "myprop.test3" + props.getProperty("myprop.test3"));
-			System.out.println( "myprop.test4" + props.getProperty("myprop.test4"));
-			System.out.println( "myprop.test5" + props.getProperty("myprop.test5"));
-			System.out.println( "myprop.test6" + props.getProperty("myprop.test6"));
+			System.out.println( "myprop.test1=" + props.getProperty("myprop.test1"));	
+			System.out.println( "myprop.test2=" + props.getProperty("myprop.test2"));
+			System.out.println( "myprop.test3=" + props.getProperty("myprop.test3"));
+			System.out.println( "myprop.test4=" + props.getProperty("myprop.test4"));
+			System.out.println( "myprop.test5=" + props.getProperty("myprop.test5"));
+			System.out.println( "myprop.test6=" + props.getProperty("myprop.test6"));
 			
 			if(!props.getProperty("myprop.test1").equals(""))
 			{
