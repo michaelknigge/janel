@@ -1,7 +1,7 @@
 # This is a .lap file comment
 -Djava.class.path=dist\TestLaunch.jar
 #-DJAVA_HOME=${FOUND_JAVA_HOME}
-janel.main.class=testpackage.TestLaunch050
+janel.main.class=testpackage.TestLaunch051
 #janel.java.bundle=prefer_SDK
 #janel.bin.jvm.dir=prefer_client
 #janel.jvm.path=${env.JAVA_HOME}\jre\bin\server\jvm.dll
