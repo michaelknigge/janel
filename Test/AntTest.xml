@@ -4,7 +4,7 @@
 Set the default target to whatever is the highest number TestLaunch# target.
 Copy TestLaunch# target and change copy commands, and depends to previous TestLaunch# for a new TestLaunch
 -->
-<project name="Janel-Test" default="TestLaunch050" xmlns:if="ant:if" xmlns:unless="ant:unless">
+<project name="Janel-Test" default="TestLaunch051" xmlns:if="ant:if" xmlns:unless="ant:unless">
 
 	<mkdir dir="C:\Test"/>
 	<mkdir dir="C:\Temp"/>
@@ -278,7 +278,7 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		<echo>Windows:</echo>
 		<copy file="TestLaunch/TestWindows023.lap" tofile="TestLaunch/bin/TestWindows.lap" overwrite="true" />
 		<copy file="TestLaunch/TestWindows.exe" todir="TestLaunch/bin" overwrite="true" />
-		<exec executable="TestLaunch/bin/TestWindows.exe" dir="TestLaunch/bin">
+		<exec unless:true="${headless}" executable="TestLaunch/bin/TestWindows.exe" dir="TestLaunch/bin">
 		</exec>
 
 		<delete dir="TestLaunch/bin"/>
@@ -654,6 +654,17 @@ Copy TestLaunch# target and change copy commands, and depends to previous TestLa
 		</exec>
 		<echo>Windows:</echo>
 		<copy file="TestLaunch/TestWindows050.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
+		<exec unless:true="${headless}" executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
+		</exec>
+	</target>
+
+	<target name="TestLaunch051" depends="TestLaunch050">
+		<echo>Console:</echo>
+		<copy file="TestLaunch/TestConsole051.lap" tofile="TestLaunch/TestConsole.lap" overwrite="true" />
+		<exec executable="TestLaunch/TestConsole.exe" dir="TestLaunch">
+		</exec>
+		<echo>Windows:</echo>
+		<copy file="TestLaunch/TestWindows051.lap" tofile="TestLaunch/TestWindows.lap" overwrite="true" />
 		<exec unless:true="${headless}" executable="TestLaunch/TestWindows.exe" dir="TestLaunch">
 		</exec>
 	</target>
