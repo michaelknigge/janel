@@ -16,12 +16,11 @@
 using namespace std;
 
 
-int realMain(int argc, _TCHAR* argv[])
+int realMain(Properties* pProperties)
 {
 	try
 	{
-		Properties properties = getProperties(argc,argv);
-		launchJavaMainMethod(&properties);
+		launchJavaMainMethod(pProperties);
 		return 0;
 	}
 	catch(tstring& se)
@@ -167,7 +166,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 			}
 		}
-		return realMain(argc, argv);
+		return realMain(&properties);
 	}
 	catch(tstring& se)
 	{
@@ -208,9 +207,11 @@ int WINAPI _tWinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 		argv[i + 1] = tempArgv[i];
 	}
 
-	return realMain(argc + 1, (_TCHAR**)argv);
+	Properties properties = getProperties(argc + 1, (_TCHAR**)argv);
+	return realMain(&properties);
 #else
-	return realMain(__argc, __argv);
+	Properties properties = getProperties(__argc, __argv);
+	return realMain(&properties);
 #endif
 }
 
