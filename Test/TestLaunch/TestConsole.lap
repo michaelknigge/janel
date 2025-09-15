@@ -11,7 +11,7 @@ janel.main.class=testpackage.TestLaunch050
 #-verbose:class
 #-Xincgc
 #janel.trap.console.ctrl=yes
-#-Dself.home.test=${SELF_HOME}
+-Dself.home.test=${SELF_HOME}
 #-Dfound.exe.folder.test=${FOUND_EXE_FOLDER}
 #janel.classpath.jars.dir=..\..\Test\TestLaunch\dist
 #janel.splash=images/TestSplashScreen.jpg
@@ -20,4 +20,9 @@ janel.main.class=testpackage.TestLaunch050
 #janel.memory.check.limits=true
 -Dexecutable.bitness=${EXE_BITNESS}
 -Dopsys.bitness=${OS_BITNESS}
-
+-Dmyprop.test1=${env.AAA}
+-Dmyprop.test2=${env.CCC:#}
+-Dmyprop.test3=${env.DDD:-DefaultXXX}
+-Dmyprop.test4=${env.DDD:=DefaultZZZ}
+-Dmyprop.test5=${env.EEE:-${SELF_HOME}}
+-Dmyprop.test6=${env.EEE:-${env.DDD}}

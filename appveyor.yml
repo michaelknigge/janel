@@ -77,9 +77,19 @@ test_script:
 
     set JAVA_HOME=C:\Program Files\Java\jdk1.8.0
 
-
     cd Test
 
+    cd TestLaunch
+
+    call %ANT_HOME%\bin\ant.bat
+
+    cd ..
+
+    cd TestLaunchFail
+
+    call %ANT_HOME%\bin\ant.bat
+
+    cd ..
 
     call %ANT_HOME%\bin\ant.bat -f AntTest.xml -Dheadless=true
 
