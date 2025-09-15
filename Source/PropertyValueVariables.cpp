@@ -49,18 +49,7 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 		}
 		else if ( strJustVariable.find( _T("env.") ) == 0)
 		{
-			tstring tempString = strJustVariable.substr(4);
-			tstring& strEnvVariable = tempString;
-			size_t outputSize = 0;
-			_tgetenv_s( &outputSize, NULL, 0, strEnvVariable.c_str() );
-			if ( outputSize != 0)
-			{
-				TCHAR* envVariableValue = new TCHAR[outputSize];
-				size_t vOutputSize = 0;
-				_tgetenv_s( &vOutputSize, envVariableValue, outputSize, strEnvVariable.c_str() );
-				assert(vOutputSize == outputSize);
-				pValueFromVariable = new tstring(envVariableValue);
-			}
+			pValueFromVariable = new tstring(getValueFromEnvironmentVariable(strJustVariable.substr(4)));
 		}
 		else if ( strJustVariable.compare( SELF_HOME ) == 0 )
 		{
@@ -118,8 +107,76 @@ tstring& PropertyValueVariables::getValueFromVariable(const tstring& strVariable
 	return *pValueFromVariable;
 }
 
+tstring PropertyValueVariables::getValueFromEnvironmentVariable(const tstring& strEnvVariable)
+{
+	tstring strEnvVariableName;
+	tstring strEnvVariableDefault;
+
+	size_t indexStartOfColon = strEnvVariable.find_first_of( _T(":") );
+	if (indexStartOfColon != -1)
+	{
+		strEnvVariableName = strEnvVariable.substr(0, indexStartOfColon);
+		strEnvVariableDefault = strEnvVariable.substr(indexStartOfColon + 1);
+	}
+	else
+	{
+		strEnvVariableName = strEnvVariable;
+		strEnvVariableDefault = _T("");
+	}
+
+	DEBUG_SHOW(_T("env variable name=") + strEnvVariableName);
+	DEBUG_SHOW(_T("env variable default=") + strEnvVariableName);
+
+	DWORD outputSize = GetEnvironmentVariable(strEnvVariableName.c_str(), NULL, 0);
+
+	if (outputSize == 0 && strEnvVariableDefault.size() > 0)
+	{
+		if (strEnvVariableDefault[0] == _T('!'))
+		{
+			ErrHandler::severeError(_T("Required environment variable ") + strEnvVariableName + _T(" is not set."));
+		}
+
+		if (strEnvVariableDefault[0] == _T('#'))
+		{
+			DEBUG_SHOW(_T("returning empty string for non-existing environment variable"));
+			tstring* pValueFromVariable = new tstring;
+			return *pValueFromVariable;
+		}
+
+		if (strEnvVariableDefault.size() > 1 && strEnvVariableDefault[0] == _T('-'))
+		{
+			DEBUG_SHOW(_T("returning = ") + strEnvVariableDefault.substr(1));
+			return strEnvVariableDefault.substr(1);
+		}
+
+		if (strEnvVariableDefault.size() > 1 && strEnvVariableDefault[0] == _T('='))
+		{
+			DEBUG_SHOW(_T("returning and setting = ") + strEnvVariableDefault.substr(1));
+			SetEnvironmentVariable(strEnvVariableName.c_str(), strEnvVariableDefault.substr(1).c_str());
+			return strEnvVariableDefault.substr(1);
+		}
+	}
+	
+	if (outputSize != 0)
+	{
+		TCHAR* envVariableValue = new TCHAR[outputSize];
+		GetEnvironmentVariable(strEnvVariableName.c_str(), envVariableValue, outputSize);
+
+		tstring* pValueFromVariable = new tstring(envVariableValue);
+		DEBUG_SHOW(_T("returning env var value = ") + *pValueFromVariable);
+		return *pValueFromVariable;
+	}
+	else
+	{
+		DEBUG_SHOW(_T("returning empty string"));
+		tstring* pValueFromVariable = new tstring;
+		return *pValueFromVariable;
+	}
+}
+
 tstring& PropertyValueVariables::resolvePropertyVariables(tstring& strProperty)
 {
+	DEBUG_SHOW( _T("start resolving:") + strProperty);
 	try
 	{
 		tstring::size_type indexStartOfVariable = 0;
@@ -137,12 +194,26 @@ tstring& PropertyValueVariables::resolvePropertyVariables(tstring& strProperty)
 			tstring variableValue = getValueFromVariable(variable);
 			DEBUG_SHOW( _T("variableValue=") + variableValue);
 
+			// If the variable value is empty *AND* the property ends with ":+#", then we will ignore the
+			// whole property.... in example, if you have "janel.include.file=${env.FOOBA:#}\custom.lap" in
+			// the LAP file and the environment variable "FOOBA" is not set (or empty!), then the whole line
+			// gets ignored...
+			if (variableValue.size() == 0)
+			{
+				size_t len = variable.size();
+				size_t pos = variable.find_first_of(_T(":#"));
+
+				if (pos == len - 2)
+				{
+					strProperty[0] = _T('#'); // Ugly hack... Comment out the line...
+				}
+			}
+
 			tstring prefixStrProperty = strProperty.substr(0,indexStartOfVariable);
 			tstring postfixStrProperty = strProperty.substr(indexEndOfVariable+1);
 			
 			strProperty = prefixStrProperty + variableValue + postfixStrProperty;
 			DEBUG_SHOW( _T("strProperty=") + strProperty);
-			indexStartOfVariable = prefixStrProperty.size() + variableValue.size();
 		}
 	}
 	catch(...)

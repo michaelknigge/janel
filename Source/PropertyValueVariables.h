@@ -31,6 +31,7 @@ public:
 
 	tstring& resolvePropertyVariables(tstring& strProperty);
 	tstring& getValueFromVariable(const tstring& strVariable);
+	tstring getValueFromEnvironmentVariable(const tstring& strVariable);
 	bool containsPropertyVariables(const tstring& strProperty);
 	bool containsLatePropertyVariables(const tstring& strProperty);
 };

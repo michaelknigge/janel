@@ -130,10 +130,19 @@ Properties may also contain variables that are resolved by the Janel executable.
 * ```EXE_BITNESS``` is set to 32 or 64, depending on the bitness of the current running executable.
 * ```OS_BITNESS``` is set to 32 or 64, depending on the bitness of operating system.
 
-Any environment variable may also be used as a property value variable by prefixing it with `env.`. For example, `${env.CATALINA_HOME}` would resolve to the value of the environment variable `CATALINA_HOME`. Note that a non-existing environment variable is substituted by an empty string. So `janel.include.file=${env.APPL_CONFIGDIR}\custom.lap` will resolve to `janel.include.file=\custom.lap` if the environment variable _APPL_CONFIGDIR_ is not set.
-
 Below is an example of a property value variable in a .lap file. The Java system property called found.exe.folder.test will be set to the path to the Janel executable.  
 `-Dfound.exe.folder.test=${FOUND_EXE_FOLDER}`
+s
+## Environment variables as property value variables in a .LAP file
+
+Any environment variable may also be used as a property value variable by prefixing it with `env.`. For example, `${env.CATALINA_HOME}` would resolve to the value of the environment variable `CATALINA_HOME`. Note that a non-existing environment variable is substituted by an empty string. So `janel.include.file=${env.APPL_CONFIGDIR}\custom.lap` will resolve to `janel.include.file=\custom.lap` if the environment variable _APPL_CONFIGDIR_ is not set.
+
+There may also a special operator be specified with the name of the environment variable.
+
+* ```:#``` If the environment variable is not set or resolves to an empty value, the complete property is ignored. This might be useful if you include another file and make sure that no _wrong_ file gets included. For example `janel.include.file=${env.APPL_CONFIGDIR:#}\custom.lap` will be completely ignored if the environment variable _APPL_CONFIGDIR_ is not set or contains an empty value.
+* ```:!``` If the environment variable is not set Janel will exit with an error message. For example if the environment variable _APPL_CONFIGDIR_ is not set, the property `janel.include.file=${env.APPL_CONFIGDIR:!}\custom.lap` will cause Janel to exit with the error message _Required environment variable APPL_CONFIGDIR is not set_.
+* ```:-defaultValue``` If the environment variable is not set Janel will subsitute the environment variable with the specified default value. For example `janel.include.file=${env.APPL_CONFIGDIR:-.}\custom.lap` will be resolved to `janel.include.file=.\custom.lap` if the environmant variable _APPL_CONFIGDIR_ is not set.
+* ```:=defaultValue``` Same as above, but the environment variable will additionally be set to the specified default value.
 
 ## Command line arguments
 Command-line arguments passed to the Janel executable will be passed as arguments to the main method of the Java class. Command-line arguments can also be specified by using multiple instances of the `janel.main.argument` custom property in the .LAP file. Arguments passed to the Janel executable will precede arguments specified with `janel.main.argument`.
