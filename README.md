@@ -9,18 +9,13 @@ Windows executables. Within the configuration file set the location of the JVM, 
 classpath, and more. A choice of non-console and console applications is available. The process name is whatever you choose
 for your .exe file. New for Janel 4.x is the ability to use the Janel executable as a Windows service.
 
-The homepage of Janel is on [Sourceforge](https://sourceforge.net/projects/janel/). There you can download official releases.
-
 # GitHub vs. Sourceforge
 This project is a spin-off of the great [Janel](https://sourceforge.net/projects/janel/) by Timothy Kil.
 Since version 3.4.0 of Janel I'm contributing code that enhances Janel and I always have passed my enhancements
 to Timothy. Some of my enhancements and fixes of version 4.0.4 sadly got lost on the way to the official version.
-So I decided to create this GitHub project that makes it a lot easier for me to bring my enhancements and fixes
-to the public. 
 
-I'll continue to push all my contributions to Timothy so he can integrate them into the official Janel distribution
-(and I really hope that Timothy will integrate them because I'm no friend of fragmentation and I have no interest
-in two competing Janel distributions).
+Note that the original Janel by Timothy Kil is no longer under active development. So I decided to create this GitHub project that makes it a lot easier for me to bring my enhancements and fixes
+to the public and keep Janel alive.
 
 Every release of my enhanced Janel is built by the free Continuous Delivery service [AppVeyor](https://www.appveyor.com/)
 in a clean environment. The status badges at the top of the page will guide you to the download pages.
@@ -127,3 +122,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
