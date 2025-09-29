@@ -91,7 +91,8 @@ It might be useful to set defaults in the LAP file of your application, but let 
 
     janel.include.file=${SELF_NAME}.inc
 
-Using this configuration, you can place a file with the suffix ".inc" right beside your .exe that may contain any entry that might occur in a LAP file.
+Using this configuration, you can place a file with the suffix ".inc" right beside your .exe that may contain any entry that might occur in a LAP file. You should place
+this at the end (or at least nearly at th end) of your LAP file so the properties of your "include file" will be read at the and therefore override the properties of the LAP file.
 
 ## Fix codepage problems when passing options and/or properties to the JVM
 If an entry in the LAP file contains some special characters (i. e. german umlauts) they have not been passed correctly to the JVM.
@@ -122,4 +123,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 
