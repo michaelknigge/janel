@@ -100,6 +100,25 @@ If an entry in the LAP file contains some special characters (i. e. german umlau
 ## Converted documentation from HTML to Markdown
 The documentation is now available in Markdown. See the manuals [How to build](./Documentation/HowToBuild.md) and [How to run](./Documentation/HowToRun.md).
 
+## Manifest for 4K display support
+The Janel executable now contains a manifast that causes enables correct 4K support for GUI applications. The manifest contains the following settings:
+
+    <windowsSettings>
+      <dpiAware xmlns="http://schemas.microsoft.com/SMI/2005/WindowsSettings">true/pm</dpiAware>
+      <dpiAwareness xmlns="http://schemas.microsoft.com/SMI/2016/WindowsSettings">PerMonitorV2</dpiAwareness>
+    </windowsSettings>
+
+## Manifest for better security
+The Janel executable now contains a manifast that sets the execution level. The manifest contains the following setting:
+
+    <security>
+      <requestedPrivileges>
+        <requestedExecutionLevel level="asInvoker" uiAccess="false"/>
+      </requestedPrivileges>
+    </security>
+
+The values of `requestedExecutionLevel` and `uiAccess` are well documented in [MSDN](https://learn.microsoft.com/en-us/previous-versions/bb756929(v=msdn.10)?redirectedfrom=MSDN).
+
 
 # License
 MIT License
@@ -123,5 +142,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
 
 
